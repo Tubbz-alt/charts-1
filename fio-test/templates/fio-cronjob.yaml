@@ -23,12 +23,21 @@ spec:
                 - name: {{ .Release.Name }}-fio-config-volume
                   mountPath: /etc/config
               command: ["/bin/sh", "-c"]
-              args: ["echo Start fio testing......;
-                    /usr/local/bin/fio /etc/config/default-config.fio
-                    --output-format=json
-                    --output=/data/fio.out;
-                    eventcli send --filepath=/data/fio.out --parsetype=fio --component=fio --eventtype=Normal;
-                    echo fio testing completed.;"]
+              args: [ "chmod +x /usr/local/bin/*.sh;
+                      sh /usr/local/bin/run.sh;"]
+              env:
+              - name: FIO_TEST_CONFIG_FILE
+                value : default-config.fio
+              - name: WEBDAV_SECRET_USERNAME
+                valueFrom:
+                  secretKeyRef:
+                    name: decks-webdav-secret
+                    key: username
+              - name: WEBDAV_SECRET_PASSWORD
+                valueFrom:
+                  secretKeyRef:
+                    name: decks-webdav-secret
+                    key: password  
           volumes:
             - name: {{ .Release.Name }}-fio-test-volume
               persistentVolumeClaim:
