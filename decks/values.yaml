@@ -15,6 +15,8 @@ global:
 
   # Default: "" == Watch ALL namespaces
   watchNamespace: ""
+  webdav:
+    registry: emccorp
 
 # The default docker tag and pull policy for the DECKS
 tag: 0.3.0-3
@@ -28,6 +30,30 @@ image:
   repository: decks
   # tag: stable
   # pullPolicy: Always
+
+
+
+webdav:
+  image:
+    repository: decks-webdav
+    tag: 2.4
+    pullPolicy: Always
+
+  storageClass: vsphere
+
+  containerPort: 80
+
+  persistentVolume:
+    size: 200Gi
+
+  service:
+    port: 8000
+    targetPort: 80
+
+  secret:
+    username: YWRtaW4=
+    password: Q2hhbmdlTWU=
+  
 
 # decks helm test configuration
 # this image is the test image for DECKS. It will run as "helm test" to verify the DECKS functionality as a black box
