@@ -182,7 +182,7 @@ data:
             "command": [
               "/bin/bash",
               "-c",
-              "echo sonobuoy starts running && /sonobuoy master --no-exit=false -v 3 --logtostderr && mkdir results && tar -xf /tmp/sonobuoy/*.gz -C results && echo Sonobuoy conformance tests: > msg.log && tail -n 10 results/plugins/e2e/results/e2e.log | grep Ran >> msg.log && tail -n 10 results/plugins/e2e/results/e2e.log | grep Passed >> msg.log && cat results/plugins/e2e/results/e2e.log && eventcli send -m \"$(tr -d \"[\n]\" < msg.log)\" && echo sonobuoy stops running"
+              "./run-sonobuoy-test.sh"
             ],
             "env": [
               {
@@ -192,6 +192,14 @@ data:
                     "fieldPath": "status.podIP"
                   }
                 }
+              },
+              {
+                "name": "WEBDAV_SECRET_USERNAME",
+                "value": "admin"
+              },
+              {
+                "name": "WEBDAV_SECRET_PASSWORD",
+                "value": "ChangeMe"
               }
             ],
             "image": "fyang86/sonobuoy-event:0.1",
@@ -263,7 +271,7 @@ metadata:
   name: sonobuoy-cronjob
   namespace: default
 spec:
-  schedule: "53 */12 * * *"
+  schedule: "50 */12 * * *"
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 0
   jobTemplate:
