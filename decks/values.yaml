@@ -15,8 +15,6 @@ global:
 
   # Default: "" == Watch ALL namespaces
   watchNamespace: ""
-  webdav:
-    registry: emccorp
 
 # The default docker tag and pull policy for the DECKS
 tag: 0.3.0-3
@@ -38,8 +36,6 @@ webdav:
     repository: decks-webdav
     tag: 2.4
     pullPolicy: Always
-
-  storageClass: vsphere
 
   containerPort: 80
 
