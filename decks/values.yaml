@@ -31,27 +31,19 @@ image:
   # tag: stable
   # pullPolicy: Always
 
-
-
 webdav:
   image:
     repository: decks-webdav
     tag: 2.4
     pullPolicy: Always
-
   containerPort: 80
-
   persistentVolume:
     size: 200Gi
-
   service:
     port: 8000
     targetPort: 80
-
-  secret:
-    username: YWRtaW4=
-    password: Q2hhbmdlTWU=
-  
+#  username: admin
+#  password: ChangeMe
 
 # decks helm test configuration
 # this image is the test image for DECKS. It will run as "helm test" to verify the DECKS functionality as a black box
