@@ -6,6 +6,9 @@ metadata:
   name: webdav
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      name: webdav  
   strategy:
     type: Recreate
   template:
