@@ -1,0 +1,28 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: default-view
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: view
+subjects:
+- kind: ServiceAccount
+  name: default
+  namespace: default
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hc-check
+  namespace: default
+spec:
+  containers:
+  - image: fyang86/hc-failure-handle:0.1
+    command:
+    - /bin/sh
+    - -c
+    - chmod +x mgmt_api.sh && /cluster-status-check
+    imagePullPolicy: Always
+    name: hchandle
+  restartPolicy: Never
