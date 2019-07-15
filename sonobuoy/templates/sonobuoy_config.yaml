@@ -195,11 +195,21 @@ data:
               },
               {
                 "name": "WEBDAV_SECRET_USERNAME",
-                "value": "admin"
+                "valueFrom": {
+			            "secretKeyRef": {
+				            "name": "decks-webdav-secret",
+				            "key": "username"
+			            }
+		            }
               },
               {
                 "name": "WEBDAV_SECRET_PASSWORD",
-                "value": "ChangeMe"
+                "valueFrom": {
+			            "secretKeyRef": {
+				            "name": "decks-webdav-secret",
+				            "key": "password"
+			            }
+		            }
               }
             ],
             "image": "fyang86/sonobuoy-event:0.1",
