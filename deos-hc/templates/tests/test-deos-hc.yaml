@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ .Release.Name }}-deos-hc-test
+  labels:
+    release: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
+  annotations: 
+    "helm.sh/hook": test-success
+spec:
+  containers:
+    - name: {{ .Release.Name }}
+      image: {{ .Values.global.registry }}/{{ .Values.image.repository}}:{{ .Values.image.tag }}
+      imagePullPolicy: {{ .Values.image.pullPolicy }}
+      volumeMounts:
+        - name: output-volume
+          mountPath: /tmp/deos-hc
+      command: ["/bin/sh", "-c"]
+      args: [ "./deos-hc all;"]
+  volumes:
+    - name: output-volume
+      emptyDir: {}
+  restartPolicy: Never
+#                    --output-format=json

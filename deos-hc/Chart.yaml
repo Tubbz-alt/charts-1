@@ -1,0 +1,10 @@
+---
+apiVersion: v1
+appVersion: 0.4.0
+description: A Helm chart for kubernetes pods network and management API checking
+name: deos-hc
+version: 0.4.0
+icon: https://avatars0.githubusercontent.com/u/12926680
+maintainers:
+- name: Dell EMC
+  url: http://dellemc.com

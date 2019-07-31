@@ -1,0 +1,29 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ .Release.Name }}-deos-hc-cronjob
+  labels:
+    release: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace}}
+spec: 
+  schedule: "* */6 * * *"   #job execution period, use cron string format, the job is running every 6 hours by default
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: {{ .Release.Name }}
+              image: {{ .Values.global.registry }}/{{ .Values.image.repository}}:{{ .Values.image.tag }}
+              imagePullPolicy: {{ .Values.image.pullPolicy }}
+              volumeMounts:
+                - name: output-volume
+                  mountPath: /tmp/deos-hc
+              command: ["/bin/sh", "-c"]
+              args: [ "./deos-hc all;"]
+          volumes:
+            - name: output-volume
+              emptyDir: {}
+          restartPolicy: Never
+#                    --output-format=json
