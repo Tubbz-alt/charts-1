@@ -1,0 +1,11 @@
+{{- if .Values.licensefile }}
+apiVersion: v1
+kind: Secret
+type: Opaque
+metadata:
+  name: bootstrapped-lic
+  labels:
+    com.dellemc.decklicense.subscribed: "true"
+data:
+  desa_lic.xml: {{ .Values.licensefile | b64enc }}
+{{- end }}
