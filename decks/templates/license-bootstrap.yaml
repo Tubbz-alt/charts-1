@@ -7,5 +7,5 @@ metadata:
   labels:
     com.dellemc.decklicense.subscribed: "true"
 data:
-  desa_lic.xml: {{ .Values.licensefile | b64enc }}
+  license.xml: {{ .Values.licensefile | b64enc }}
 {{- end }}
