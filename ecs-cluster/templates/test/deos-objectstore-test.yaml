@@ -9,14 +9,14 @@ metadata:
 spec:
   containers:
   - image: 
-      repository: {{ .Values.global.registry }}/{{ .Values.deos-hc.image.repository }}
-{{- if .Values.deos-hc.image.tag }}
-      tag: {{ .Values.deos-hc.image.tag }}
+      repository: {{ .Values.global.registry }}/{{ .Values.deos_hc.image.repository }}
+{{- if .Values.deos_hc.image.tag }}
+      tag: {{ .Values.deos_hc.image.tag }}
 {{- else }}
       tag: {{ .Values.tag }}
 {{- end }}
-{{- if .Values.deos-hc.image.pullPolicy }}
-      pullPolicy: {{ .Values.deos-hc.image.pullPolicy }}
+{{- if .Values.deos_hc.image.pullPolicy }}
+      pullPolicy: {{ .Values.deos_hc.image.pullPolicy }}
 {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
 {{- end }}

@@ -410,7 +410,7 @@ fabricProxy:
     # pullPolicy: IfNotPresent
 
 # deos health check configuration
-deos-hc:
+deos_hc:
   # Docker repository to be used for running deos health check
   image:
     repository: deos-hc
