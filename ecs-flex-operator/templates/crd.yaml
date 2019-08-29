@@ -4,6 +4,8 @@ metadata:
   name: ecsclusters.ecs.dellemc.com
   labels:
     release: {{ .Release.Name }}
+  annotations:
+    "helm.sh/hook": crd-install
 spec:
   group: ecs.dellemc.com
   names:
