@@ -85,7 +85,7 @@ resources: {}
 #  cpu: 100m
 #  memory: 128Mi
 
-# Will install crd for ecs clusterl
+# Will install crd for ecs cluster
 installECSCRD: true
 
 nodeSelector: {}
