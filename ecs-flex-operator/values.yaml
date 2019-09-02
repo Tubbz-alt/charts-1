@@ -85,8 +85,18 @@ resources: {}
 #  cpu: 100m
 #  memory: 128Mi
 
-# Will install crd for ecs cluster
+# installECSCRD will install crd for ecs cluster
 installECSCRD: true
+# installInfluxCRD will install crd for influx
+installInfluxCRD: true
+
+influx:
+  # metricsPort is the port that will be used by metrics in influx
+  metricsPort: 6000
+  image:
+    repository: influxdb-operator
+    tag: v1
+  replicas: 1
 
 nodeSelector: {}
 

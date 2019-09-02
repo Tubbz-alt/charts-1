@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-influxdata-operator
+spec:
+  replicas: {{ default .Values.replicaCount .Values.influx.replicas }}
+  selector:
+    matchLabels:
+      name: {{ .Release.Name }}-influxdata-operator
+  template:
+    metadata:
+      labels:
+        name: {{ .Release.Name }}-influxdata-operator
+    spec:
+      serviceAccountName: {{ .Release.Name }}-influxdata-operator
+      {{- if .Values.global.registrySecret }}
+      imagePullSecrets:
+        - name: {{ .Values.global.registrySecret }}
+      {{- end }}
+      containers:
+        - name: {{ .Release.Name }}-influxdata-operator
+          image: {{ .Values.global.registry }}/{{ .Values.influx.image.repository }}:{{ default .Values.tag .Values.influx.image.tag }}
+          ports:
+            - containerPort: {{ .Values.influx.metricsPort }}
+              name: metrics
+          command:
+            - influxdata-operator
+          imagePullPolicy: Always
+          env:
+            - name: WATCH_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: OPERATOR_NAME
+              value: {{ .Release.Name }}-influxdata-operator
