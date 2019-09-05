@@ -85,8 +85,8 @@ resources: {}
 #  cpu: 100m
 #  memory: 128Mi
 
-# installECSCRD will install crd for ecs cluster
-installECSCRD: true
+# Will install crd for object store
+installObjectStoreCRD: true
 # installInfluxCRD will install crd for influx
 installInfluxCRD: true
 
