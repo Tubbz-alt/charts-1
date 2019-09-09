@@ -8,6 +8,7 @@ metadata:
   labels:
     app.kubernetes.io/name: {{ .Values.application.testAppName }}
     app.kubernetes.io/managed-by: {{ .Values.application.testAppName }}
+    app-version: {{.Chart.Name}}-{{.Chart.Version}}
   annotations:
     com.dellemc.kahm.subscribed: "true"
 spec:

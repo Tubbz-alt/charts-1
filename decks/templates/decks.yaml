@@ -57,3 +57,5 @@ spec:
 {{- end }}
         - name: CONTROLLER_NAME
           value: decks
+        - name: DECKS_CHART_VERSION
+          value: {{.Chart.Name}}-{{.Chart.Version}}
