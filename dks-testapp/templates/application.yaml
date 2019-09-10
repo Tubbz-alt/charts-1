@@ -8,7 +8,7 @@ metadata:
   labels:
     app.kubernetes.io/name: {{ .Values.application.testAppName }}
     app.kubernetes.io/managed-by: {{ .Values.application.testAppName }}
-    app-version: {{.Chart.Name}}-{{.Chart.Version}}
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
   annotations:
     com.dellemc.kahm.subscribed: "true"
 spec:
