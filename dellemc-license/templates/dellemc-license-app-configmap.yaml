@@ -1,0 +1,56 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: dellemc-license-{{.Values.product}}-app-config
+    namespace: {{.Release.namespace}}
+    labels:
+        app.kubernetes.io/name: dellemc-license-{{.Values.product}}
+        app.kubernetes.io/version: {{.Values.tag}}
+        app.kubernetes.io/instance: {{.Release.Name}}
+        app.kubernetes.io/managed-by: {{.Release.Service}}
+        helm.sh/chart: {{.Chart.Name}}-{{.Chart.Version | replace "+" "_"}}
+        release: {{.Release.Name}}
+        product: {{.Values.product}}
+    annotations:
+        com.dellemc.kahm.subscribed: "true"
+data:
+    eventRules: |-
+      rules:
+        - description: "dellemc license srs events"
+          matchon:
+            - label: symptomid
+              value: DECKS-LIC-1005
+            - label: symptomid
+              value: DECKS-LIC-1006
+            - label: symptomid
+              value: DECKS-LIC-1008
+          notifiers:
+            - {{.Values.product}}-srs
+    eventRemedies: |-
+      symptoms:
+        - symptomid: DECKS-LIC-1005
+          description: Dell EMC subscription license expired for product {{.Values.product}}
+          remedies:
+            - Check the end date of the {{.Values.product}} license
+            - Visit the Dell EMC Software Licensing Center (SLC) to
+              renew/extend the {{.Values.product}} license.
+            - Contact your Dell EMC sales representative to
+              renew/extend the {{.Values.product}} license
+        - symptomid: DECKS-LIC-1006
+          description: Dell EMC subscription license for product {{.Values.product}} is about to expire
+          remedies:
+            - Check the end date of the license
+            - Visit the Dell EMC Software Licensing Center (SLC) to
+              renew/extend the {{.Values.product}} license.
+            - Contact your Dell EMC sales representative to
+              renew/extend the {{.Values.product}} license
+        - symptomid: DECKS-LIC-1008
+          description: Invalid Dell EMC license
+          remedies:
+            - Make sure the {{.Values.product}} license was obtained from the
+              Dell EMC Software Licensing Center
+            - Make sure the {{.Values.product}} license was not modified prior to applying it to
+              the cluster
+            - Make sure the PRODUCTSHORTNAME is defined in the {{.Values.product}} license
+    healthChecks: |-
