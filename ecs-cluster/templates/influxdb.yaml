@@ -28,3 +28,8 @@ spec:
         resources:
           requests:
             storage: {{ .Values.influxdb.persistence.size }}
+    volumes:
+      - name: config
+        configMap:
+          name: influxdb-config
+---
