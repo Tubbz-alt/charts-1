@@ -1,4 +1,4 @@
----
+{{ if .Values.enableAdvancedStatistics }}
 apiVersion: influxdata.com/v1alpha1
 kind: Influxdb
 metadata:
@@ -33,4 +33,5 @@ spec:
       - name: config
         configMap:
           name: influxdb-config
+{{ end }}
 ---
