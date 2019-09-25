@@ -320,7 +320,7 @@ grafana:
     # tag: latest
     # pullPolicy: IfNotPresent
   service:
-    type: ClusterIP
+    type: LoadBalancer
     ports:
       - port: 3000
         name: grafana-port
