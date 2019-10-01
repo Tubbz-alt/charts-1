@@ -29,7 +29,7 @@ memoryProfile: Small
 # restrictions.
 serviceDiscovery: FabricProxySidecar
 
-enableAdvancedStatistics: false
+enableAdvancedStatistics: true
 
 #
 # ECS Service Configuration
