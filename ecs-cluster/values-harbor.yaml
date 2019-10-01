@@ -1,10 +1,11 @@
+---
 # Default values for ecs-flex.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 global:
   # Name of a Kubernetes secret with Docker credentials for the private registry
-  #registrySecret: ecs-flex-registry
+  # registrySecret: ecs-flex-registry
 
   # The private docker registry and organization hosting containers for ECS Flex
   registry: harbor.lss.emc.com/ecs
@@ -16,8 +17,8 @@ pullPolicy: Always
 # The default number of replicas for each service
 replicas: 1
 
-# The default memory profile for the ECS cluster. Valid values are "Default", "Micro" and
-# "Small"
+# The default memory profile for the ECS cluster. Valid values are "Micro",
+# "Default", and  "Small"
 memoryProfile: Small
 
 # Name of the storage class that all PVC should be provisioned from
@@ -58,11 +59,8 @@ zookeeper:
   image:
     repository: zookeeper
     # tag: stable
-    # pullPolicy: Always
+    # pullPolicy: IfNotPresent
 
-  # labels:
-  # ports: []
-  # pod:
   # Persistent storage options for zookeeper volume requests
   persistence:
     # Size of each volume to be provisioned
@@ -82,7 +80,7 @@ storageServer:
   image:
     repository: storageserver
     # tag: stable
-    # pullPolicy: Always
+    # pullPolicy: IfNotPresent
 
   # Persistent storage options for storage server volume requests
   persistence:
@@ -97,7 +95,7 @@ storageServer:
     size: 32Gi
 
     # Name of the storage class that storage should be provisioned from
-    # storageClassName: vsphere
+    # storageClassName:
 
 # The ECS chunk manager configuration specification
 chunkManager:
@@ -111,7 +109,7 @@ chunkManager:
   image:
     repository: chunk-manager
     # tag: stable
-    # pullPolicy: Always
+    # pullPolicy: IfNotPresent
 
 # The ECS blob service configuration specification
 blob:
@@ -125,7 +123,7 @@ blob:
   image:
     repository: blob-service
     # tag: stable
-    # pullPolicy: Always
+    # pullPolicy: IfNotPresent
 
 # The ECS storage server manager configuration specification
 storageServerManager:
@@ -137,7 +135,7 @@ storageServerManager:
   image:
     repository: storageserver-manager
     # tag: stable
-    # pullPolicy: Always
+    # pullPolicy: IfNotPresent
 
 # The ECS record manager configuration specification
 recordManager:
@@ -149,7 +147,7 @@ recordManager:
   image:
     repository: record-manager
     # tag: stable
-    # pullPolicy: Always
+    # pullPolicy: IfNotPresent
 
 # The ECS storage management configuration specification
 # This container image is used in "Micro" memory profile instances
@@ -162,7 +160,7 @@ storageManagement:
   image:
     repository: storagemanagement-service
     # tag: stable
-    # pullPolicy: Always 
+    # pullPolicy: IfNotPresent
 
 # The ECS Metering configuration specification
 metering:
@@ -174,7 +172,7 @@ metering:
   image:
     repository: metering
     # tag: stable
-    # pullPolicy: Always
+    # pullPolicy: IfNotPresent
 
 # The ECS Metering configuration specification
 event:
@@ -186,7 +184,7 @@ event:
   image:
     repository: event-service
     # tag: stable
-    # pullPolicy: Always
+    # pullPolicy: IfNotPresent
 
 # The ECS resource service configuration specification
 resource:
@@ -198,7 +196,7 @@ resource:
   image:
     repository: resource-service
     # tag: stable
-    # pullPolicy: Always
+    # pullPolicy: IfNotPresent
 
 # The ECS control configuration specification
 # This container image is used in "Micro" memory profile instances
@@ -211,8 +209,7 @@ controlPlane:
   image:
     repository: control-service
     # tag: stable
-    # pullPolicy: Always 
-
+    # pullPolicy: IfNotPresent
 
 # The ECS diagnostic service configuration specification
 diagnostic:
@@ -224,7 +221,7 @@ diagnostic:
   image:
     repository: diagnostic-service
     # tag: stable
-    # pullPolicy: Always
+    # pullPolicy: IfNotPresent
   service:
     # Specify the service port configuration for the diagnostic service
     ports:
@@ -245,9 +242,11 @@ objectHeads:
   image:
     repository: object-heads
     # tag: stable
-    # pullPolicy: Always
+    # pullPolicy: IfNotPresent
+
   service:
     type: LoadBalancer
+
 # The ECS space reclaimer configuration specification
 spaceReclaimer:
 
@@ -258,7 +257,7 @@ spaceReclaimer:
   image:
     repository: space-reclaimer
     # tag: stable
-    # pullPolicy: Always
+    # pullPolicy: IfNotPresent
 
 # The ECS geo receiver configuration specification
 geoReceiver:
@@ -270,12 +269,12 @@ geoReceiver:
   image:
     repository: geo-receiver
     # tag: stable
-    # pullPolicy: Always
+    # pullPolicy: IfNotPresent
   service:
 
     ports:
-    - name: geo
-      port: 9094
+      - name: geo
+        port: 9094
 
 # The ECS API control service configuration specification
 stat:
@@ -286,7 +285,7 @@ stat:
   image:
     repository: statistics
     # tag: stable
-    # pullPolicy: Always
+    # pullPolicy: IfNotPresent
 
 # The ECS API control service configuration specification
 control:
@@ -297,7 +296,7 @@ control:
   image:
     repository: object-control
     # tag: stable
-    # pullPolicy: Always
+    # pullPolicy: IfNotPresent
 
 # The ECS telegraf configuration specification
 telegraf:
@@ -307,23 +306,60 @@ telegraf:
   # Docker repository to be used for telegraf instances
   image:
     repository: telegraf
-     tag: latest
-    # pullPolicy: Always
+    # tag: latest
+    # pullPolicy: IfNotPresent
 
-# The ECS influxdb configuration specification
+# The ECS Grafana configuration specification
+grafana:
+  # Override the number of Grafana replicas to run with the the deployment
+  # replicas: 1
+
+  # Docker repository to be used for Grafana instances
+  image:
+    repository: grafana
+    # tag: latest
+    # pullPolicy: IfNotPresent
+  service:
+    type: LoadBalancer
+    ports:
+      - port: 3000
+        name: grafana-port
+
+# The ECS fluxd configuration specification
+fluxd:
+  # Override the number of FluxD replicas to run with the the deployment
+  # replicas: 1
+
+  # Docker repository to be used for FluxD instances
+  image:
+    repository: fluxd
+    # tag: latest
+    # pullPolicy: IfNotPresent
+
+# The ECS throttler configuration specification
+throttler:
+  # Override the number of throttler replicas to run with the the deployment
+  # replicas: 1
+
+  # Docker repository to be used for throttler instances
+  image:
+    repository: throttler
+    # tag: latest
+    # pullPolicy: IfNotPresent
+
 influxdb:
   # Override the number of influxdb replicas to run with the the deployment
   replicas: 1
 
-  persistance:
+  persistence:
     volumesCount: 1
     size: 32GB
 
-  # Docker repository to be used for portal instances
+  # Docker repository to be used for influxdb instances
   image:
     repository: influxdb
-     tag: latest
-    # pullPolicy: Always
+    # tag: latest
+    # pullPolicy: IfNotPresent
 
 # The NGINX configuration specification
 nginx:
@@ -334,35 +370,32 @@ nginx:
   image:
     repository: nginx
     # tag: stable
-    # pullPolicy: Always
+    # pullPolicy: IfNotPresent
   service:
 
     # Specify the service port configuration for the NGINX service
     ports:
-    - name: ui
-      port: 443
-      targetPort: 443
-    - name: api
-      port: 4443
-      targetPort: 4443
+      - name: api
+        port: 4443
+        targetPort: 4443
 
-    # Specify the service type for the NGINX container. The default is a
-    # "ClusterIP"
-    #
-    type: LoadBalancer
+# Specify the service type for the NGINX container. The default is a
+# "ClusterIP"
+#
+# type: LoadBalancer
 
-    # Specify a specific load balancer IP address for the NGINX service. By
-    # default, Kubernetes will allocate an address automatically from the
-    # load-balancer pool.
-    #
-    # loadBalancerIP: 10.0.0.1
+# Specify a specific load balancer IP address for the NGINX service. By
+# default, Kubernetes will allocate an address automatically from the
+# load-balancer pool.
+#
+# loadBalancerIP: 10.0.0.1
 
-    # Specify a custom annotation for the NGINX service. This is required for
-    # some public cloud load balancer providers when using a load balancer type
-    # service. The default value is an empty map.
-    #
-    # annotations:
-    #   some-annotation: some-value
+# Specify a custom annotation for the NGINX service. This is required for
+# some public cloud load balancer providers when using a load balancer type
+# service. The default value is an empty map.
+#
+# annotations:
+#   some-annotation: some-value
 
 # Enable or disable the cluster automatic provisioning. This step will provision
 # the ECS resources into a single storage pool and virtual data center scoped to
@@ -373,7 +406,7 @@ provision:
   image:
     repository: provision
     # tag: stable
-    # pullPolicy: Always
+    # pullPolicy: IfNotPresent
 
 # The job will assign new created ss to the sp
 expandsp:
@@ -390,7 +423,7 @@ syslogAgent:
   image:
     repository: rsyslog
     # tag: stable
-    # pullPolicy: Always
+    # pullPolicy: IfNotPresent
 
 # The log agent configuration for log collection of ECS services with a Syslog
 # based receiver
@@ -398,7 +431,7 @@ fluentbitAgent:
   image:
     repository: fluent-bit
     # tag: stable
-    # pullPolicy: Always
+    # pullPolicy: IfNotPresent
 
 # The fabric proxy sidecar configuration for ECS Service Discovery and container
 # preparation
@@ -412,5 +445,12 @@ fabricProxy:
   image:
     repository: fabric-proxy
     # tag: stable
-    # pullPolicy: Always
+    # pullPolicy: IfNotPresent
 
+# deos health check configuration
+deos_hc:
+  # Docker repository to be used for running deos health check
+  image:
+    repository: deos-hc
+    # tag: stable
+    # pullPolicy: IfNotPresent

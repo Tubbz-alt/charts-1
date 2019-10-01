@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -18,7 +19,7 @@ spec:
       serviceAccountName: "ecs-flex-operator"
       containers:
         - name: ecs-flex-graphql
-          image: {{ .Values.global.registry }}/{{ .Values.graphql.image.repository }}:{{ .Values.graphql.image.tag }}
+          image: {{ .Values.global.registry }}/{{ .Values.graphql.image.repository }}:{{ default .Values.tag .Values.graphql.image.tag }}
           env:
             - name: OPERATOR_NAME
               value: ecs-flex-operator
@@ -26,8 +27,4 @@ spec:
 {{- if .Values.graphql.withPlayground }}
             - "-P"
 {{- end }}
-{{- if .Values.graphql.image.pullPolicy }}
-          imagePullPolicy: {{ .Values.graphql.image.pullPolicy }}
-{{- else }}
-          imagePullPolicy: {{ .Values.pullPolicy }}
-{{- end }}
+          imagePullPolicy: {{ default .Values.pullPolicy .Values.graphql.image.pullPolicy }}

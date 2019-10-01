@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -25,7 +26,7 @@ spec:
               name: metrics
           command:
             - influxdata-operator
-          imagePullPolicy: Always
+          imagePullPolicy: {{ default .Values.pullPolicy .Values.influx.image.pullPolicy }}
           env:
             - name: WATCH_NAMESPACE
               valueFrom:

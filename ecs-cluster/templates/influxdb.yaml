@@ -9,9 +9,12 @@ metadata:
 spec:
   # Add fields here
   size: 1
-  baseImage: {{ default .Values.global.registry .Values.influxdb.image.registry }}/{{ .Values.influxdb.image.repository }}:{{ default .Values.tag .Values.influxdb.image.tag }}
+  baseImage: {{ .Values.global.registry }}/{{ .Values.influxdb.image.repository }}:{{ default .Values.tag .Values.influxdb.image.tag }}
   imagePullPolicy: {{ default .Values.pullPolicy .Values.influxdb.image.pullPolicy }}
   pod:
+    env:
+      - name: FLEX
+        value: true
     resources:
       limits:
         cpu: 8
@@ -28,3 +31,7 @@ spec:
         resources:
           requests:
             storage: {{ .Values.influxdb.persistence.size }}
+    volumes:
+      - name: config
+        configMap:
+          name: influxdb-config

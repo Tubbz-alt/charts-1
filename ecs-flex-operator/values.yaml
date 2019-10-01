@@ -17,7 +17,7 @@ global:
 
 # The default docker tag and pull policy for the ECS Flex operator and
 # logReceiver
-tag: 0.1.6
+tag: 0.12.0
 pullPolicy: Always
 
 # The number of replicas for the ECS Flex Operator deployment
@@ -87,6 +87,7 @@ resources: {}
 
 # Will install crd for object store
 installObjectStoreCRD: true
+
 # installInfluxCRD will install crd for influx
 installInfluxCRD: true
 
@@ -95,21 +96,22 @@ influx:
   metricsPort: 6000
   image:
     repository: influxdb-operator
-    tag: v1
+    # tag: 0.12.0
+    # pullPolicy: Always
   replicas: 1
+
+graphql:
+  image:
+    repository: ecs-flex-graphql
+    # tag: 0.12.0
+    # pullPolicy: Always
+  withPlayground: false
+  port: 8080
+  service:
+    type: LoadBalancer
 
 nodeSelector: {}
 
 tolerations: []
 
 affinity: {}
-
-graphql:
-  image:
-    repository: ecs-flex-graphql
-    tag: latest
-    pullPolicy: Always
-  service:
-    type: LoadBalancer
-  withPlayground: false
-  port: 8080

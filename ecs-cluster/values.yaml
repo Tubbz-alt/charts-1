@@ -11,7 +11,7 @@ global:
   registry: emccorp
 
 # The default docker tag and pull policy for the ECS Cluster
-tag: 0.1.6
+tag: 0.12.0
 pullPolicy: Always
 
 # Override the default number of replicas which taken according to Memory profile for each service
@@ -306,49 +306,55 @@ telegraf:
   # Docker repository to be used for telegraf instances
   image:
     repository: telegraf
-    registry: harbor.lss.emc.com/polyav
-    tag: 3.5.0.0-623.d87d3c2a
+    # tag: latest
     # pullPolicy: IfNotPresent
 
-# The ECS telegraf configuration specification
+# The ECS Grafana configuration specification
 grafana:
-  # Override the number of portal replicas to run with the the deployment
+  # Override the number of Grafana replicas to run with the the deployment
   # replicas: 1
 
-  # Docker repository to be used for portal instances
+  # Docker repository to be used for Grafana instances
   image:
     repository: grafana
-    registry: harbor.lss.emc.com/polyav
-    tag: 3.5.0.0-623.d87d3c2a
+    # tag: latest
     # pullPolicy: IfNotPresent
   service:
     type: LoadBalancer
     ports:
       - port: 3000
         name: grafana-port
+  # accesses to all customer dashboards
+  users:
+    - username: emcmonitor
+      password: ChangeMe
+    - username: emcservice
+      password: ChangeMe
+  # no accesses to all dashboards
+  limitedUsers:
+    - username: root
+      password: ChangeMe
 
 # The ECS fluxd configuration specification
 fluxd:
-  # Override the number of portal replicas to run with the the deployment
+  # Override the number of FluxD replicas to run with the the deployment
   # replicas: 1
 
-  # Docker repository to be used for portal instances
+  # Docker repository to be used for FluxD instances
   image:
     repository: fluxd
-    registry: harbor.lss.emc.com/polyav
-    tag: 3.5.0.0-623.d87d3c2a
+    # tag: latest
     # pullPolicy: IfNotPresent
 
-# The ECS fluxd configuration specification
+# The ECS throttler configuration specification
 throttler:
-  # Override the number of portal replicas to run with the the deployment
+  # Override the number of throttler replicas to run with the the deployment
   # replicas: 1
 
-  # Docker repository to be used for portal instances
+  # Docker repository to be used for throttler instances
   image:
     repository: throttler
-    registry: harbor.lss.emc.com/polyav
-    tag: 3.5.0.0-623.d87d3c2a
+    # tag: latest
     # pullPolicy: IfNotPresent
 
 influxdb:
@@ -359,11 +365,11 @@ influxdb:
     volumesCount: 1
     size: 32Gi
 
-  # Docker repository to be used for portal instances
+  # Docker repository to be used for influxdb instances
   image:
     repository: influxdb
-    registry: harbor.lss.emc.com/polyav
-    tag: 3.5.0.0-623.d87d3c2a
+    # tag: latest
+    # pullPolicy: IfNotPresent
 
 # The NGINX configuration specification
 nginx:
@@ -379,9 +385,6 @@ nginx:
 
     # Specify the service port configuration for the NGINX service
     ports:
-      - name: ui
-        port: 443
-        targetPort: 443
       - name: api
         port: 4443
         targetPort: 4443
