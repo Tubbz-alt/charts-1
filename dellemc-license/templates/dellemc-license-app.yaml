@@ -1,12 +1,12 @@
 ---
-{{- if .Values.createdecksappResource}}
+{{- if .Values.createdellemclicappResource}}
 apiVersion: app.k8s.io/v1beta1
 kind: Application
 metadata:
-  name: dellemc-license-{{.Values.product}}
+  name: dellemc-{{.Values.product}}-license
   namespace: {{.Release.Namespace}}
   labels:
-    app.kubernetes.io/name: dellemc-license-{{.Values.product}}
+    app.kubernetes.io/name: dellemc-{{.Values.product}}-license
     app.kubernetes.io/version: {{.Values.tag}}
     app.kubernetes.io/instance: {{.Release.Name}}
     app.kubernetes.io/managed-by: {{.Release.Service}}
@@ -18,7 +18,7 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/name: dellemc-license-{{.Values.product}}
+      app.kubernetes.io/name: dellemc-{{.Values.product}}-license
   componentKinds:
     - group: apps
       kind: Deployment
