@@ -19,7 +19,7 @@ pullPolicy: Always
 
 # The default memory profile for the ECS cluster. Valid values are "Micro",
 # "Default", and  "Small"
-memoryProfile: Small
+performanceProfile: Small
 
 # Name of the storage class that all PVC should be provisioned from
 # storageClassName:

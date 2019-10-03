@@ -12,7 +12,7 @@ spec:
 {{- if .Values.replicas }}
   replicas: {{ .Values.replicas }}
 {{- end }}
-  memoryProfile: {{ .Values.memoryProfile }}
+  performanceProfile: {{ .Values.performanceProfile }}
 
   chunkManager:
 {{- if .Values.chunkManager.replicas }}
