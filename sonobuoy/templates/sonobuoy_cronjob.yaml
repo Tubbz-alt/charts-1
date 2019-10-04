@@ -16,17 +16,12 @@ spec:
             env:
             - name: curSecret
               value: {{ .Values.global.registrySecret }}
+            - name: curWebdavSecret
+              value: "decks-webdav-secret"
             command:
               - /bin/sh
               - -c
-              - curl -k -X DELETE -H "Authorization:Bearer $(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" https://$KUBERNETES_SERVICE_HOST:$KUBERNETES_PORT_443_TCP_PORT/api/v1/namespaces/heptio-sonobuoy/pods;
-                sleep 60;
-                curl -k -X GET -H "Authorization:Bearer $(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" https://$KUBERNETES_SERVICE_HOST:$KUBERNETES_PORT_443_TCP_PORT/api/v1/namespaces/default/secrets/$curSecret > imagePullSecret.json;
-                sed -i 's/default/heptio-sonobuoy/g' imagePullSecret.json;
-                sed -i '/resourceVersion/'d imagePullSecret.json;
-                curl -k -X POST -H "Authorization:Bearer $(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" -H "Content-Type:application/json" https://$KUBERNETES_SERVICE_HOST:$KUBERNETES_PORT_443_TCP_PORT/api/v1/namespaces/heptio-sonobuoy/secrets -d@imagePullSecret.json;
-                echo start creating sonobuoy job;
-                curl -k -X POST -H "Authorization:Bearer $(cat /var/run/secrets/kubernetes.io/serviceaccount/token)" -H "Content-Type:application/json" https://$KUBERNETES_SERVICE_HOST:$KUBERNETES_PORT_443_TCP_PORT/api/v1/namespaces/heptio-sonobuoy/pods -d@/etc/sonobuoy/sonobuoy-cronjob.json;
+              - ./create-sonobuoy-job.sh
             imagePullPolicy: {{ .Values.pullPolicy }}
             name: alpine-curl
             volumeMounts:

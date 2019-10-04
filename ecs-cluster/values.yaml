@@ -322,10 +322,20 @@ grafana:
     # tag: latest
     # pullPolicy: IfNotPresent
   service:
-    type: ClusterIP
+    type: LoadBalancer
     ports:
       - port: 3000
         name: grafana-port
+  # accesses to all customer dashboards
+  users:
+    - username: emcmonitor
+      password: ChangeMe
+    - username: emcservice
+      password: ChangeMe
+  # no accesses to all dashboards
+  limitedUsers:
+    - username: root
+      password: ChangeMe
 
 # The ECS fluxd configuration specification
 fluxd:

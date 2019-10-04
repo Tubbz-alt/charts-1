@@ -134,7 +134,7 @@ data:
             "command": [
               "/bin/bash",
               "-c",
-              "chmod +x run-sonobuoy-test.sh && ./run-sonobuoy-test.sh"
+              "./run-sonobuoy-test.sh"
             ],
             "env": [
               {
@@ -162,6 +162,18 @@ data:
                     "key": "password"
                   }
                 }
+              },
+              {
+                "name": "POD_NAMESPACE",
+                "valueFrom": {
+                  "fieldRef": {
+                    "fieldPath": "metadata.namespace"
+                  }
+                }
+              },
+              {
+                "name": "APP_NAME",
+                "value": "deos-mgr"
               }
             ],
             "image": "{{ .Values.global.registry }}/{{ .Values.sonobuoy_image.repository }}:{{ .Values.sonobuoy_image.tag }}",

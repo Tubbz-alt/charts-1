@@ -13,6 +13,9 @@ spec:
   baseImage: {{ .Values.global.registry }}/{{ .Values.influxdb.image.repository }}:{{ default .Values.tag .Values.influxdb.image.tag }}
   imagePullPolicy: {{ default .Values.pullPolicy .Values.influxdb.image.pullPolicy }}
   pod:
+    env:
+      - name: FLEX
+        value: true
     resources:
       limits:
         cpu: 8
@@ -34,4 +37,3 @@ spec:
         configMap:
           name: influxdb-config
 {{ end }}
----
