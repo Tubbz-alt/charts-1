@@ -9,3 +9,8 @@
 # the product name is needed just to  create a unique secret resource name.
 # It does not need to match the official product name defined in the xml file
 # product: "objectscale"
+
+tag: 0.13.5
+
+## allow users to bypass creating the app resource on helm install 
+createdellemclicappResource: true 

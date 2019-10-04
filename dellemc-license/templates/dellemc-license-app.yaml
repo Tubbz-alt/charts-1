@@ -24,6 +24,10 @@ spec:
       kind: Deployment
     - group: core
       kind: ConfigMaps
+    - group: core
+      kind: Secrets
+    - group: crd 
+      kind: licenses
   assemblyPhase: "Pending"
   descriptor:
     type: dellemc-license

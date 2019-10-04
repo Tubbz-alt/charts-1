@@ -17,12 +17,18 @@ metadata:
 data:
     eventRules: |-
       rules:
-        - description: "dellemc license srs events"
+        - description: "dellemc license expired event"
           matchon:
             - label: symptomid
               value: DECKS-LIC-1005
+          notifiers:
+            - {{.Values.product}}-srs
+        - description: "dellemc license warning about to expire event"
             - label: symptomid
               value: DECKS-LIC-1006
+          notifiers:
+            - {{.Values.product}}-srs
+        - description: "dellemc invalid license event"
             - label: symptomid
               value: DECKS-LIC-1008
           notifiers:
@@ -53,4 +59,5 @@ data:
             - Make sure the {{.Values.product}} license was not modified prior to applying it to
               the cluster
             - Make sure the PRODUCTSHORTNAME is defined in the {{.Values.product}} license
+            - Make sure subscription dates for licensed features are still valid (not expired)
     healthChecks: |-
