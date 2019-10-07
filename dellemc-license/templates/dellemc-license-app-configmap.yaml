@@ -17,6 +17,12 @@ metadata:
 data:
     eventRules: |-
       rules:
+        - description: "dellemc license usage"
+          matchon:
+            - label: symptomid
+              value: DECKS-LIC-1004
+          notifiers:
+            - {{.Values.product}}-srs
         - description: "dellemc license expired event"
           matchon:
             - label: symptomid
