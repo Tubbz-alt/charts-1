@@ -12,5 +12,5 @@
 
 tag: 0.13.5
 
-## allow users to bypass creating the app resource on helm install 
-createdellemclicappResource: true 
+## allow users to bypass creating the app resource on helm install
+createdellemclicappResource: true
