@@ -19,23 +19,25 @@ data:
       rules:
         - description: "dellemc license usage"
           matchon:
-            - label: symptomid
+            - label: SymptomID
               value: DECKS-LIC-1004
           notifiers:
             - {{.Values.product}}-srs
         - description: "dellemc license expired event"
           matchon:
-            - label: symptomid
+            - label: SymptomID
               value: DECKS-LIC-1005
           notifiers:
             - {{.Values.product}}-srs
         - description: "dellemc license warning about to expire event"
-            - label: symptomid
+          matchon:
+            - label: SymptomID
               value: DECKS-LIC-1006
           notifiers:
             - {{.Values.product}}-srs
         - description: "dellemc invalid license event"
-            - label: symptomid
+          matchon:
+            - label: SymptomID
               value: DECKS-LIC-1008
           notifiers:
             - {{.Values.product}}-srs
