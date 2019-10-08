@@ -1,9 +1,9 @@
 ---
-{{- if .Values.createdellemclicappResource}}
+{{- if .Values.createLicApp}}
 apiVersion: app.k8s.io/v1beta1
 kind: Application
 metadata:
-  name: dellemc-{{.Values.product}}-license
+  name: dellemc-{{required "product name is required" .Values.product}}-license
   namespace: {{.Release.Namespace}}
   labels:
     app.kubernetes.io/name: dellemc-{{.Values.product}}-license
@@ -26,8 +26,6 @@ spec:
       kind: ConfigMaps
     - group: core
       kind: Secrets
-    - group: crd 
-      kind: licenses
   assemblyPhase: "Pending"
   descriptor:
     type: dellemc-license
