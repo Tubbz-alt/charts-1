@@ -353,6 +353,7 @@ spec:
         emptyDir: {}
       - name: logs
         emptyDir: {}
+    shouldBeDeployed: {{ .Values.enableAdvancedStatistics }}
     image:
       repository: {{ .Values.global.registry }}/{{ .Values.telegraf.image.repository }}
       tag: {{ default .Values.tag .Values.telegraf.image.tag }}
@@ -373,6 +374,7 @@ spec:
         emptyDir: {}
       - name: logs
         emptyDir: {}
+    shouldBeDeployed: {{ .Values.enableAdvancedStatistics }}
     image:
       repository: {{ .Values.global.registry }}/{{ .Values.fluxd.image.repository }}
       tag: {{ default .Values.tag .Values.fluxd.image.tag }}
@@ -392,6 +394,7 @@ spec:
         emptyDir: {}
       - name: logs
         emptyDir: {}
+    shouldBeDeployed: {{ .Values.enableAdvancedStatistics }}
     image:
       repository: {{ .Values.global.registry }}/{{ .Values.throttler.image.repository }}
       tag: {{ default .Values.tag .Values.throttler.image.tag }}
@@ -411,6 +414,7 @@ spec:
         emptyDir: {}
       - name: logs
         emptyDir: {}
+    shouldBeDeployed: {{ .Values.enableAdvancedStatistics }}
     image:
       repository: {{ .Values.global.registry }}/{{ .Values.grafana.image.repository }}
       tag: {{ default .Values.tag .Values.grafana.image.tag }}
