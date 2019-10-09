@@ -20,8 +20,6 @@ spec:
     matchLabels:
       app.kubernetes.io/name: dellemc-{{.Values.product}}-license
   componentKinds:
-    - group: apps
-      kind: Deployment
     - group: core
       kind: ConfigMaps
     - group: core
