@@ -44,6 +44,12 @@ logReceiver:
   #
   # type: Syslog
 
+  # User login will be used by fluentd to connect to the elastic search.
+  user: elastic
+
+  # Password will be used by fluentd to connect to the elsatic search.
+  password: 123456
+
   # Configure an external Syslog or Elasticsearch hostname to receive logs from
   # ECS instances
   # host: my-syslog-server
