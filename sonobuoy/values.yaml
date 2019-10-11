@@ -19,8 +19,10 @@ pullPolicy: Always
 
 replicaCount: 1
 
+# tag for alpine-curl image should be hard-coded here
 alpine_curl_image:
   repository: alpine-curl
+  tag: 7.65
 
 sonobuoy_image:
   repository: sonobuoy

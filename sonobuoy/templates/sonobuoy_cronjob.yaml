@@ -12,7 +12,7 @@ spec:
       template:
         spec:
           containers:
-          - image: {{ .Values.global.registry }}/{{ .Values.alpine_curl_image.repository }}:{{ .Values.tag }}
+          - image: {{ .Values.global.registry }}/{{ .Values.alpine_curl_image.repository }}:{{ .Values.alpine_curl_image.tag }}
             env:
             - name: curSecret
               value: {{ .Values.global.registrySecret }}
