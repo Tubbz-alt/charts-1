@@ -17,9 +17,9 @@ pullPolicy: Always
 # The default number of replicas for each service
 replicas: 1
 
-# The default memory profile for the ECS cluster. Valid values are "Micro",
+# The default performance profile for the ECS cluster. Valid values are "Micro",
 # "Default", and  "Small"
-memoryProfile: Small
+performanceProfile: Small
 
 # Name of the storage class that all PVC should be provisioned from
 # storageClassName:

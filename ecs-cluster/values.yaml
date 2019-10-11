@@ -14,12 +14,12 @@ global:
 tag: 0.12.0
 pullPolicy: Always
 
-# Override the default number of replicas which taken according to Memory profile for each service
+# Override the default number of replicas which taken according to performance profile for each service
 # replicas: 4
 
-# The default memory profile for the ECS cluster. Valid values are "Micro",
+# The default performance profile for the ECS cluster. Valid values are "Micro",
 # "Default", and  "Small"
-memoryProfile: Small
+performanceProfile: Small
 
 # Name of the storage class that all PVC should be provisioned from
 # storageClassName:
@@ -152,7 +152,7 @@ recordManager:
     # pullPolicy: IfNotPresent
 
 # The ECS storage management configuration specification
-# This container image is used in "Micro" memory profile instances
+# This container image is used in "Micro" performance profile instances
 storageManagement:
   # Override the default ECS Cluster replicas to set the number of nodes in the
   # storage management cluster separately. This value should not be set when
@@ -201,7 +201,7 @@ resource:
     # pullPolicy: IfNotPresent
 
 # The ECS control configuration specification
-# This container image is used in "Micro" memory profile instances
+# This container image is used in "Micro" performance profile instances
 controlPlane:
   # Override the default ECS Cluster replicas to set the number of nodes in the
   # control plane management cluster separately. This value should not be set when
@@ -464,5 +464,14 @@ deos_hc:
   # Docker repository to be used for running deos health check
   image:
     repository: deos-hc
+    # tag: stable
+    # pullPolicy: IfNotPresent
+
+# deos_events to pull the events every pullFreq (default: 30 seconds) from the object store
+# and convert them into the k8s events
+deosEvents:
+  pullFreq: 30
+  image:
+    repository: deos-events
     # tag: stable
     # pullPolicy: IfNotPresent

@@ -17,9 +17,9 @@ pullPolicy: Always
 # The default number of replicas for each service
 replicas: 1
 
-# The default memory profile for the ECS cluster. Valid values are "Micro",
+# The default performance profile for the ECS cluster. Valid values are "Micro",
 # "Default", and  "Small"
-memoryProfile: Small
+performanceProfile: Small
 
 # Name of the storage class that all PVC should be provisioned from
 # storageClassName:
@@ -150,7 +150,7 @@ recordManager:
     # pullPolicy: IfNotPresent
 
 # The ECS storage management configuration specification
-# This container image is used in "Micro" memory profile instances
+# This container image is used in "Micro" performance profile instances
 storageManagement:
   # Override the default ECS Cluster replicas to set the number of nodes in the
   # storage management cluster separately. This value should not be set when
@@ -199,7 +199,7 @@ resource:
     # pullPolicy: IfNotPresent
 
 # The ECS control configuration specification
-# This container image is used in "Micro" memory profile instances
+# This container image is used in "Micro" performance profile instances
 controlPlane:
   # Override the default ECS Cluster replicas to set the number of nodes in the
   # control plane management cluster separately. This value should not be set when
