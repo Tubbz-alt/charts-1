@@ -29,7 +29,7 @@ data:
               value: DECKS-LIC-1005
           notifiers:
             - {{.Values.product}}-srs
-        - description: "dellemc license warning about to expire event"
+        - description: "dellemc license warning event about to expire"
           matchon:
             - label: SymptomID
               value: DECKS-LIC-1006
@@ -62,10 +62,10 @@ data:
         - symptomid: DECKS-LIC-1008
           description: Invalid Dell EMC license
           remedies:
-            - Make sure the {{.Values.product}} license was obtained from the
+            - Verify the {{.Values.product}} license was obtained from the
               Dell EMC Software Licensing Center
-            - Make sure the {{.Values.product}} license was not modified prior to applying it to
+            - Verify the {{.Values.product}} license was not modified prior to applying it to
               the cluster
-            - Make sure the PRODUCTSHORTNAME is defined in the {{.Values.product}} license
-            - Make sure subscription dates for licensed features are still valid (not expired)
+            - Verify the PRODUCTSHORTNAME is defined in the {{.Values.product}} license
+            - Verify the subscription dates for licensed features are still valid (not expired)
     healthChecks: |-
