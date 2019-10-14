@@ -93,7 +93,7 @@ tests:
         path: spec.vnest.volumes.storageClassName
         value: my-sc
     - equal:
-        path: spec.zookeeper.persistence.storageClassName
+        path: spec.zookeeper.persistence.spec.storageClassName
         value: my-sc
   # when we have separate SC for a service
   - it: should customize SC for SS persistance field
@@ -115,7 +115,7 @@ tests:
       zookeeper.persistence.storageClassName: my-sc
     asserts:
     - equal:
-        path: spec.zookeeper.persistence.storageClassName
+        path: spec.zookeeper.persistence.spec.storageClassName
         value: my-sc
 
   # when we have global SC and separate for a service
@@ -131,7 +131,7 @@ tests:
         path: spec.vnest.volumes.storageClassName
         value: my-sc
     - equal:
-        path: spec.zookeeper.persistence.storageClassName
+        path: spec.zookeeper.persistence.spec.storageClassName
         value: my-sc
   - it: should customize separate SC for VNest with global SC
     set:
@@ -145,7 +145,7 @@ tests:
         path: spec.vnest.volumes.storageClassName
         value: my-vnest-sc
     - equal:
-        path: spec.zookeeper.persistence.storageClassName
+        path: spec.zookeeper.persistence.spec.storageClassName
         value: my-sc
   - it: should customize separate SC for Zookeeper with global SC
     set:
@@ -159,7 +159,7 @@ tests:
         path: spec.vnest.volumes.storageClassName
         value: my-sc
     - equal:
-        path: spec.zookeeper.persistence.storageClassName
+        path: spec.zookeeper.persistence.spec.storageClassName
         value: my-zookeeper-sc
   - it: should have a default deos-events image
     asserts:

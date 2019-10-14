@@ -97,9 +97,11 @@ spec:
 {{- end }}
     persistence:
 {{- if .Values.zookeeper.persistence.storageClassName }}
-      storageClassName: {{ .Values.zookeeper.persistence.storageClassName }}
+      spec:
+        storageClassName: {{ .Values.zookeeper.persistence.storageClassName }}
 {{- else if .Values.storageClassName }}
-      storageClassName: {{ .Values.storageClassName }}
+      spec:
+        storageClassName: {{ .Values.storageClassName }}
 {{- end }}
       resources:
         requests:
