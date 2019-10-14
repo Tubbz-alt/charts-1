@@ -17,7 +17,7 @@ global:
 
 # The default docker tag and pull policy for the ECS Flex operator and
 # logReceiver
-tag: 0.1.6
+tag: 0.12.0
 pullPolicy: Always
 
 # The number of replicas for the ECS Flex Operator deployment
@@ -34,6 +34,7 @@ image:
 # deployed by the operator. If "logReceiver.create" is enabled, then a
 # syslog-based receiver will be created, and other connectivity configuration
 # options will be ignored.
+# If log receiver configuration is not provided then ECS logs will be redirected to stdout
 logReceiver:
 
   # The type of log receiver that ECS Flex will use to consolidate logs. Valid
@@ -43,6 +44,12 @@ logReceiver:
   # provide connectivity details in the "logReceiver" configuration block below.
   #
   # type: Syslog
+
+  # User login will be used by fluentd to connect to the elastic search.
+  # user: elastic
+
+  # Password will be used by fluentd to connect to the elsatic search.
+  # password: 123456
 
   # Configure an external Syslog or Elasticsearch hostname to receive logs from
   # ECS instances
@@ -85,18 +92,34 @@ resources: {}
 #  cpu: 100m
 #  memory: 128Mi
 
+# Will install crd for object store
+installObjectStoreCRD: true
+
+# installInfluxCRD will install crd for influx
+installInfluxCRD: true
+
+influx:
+  # metricsPort is the port that will be used by metrics in influx
+  metricsPort: 6000
+  image:
+    repository: influxdb-operator
+    # registry: ecs
+    tag: v1
+    # pullPolicy: Always
+  replicas: 1
+
+graphql:
+  image:
+    repository: ecs-flex-graphql
+    # tag: 0.12.0
+    # pullPolicy: Always
+  withPlayground: false
+  port: 8080
+  service:
+    type: LoadBalancer
+
 nodeSelector: {}
 
 tolerations: []
 
 affinity: {}
-
-graphql:
-  image:
-    repository: ecs-flex-graphql
-    tag: latest
-    pullPolicy: Always
-  service:
-    type: LoadBalancer
-  withPlayground: false
-  port: 8080

@@ -6,6 +6,11 @@
 # DO NOT UNCOMMENT IT. the location of the license file must be supplied as a command line.
 # licensefile: "/home/john/objectscale-license.xml"
 
-# the product name is needed just to  create a unique secret resource name.
-# It does not need to match the official product name defined in the xml file
+# the product name is required to create a unique secret resource name.
+# It has to match the official product name defined in the xml file
 # product: "objectscale"
+
+tag: 0.13.5
+
+## allow users to bypass creating the app resource on helm install
+createLicenseApp: true

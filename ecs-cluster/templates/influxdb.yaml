@@ -1,0 +1,39 @@
+{{ if .Values.enableAdvancedStatistics }}
+apiVersion: influxdata.com/v1alpha1
+kind: Influxdb
+metadata:
+  name: {{ .Release.Name }}-influxdb
+  labels:
+    release: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace}}
+
+spec:
+  # Add fields here
+  size: 1
+  baseImage: {{ .Values.global.registry }}/{{ .Values.influxdb.image.repository }}:{{ default .Values.tag .Values.influxdb.image.tag }}
+  imagePullPolicy: {{ default .Values.pullPolicy .Values.influxdb.image.pullPolicy }}
+  pod:
+    env:
+      - name: FLEX
+        value: true
+    resources:
+      limits:
+        cpu: 800m
+        memory: 2Gi
+      requests:
+        cpu: 100m
+        memory: 500Mi
+    persistentVolumeClaim:
+      metadata:
+        name: {{ .Release.Name }}-influxdb-data-pvc
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: {{ default .Values.storageClassName  .Values.influxdb.persistence.storageClassName }}
+        resources:
+          requests:
+            storage: {{ .Values.influxdb.persistence.size }}
+    volumes:
+      - name: config
+        configMap:
+          name: influxdb-config
+{{ end }}

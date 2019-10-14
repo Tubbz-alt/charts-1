@@ -1,0 +1,18 @@
+suite: test sonobuoy
+templates:
+  - sonobuoy_clusterrolebinding.yaml
+tests:
+  - it: should create a ClusterRoleBinding
+    asserts:
+    - isKind:
+        of: ClusterRoleBinding
+  - it: should have name ending with sonobuoy
+    asserts:
+    - matchRegex:
+        path: metadata.name
+        pattern: ^sonobuoy-serviceaccount-heptio-sonobuoy$
+  - it: should have a component label
+    asserts:
+    - matchRegex:
+        path: metadata.labels.component
+        pattern: ^sonobuoy$

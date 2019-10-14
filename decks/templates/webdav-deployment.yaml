@@ -16,9 +16,17 @@ spec:
       labels:
         io.kompose.service: decks-webdav
     spec:
+{{- if .Values.global.registrySecret }}
+      imagePullSecrets:
+        - name: {{ .Values.global.registrySecret }}
+{{- end }}
       containers:
       - name: decks-webdav
         env:
+{{- if .Values.global.registrySecret }}
+        - name: REGISTRY_SECRET
+          value: {{ .Values.global.registrySecret }}
+{{- end }}
         - name: AUTH_TYPE
           value: Digest
         - name: USERNAME

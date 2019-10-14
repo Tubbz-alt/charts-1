@@ -1,0 +1,26 @@
+suite: test sonobuoy
+templates:
+  - sonobuoy_cronjob.yaml
+tests:
+  - it: should create a cronjob
+    asserts:
+    - isKind:
+        of: CronJob
+  - it: should have name ending with cronjob
+    asserts:
+    - matchRegex:
+        path: metadata.name
+        pattern: ^sonobuoy-cronjob$
+  - it: should configure the image in the job of cronjob
+    set:
+      global.registry: REGISTRY
+      alpine_curl_image.repository: REPO
+      tag: TAG
+      pullPolicy: IfNotPresent
+    asserts:
+      - equal:
+          path: spec.jobTemplate.spec.template.spec.containers[0].image
+          value: REGISTRY/REPO:TAG
+      - equal:
+          path: spec.jobTemplate.spec.template.spec.containers[0].imagePullPolicy
+          value: IfNotPresent

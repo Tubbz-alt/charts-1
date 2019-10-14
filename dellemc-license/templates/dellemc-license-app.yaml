@@ -1,0 +1,39 @@
+---
+{{- if .Values.createLicenseApp}}
+apiVersion: app.k8s.io/v1beta1
+kind: Application
+metadata:
+  name: dellemc-{{required "product name is required" .Values.product}}-license
+  namespace: {{.Release.Namespace}}
+  labels:
+    app.kubernetes.io/name: dellemc-{{.Values.product}}-license
+    app.kubernetes.io/version: {{.Values.tag}}
+    app.kubernetes.io/instance: {{.Release.Name}}
+    app.kubernetes.io/managed-by: {{.Release.Service}}
+    helm.sh/chart: {{.Chart.Name}}-{{.Chart.Version | replace "+" "_"}}
+    product: {{.Values.product}}
+    release: {{.Release.Name}}
+  annotations:
+    com.dellemc.kahm.subscribed: "true"
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: dellemc-{{.Values.product}}-license
+  componentKinds:
+    - group: core
+      kind: ConfigMaps
+    - group: core
+      kind: Secrets
+  assemblyPhase: "Pending"
+  descriptor:
+    type: dellemc-license
+    version: {{.Values.tag}}
+    description: >
+      Dell EMC License
+    keywords:
+      - "decks"
+      - "srs"
+      - "licensing"
+    info:
+      - "Copyright © 2019 Dell Inc. or its subsidiaries. All Rights Reserved."
+{{- end}}

@@ -15,6 +15,7 @@ Sonobuoy is an open-source diagnostic tool that makes it easier to understand th
 
 * A [Helm](https://helm.sh) installation with access to install to one or more namespaces.
 * Access to an up-and-running Kubernetes cluster.
+* Install decks/webdav before installing sonobuoy
 
 ## Quick Start
 
@@ -40,3 +41,4 @@ $ kubectl logs sonobuoy -n heptio-sonobuoy > temp.log
 $ vim temp.log
 ...
 ```
+ Also the tests result will be sent by webdav when all tests are finished.

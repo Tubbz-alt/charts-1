@@ -13,7 +13,7 @@ tests:
         value: emccorp/rsyslog
     - equal:
         path: spec.syslogAgent.image.tag
-        value: 0.1.6
+        value: 0.12.0
     - equal:
         path: spec.syslogAgent.image.pullPolicy
         value: Always
@@ -49,7 +49,39 @@ tests:
     - equal:
         path: spec.storageServer.image.pullPolicy
         value: IfNotPresent
-  # when we have global SC setting
+  # when we have global SC settin
+  - it: should monitoring components not be deployed when advanced metrics is off
+    set:
+      enableAdvancedStatistics: false
+    asserts:
+    - equal:
+        path: spec.telegraf.shouldBeDeployed
+        value: false
+    - equal:
+        path: spec.fluxd.shouldBeDeployed
+        value: false
+    - equal:
+        path: spec.throttler.shouldBeDeployed
+        value: false
+    - equal:
+        path: spec.grafana.shouldBeDeployed
+        value: false
+  - it: should monitoring components be deployed when advanced metrics is on
+    set:
+      enableAdvancedStatistics: true
+    asserts:
+    - equal:
+        path: spec.telegraf.shouldBeDeployed
+        value: true
+    - equal:
+        path: spec.fluxd.shouldBeDeployed
+        value: true
+    - equal:
+        path: spec.throttler.shouldBeDeployed
+        value: true
+    - equal:
+        path: spec.grafana.shouldBeDeployed
+        value: true
   - it: should customize SC for all persistance fields
     set:
       storageClassName: my-sc
@@ -129,3 +161,31 @@ tests:
     - equal:
         path: spec.zookeeper.persistence.storageClassName
         value: my-zookeeper-sc
+  - it: should have a default deos-events image
+    asserts:
+    - equal:
+        path: spec.deosEvents.image.repository
+        value: emccorp/deos-events
+    - equal:
+        path: spec.deosEvents.image.tag
+        value: 0.12.0
+    - equal:
+        path: spec.deosEvents.image.pullPolicy
+        value: Always
+    - equal:
+        path: spec.deosEvents.pullFreq
+        value: 30
+  - it: should have deos-events pullFreq changes
+    set:
+      deosEvents.pullFreq: 1
+    asserts:
+    - equal:
+        path: spec.deosEvents.pullFreq
+        value: 1
+  - it: should have default deos-events pullFreq
+    set:
+      deosEvents.pullFreq: null
+    asserts:
+    - equal:
+        path: spec.deosEvents.pullFreq
+        value: 30

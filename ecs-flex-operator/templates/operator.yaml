@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -55,6 +56,14 @@ spec:
   {{- if .Values.logReceiver.type }}
         - name: LOG_RECEIVER_TYPE
           value: {{ .Values.logReceiver.type }}
+  {{- end }}
+  {{- if .Values.logReceiver.user }}
+        - name: LOG_RECEIVER_USER
+          value: {{ .Values.logReceiver.user }}
+  {{- end }}
+  {{- if .Values.logReceiver.password }}
+        - name: LOG_RECEIVER_PASSWORD
+          value: {{ .Values.logReceiver.password }}
   {{- end }}
   {{- if .Values.logReceiver.host }}
         - name: LOG_RECEIVER_HOST

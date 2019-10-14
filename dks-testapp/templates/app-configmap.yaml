@@ -9,7 +9,7 @@ data:
             - field: {{ .Values.application.eventRules.field }}
               value: {{ .Values.application.eventRules.fieldValue }}
           notifiers:
-            - {{ .Values.srsGateway.name }}-srs-{{ .Values.srsGateway.namespace }}
+            - {{ .Values.srsGateway.name }}-srs
     healthChecks:  |-
     eventRemedies:  |-
       symptoms:

@@ -1,6 +1,6 @@
 dependencies:
 - name: zookeeper-operator
   repository: file://../zookeeper-operator
-  version: 0.1.6
-digest: sha256:6f83c5af9fc2b6c9faa8e15d48736d45f8adfdee150bff2cf42cd6308ff5ffeb
-generated: 2019-04-25T09:52:04.97871-05:00
+  version: 0.12.0
+digest: sha256:a420b4c98a0105d500bf22b86071f2075581d009ada2bb98d36e51380aab861b
+generated: "2019-09-15T16:22:42.147025-05:00"

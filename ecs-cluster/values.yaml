@@ -11,15 +11,15 @@ global:
   registry: emccorp
 
 # The default docker tag and pull policy for the ECS Cluster
-tag: 0.1.6
+tag: 0.12.0
 pullPolicy: Always
 
-# Override the default number of replicas which taken according to Memory profile for each service
+# Override the default number of replicas which taken according to performance profile for each service
 # replicas: 4
 
-# The default memory profile for the ECS cluster. Valid values are "Micro",
+# The default performance profile for the ECS cluster. Valid values are "Micro",
 # "Default", and  "Small"
-memoryProfile: Small
+performanceProfile: Small
 
 # Name of the storage class that all PVC should be provisioned from
 # storageClassName:
@@ -28,6 +28,8 @@ memoryProfile: Small
 # use. The discovery method will determine other cluster creation settings and
 # restrictions.
 serviceDiscovery: FabricProxySidecar
+
+enableAdvancedStatistics: true
 
 #
 # ECS Service Configuration
@@ -150,7 +152,7 @@ recordManager:
     # pullPolicy: IfNotPresent
 
 # The ECS storage management configuration specification
-# This container image is used in "Micro" memory profile instances
+# This container image is used in "Micro" performance profile instances
 storageManagement:
   # Override the default ECS Cluster replicas to set the number of nodes in the
   # storage management cluster separately. This value should not be set when
@@ -199,7 +201,7 @@ resource:
     # pullPolicy: IfNotPresent
 
 # The ECS control configuration specification
-# This container image is used in "Micro" memory profile instances
+# This container image is used in "Micro" performance profile instances
 controlPlane:
   # Override the default ECS Cluster replicas to set the number of nodes in the
   # control plane management cluster separately. This value should not be set when
@@ -225,12 +227,12 @@ diagnostic:
   service:
     # Specify the service port configuration for the diagnostic service
     ports:
-    - name: diag
-      port: 9100
-      targetPort: 9100
-    - name: diagweb
-      port: 9101
-      targetPort: 9101
+      - name: diag
+        port: 9100
+        targetPort: 9100
+      - name: diagweb
+        port: 9101
+        targetPort: 9101
 
 # The ECS object heads configuration specification
 objectHeads:
@@ -273,15 +275,15 @@ geoReceiver:
   service:
 
     ports:
-    - name: geo
-      port: 9094
+      - name: geo
+        port: 9094
 
 # The ECS API control service configuration specification
 stat:
   # Override the number of object control replicas to run with the the deployment
   # replicas: 1
 
-  # Docker repository to be used for portal instances
+  # Docker repository to be used for stat instances
   image:
     repository: statistics
     # tag: stable
@@ -298,26 +300,77 @@ control:
     # tag: stable
     # pullPolicy: IfNotPresent
 
-# The ECS portal configuration specification
-portal:
-  # Override the number of portal replicas to run with the the deployment
-  # replicas: 1
-
-  # Docker repository to be used for portal instances
-  image:
-    repository: portal-service
-    # tag: stable
-    # pullPolicy: IfNotPresent
-
 # The ECS telegraf configuration specification
 telegraf:
-  # Override the number of portal replicas to run with the the deployment
+  # Override the number of telegraf replicas to run with the the deployment
   # replicas: 1
 
-  # Docker repository to be used for portal instances
+  # Docker repository to be used for telegraf instances
   image:
     repository: telegraf
-    # tag: stable
+    # tag: latest
+    # pullPolicy: IfNotPresent
+
+# The ECS Grafana configuration specification
+grafana:
+  # Override the number of Grafana replicas to run with the the deployment
+  # replicas: 1
+
+  # Docker repository to be used for Grafana instances
+  image:
+    repository: grafana
+    # tag: latest
+    # pullPolicy: IfNotPresent
+  service:
+    type: LoadBalancer
+    ports:
+      - port: 3000
+        name: grafana-port
+  # accesses to all customer dashboards
+  users:
+    - username: emcmonitor
+      password: ChangeMe
+    - username: emcservice
+      password: ChangeMe
+  # no accesses to all dashboards
+  limitedUsers:
+    - username: root
+      password: ChangeMe
+
+# The ECS fluxd configuration specification
+fluxd:
+  # Override the number of FluxD replicas to run with the the deployment
+  # replicas: 1
+
+  # Docker repository to be used for FluxD instances
+  image:
+    repository: fluxd
+    # tag: latest
+    # pullPolicy: IfNotPresent
+
+# The ECS throttler configuration specification
+throttler:
+  # Override the number of throttler replicas to run with the the deployment
+  # replicas: 1
+
+  # Docker repository to be used for throttler instances
+  image:
+    repository: throttler
+    # tag: latest
+    # pullPolicy: IfNotPresent
+
+influxdb:
+  # Override the number of influxdb replicas to run with the the deployment
+  replicas: 1
+
+  persistence:
+    volumesCount: 1
+    size: 32Gi
+
+  # Docker repository to be used for influxdb instances
+  image:
+    repository: influxdb
+    # tag: latest
     # pullPolicy: IfNotPresent
 
 # The NGINX configuration specification
@@ -334,12 +387,9 @@ nginx:
 
     # Specify the service port configuration for the NGINX service
     ports:
-    - name: ui
-      port: 443
-      targetPort: 443
-    - name: api
-      port: 4443
-      targetPort: 4443
+      - name: api
+        port: 4443
+        targetPort: 4443
 
 # Specify the service type for the NGINX container. The default is a
 # "ClusterIP"
@@ -362,7 +412,7 @@ nginx:
 # Enable or disable the cluster automatic provisioning. This step will provision
 # the ECS resources into a single storage pool and virtual data center scoped to
 # the Helm release name. If this is disabled, the cluster will need to be
-# be provisioned via API or Portal before it can be used
+# be provisioned via API before it can be used
 provision:
   enabled: true
   image:
@@ -414,5 +464,14 @@ deos_hc:
   # Docker repository to be used for running deos health check
   image:
     repository: deos-hc
+    # tag: stable
+    # pullPolicy: IfNotPresent
+
+# deos_events to pull the events every pullFreq (default: 30 seconds) from the object store
+# and convert them into the k8s events
+deosEvents:
+  pullFreq: 30
+  image:
+    repository: deos-events
     # tag: stable
     # pullPolicy: IfNotPresent

@@ -19,6 +19,7 @@ This Helm chart deploys:
   - Allows the user to define the event routing rules for an application.
 - A <application-name>-event-rules configmap that contains:
   - Event routing rules to route an application events to the SRSGateway.
+  - The notifier list is the list of notifiers where the event will be sent out. Each notifier custom resource must be lebeled with "kahm-notifier":<product>-srs
 - A <application-name>-event-config configmap that contains:
   - what type of events need to generate
   - how many events need to generate
@@ -91,7 +92,7 @@ Example helm install command line setting:
 ```
 
 ###  application.eventRules
-Configuration to define the application event rules to be applied on the application events. An application event will get routed to the SRSGateway if the event matches the rule. In the given example below, if the event type is "Critical" and the event has label: "srs-event=true", then it will get routed to the SRSGateway Notifier(objectscale-srs-default).
+Configuration to define the application event rules to be applied on the application events. An application event will get routed to the SRSGateway if the event matches the rule. In the given example below, if the event type is "Critical" and the event has label: "srs-event=true", then it will get routed to the SRSGateway Notifier( labeled with "kahm-notifier":"objectscale-srs").
 Example helm install command line setting:
 ```
 --set application.eventRules.label="srs-event"

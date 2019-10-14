@@ -1,0 +1,71 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: dellemc-{{.Values.product}}-license-app-config
+    namespace: {{.Release.namespace}}
+    labels:
+        app.kubernetes.io/name: dellemc-{{.Values.product}}-license
+        app.kubernetes.io/version: {{.Values.tag}}
+        app.kubernetes.io/instance: {{.Release.Name}}
+        app.kubernetes.io/managed-by: {{.Release.Service}}
+        helm.sh/chart: {{.Chart.Name}}-{{.Chart.Version | replace "+" "_"}}
+        release: {{.Release.Name}}
+        product: {{.Values.product}}
+    annotations:
+        com.dellemc.kahm.subscribed: "true"
+data:
+    eventRules: |-
+      rules:
+        - description: "dellemc license usage"
+          matchon:
+            - label: SymptomID
+              value: DECKS-LIC-1004
+          notifiers:
+            - {{.Values.product}}-srs
+        - description: "dellemc license expired event"
+          matchon:
+            - label: SymptomID
+              value: DECKS-LIC-1005
+          notifiers:
+            - {{.Values.product}}-srs
+        - description: "dellemc license warning event about to expire"
+          matchon:
+            - label: SymptomID
+              value: DECKS-LIC-1006
+          notifiers:
+            - {{.Values.product}}-srs
+        - description: "dellemc invalid license event"
+          matchon:
+            - label: SymptomID
+              value: DECKS-LIC-1008
+          notifiers:
+            - {{.Values.product}}-srs
+    eventRemedies: |-
+      symptoms:
+        - symptomid: DECKS-LIC-1005
+          description: Dell EMC subscription license expired for product {{.Values.product}}
+          remedies:
+            - Check the end date of the {{.Values.product}} license
+            - Visit the Dell EMC Software Licensing Center (SLC) to
+              renew/extend the {{.Values.product}} license.
+            - Contact your Dell EMC sales representative to
+              renew/extend the {{.Values.product}} license
+        - symptomid: DECKS-LIC-1006
+          description: Dell EMC subscription license for product {{.Values.product}} is about to expire
+          remedies:
+            - Check the end date of the license
+            - Visit the Dell EMC Software Licensing Center (SLC) to
+              renew/extend the {{.Values.product}} license.
+            - Contact your Dell EMC sales representative to
+              renew/extend the {{.Values.product}} license
+        - symptomid: DECKS-LIC-1008
+          description: Invalid Dell EMC license
+          remedies:
+            - Verify the {{.Values.product}} license was obtained from the
+              Dell EMC Software Licensing Center
+            - Verify the {{.Values.product}} license was not modified prior to applying it to
+              the cluster
+            - Verify the PRODUCTSHORTNAME is defined in the {{.Values.product}} license
+            - Verify the subscription dates for licensed features are still valid (not expired)
+    healthChecks: |-
