@@ -4,7 +4,7 @@ HELM_TGZ      = helm-${HELM_VERSION}-linux-amd64.tar.gz
 YQ_VERSION   := 2.2.1
 YAMLLINT_VERSION := 1.14.0
 CHARTS := ecs-cluster ecs-flex-operator mongoose zookeeper-operator decks kahm srs-gateway dks-testapp fio-test sonobuoy dellemc-license
-DECKSCHARTS := decks kahm srs-gateway dks-testapp fio-test sonobuoy dellemc-license
+DECKSCHARTS := decks kahm srs-gateway dks-testapp fio-test dellemc-license
 FLEXCHARTS := ecs-cluster ecs-flex-operator zookeeper-operator
 
 test:
