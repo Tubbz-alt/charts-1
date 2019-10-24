@@ -41,6 +41,12 @@ data:
               value: DECKS-LIC-1008
           notifiers:
             - {{.Values.product}}-srs
+        - description: "dellemc license no longer tracking features"
+          matchon:
+            - label: SymptomID
+              value: DECKS-LIC-1011
+          notifiers:
+            - {{.Values.product}}-srs
     eventRemedies: |-
       symptoms:
         - symptomid: DECKS-LIC-1005
@@ -68,4 +74,9 @@ data:
               the cluster
             - Verify the PRODUCTSHORTNAME is defined in the {{.Values.product}} license
             - Verify the subscription dates for licensed features are still valid (not expired)
+        - symptomid: DECKS-LIC-1011
+          description: License features no longer being tracked
+          remedies:
+            - Verify the {{.Values.product}} license is correct and the feature was intended to
+              be removed.
     healthChecks: |-
