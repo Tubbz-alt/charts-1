@@ -92,3 +92,9 @@ spec:
 {{- end }}
         - name: OPERATOR_NAME
           value: ecs-flex-operator
+        - name: LOG_DIRECTION
+{{- if .Values.logReceiver.type }}
+          value: file
+{{- else }}
+          value: stdout
+{{- end }}
