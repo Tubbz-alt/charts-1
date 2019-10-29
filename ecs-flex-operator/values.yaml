@@ -15,6 +15,8 @@ global:
   # Default: "" == Watch ALL namespaces
   watchNamespace: ""
 
+useDecksInstaller: false
+
 # The default docker tag and pull policy for the ECS Flex operator and
 # logReceiver
 tag: 0.14.0

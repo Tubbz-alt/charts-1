@@ -19,7 +19,11 @@ spec:
       serviceAccountName: "ecs-flex-operator"
       containers:
         - name: ecs-flex-graphql
-          image: {{ .Values.global.registry }}/{{ .Values.graphql.image.repository }}:{{ default .Values.tag .Values.graphql.image.tag }}
+        {{- if .Values.useDecksInstaller }}
+          image: {{ .Values.graphql.image.repository }}:{{ default .Values.tag .Values.graphql.image.tag }}
+        {{- else }}
+          image: {{.Values.global.registry }}/{{ .Values.graphql.image.repository }}:{{ default .Values.tag .Values.graphql.image.tag }}
+        {{- end }}
           env:
             - name: OPERATOR_NAME
               value: ecs-flex-operator

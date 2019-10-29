@@ -24,9 +24,17 @@ spec:
       containers:
       - name: operator
 {{- if .Values.image.tag }}
-        image: {{ .Values.global.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}
+  {{- if .Values.useDecksInstaller }}
+        image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+  {{- else }}
+        image: {{.Values.global.registry }}/{{ .Values.image.repository }}:{{ .Values.image.tag }}
+  {{- end }}
 {{- else }}
-        image: {{ .Values.global.registry }}/{{ .Values.image.repository }}:{{ .Values.tag }}
+  {{- if .Values.useDecksInstaller }}
+        image: {{ .Values.image.repository }}:{{ .Values.tag }}
+  {{- else }}
+        image: {{.Values.global.registry }}/{{ .Values.image.repository }}:{{ .Values.tag }}
+  {{- end }}
 {{- end }}
 {{- if .Values.image.pullPolicy }}
         imagePullPolicy: {{ .Values.image.pullPolicy }}
