@@ -6,3 +6,4 @@ data:
   wevdav-initdir: |
     fio
     sonobuoy
+    deoshc
