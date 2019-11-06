@@ -225,6 +225,20 @@ entries:
     version: 0.3.5
   ecs-cluster:
   - apiVersion: v1
+    appVersion: 0.16.0
+    created: "2019-11-06T16:41:52.641788-06:00"
+    description: |
+      Dell EMC ObjectScale is highly scalable, and high performance S3 compatible object storage platform.
+    digest: e8496aec67fd77102fbda08f23102294752e79408fc5055505dbdc5e7831b629
+    icon: https://avatars0.githubusercontent.com/u/12926680
+    maintainers:
+    - name: Dell EMC
+      url: http://dellemc.com
+    name: ecs-cluster
+    urls:
+    - ecs-cluster-0.16.0.tgz
+    version: 0.16.0
+  - apiVersion: v1
     appVersion: 0.14.0
     created: "2019-10-16T17:04:00.178161363-04:00"
     description: |
@@ -351,6 +365,20 @@ entries:
     - ecs-cluster-0.1.0.tgz
     version: 0.1.0
   ecs-flex-operator:
+  - apiVersion: v1
+    appVersion: 0.16.0
+    created: "2019-11-06T16:41:52.653178-06:00"
+    description: |
+      Dell EMC ObjectScale is highly scalable, and high performance S3 compatible object storage platform.
+    digest: ca9b02ce9e1fef0ca026d274ea19b1ce128f38cc6877892d05071190ea355156
+    icon: https://avatars0.githubusercontent.com/u/12926680
+    maintainers:
+    - name: Dell EMC
+      url: http://dellemc.com
+    name: ecs-flex-operator
+    urls:
+    - ecs-flex-operator-0.16.0.tgz
+    version: 0.16.0
   - apiVersion: v1
     appVersion: 0.14.0
     created: "2019-10-16T17:04:00.19045818-04:00"
@@ -991,6 +1019,26 @@ entries:
     - srs-gateway-0.2.0.tgz
     version: 0.2.0
   zookeeper-operator:
+  - appVersion: 0.2.4
+    created: "2019-11-06T16:41:52.684388-06:00"
+    description: |
+      Zookeeper operator deploys a custom resource for a zookeeper cluster, and a
+      pod to provision and scale zookeeper clusters.
+    digest: 6da9f2d445d156dc99795caf90e9a87609965d8343f9bd9cf1df423416b7e80f
+    engine: gotpl
+    home: https://github.com/pravega/charts/blob/master/zookeeper-operator
+    icon: https://zookeeper.apache.org/images/zookeeper_small.gif
+    keywords:
+    - zookeeper
+    - storage
+    maintainers:
+    - name: Dell EMC
+    name: zookeeper-operator
+    sources:
+    - https://github.com/pravega/charts/blob/master/zookeeper-operator
+    urls:
+    - zookeeper-operator-0.16.0.tgz
+    version: 0.16.0
   - appVersion: 0.2.3
     created: "2019-10-16T17:04:00.222660069-04:00"
     description: |
