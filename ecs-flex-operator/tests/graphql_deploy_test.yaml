@@ -28,7 +28,7 @@ tests:
     asserts:
       - matchRegex:
           path: spec.template.metadata.labels.app\.kubernetes\.io/component
-          pattern: ^.*$
+          pattern: ^.+-graphql$
   - it: should configure the image
     set:
       global.registry: REGISTRY
