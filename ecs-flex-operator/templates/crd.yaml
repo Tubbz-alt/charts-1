@@ -5,12 +5,12 @@ metadata:
   name: ecsclusters.ecs.dellemc.com
   labels:
     app.kubernetes.io/name: {{ template "name" . }}
-    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version \| replace "+" "_" }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
+    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/version: {{ .Chart.AppVersion }}
     app.kubernetes.io/component: ecs-flex-operator
     app.kubernetes.io/part-of: ecs-flex-manager
+    app.kubernetes.io/managed-by: nautilus
   annotations:
     "helm.sh/hook": crd-install
 spec:
