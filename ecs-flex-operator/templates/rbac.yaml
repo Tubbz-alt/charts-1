@@ -11,7 +11,7 @@ metadata:
     app.kubernetes.io/instance: {{ .Release.Name }}
     app.kubernetes.io/version: {{ .Chart.AppVersion }}
     app.kubernetes.io/component: ecs-flex-operator
-    app.kubernetes.io/part-of: ecs-flex-manager
+    app.kubernetes.io/part-of: {{ template "name" . }}
 {{- if .Values.global.registrySecret }}
 imagePullSecrets:
   - name: {{ .Values.global.registrySecret }}
