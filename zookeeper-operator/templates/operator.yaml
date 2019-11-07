@@ -18,8 +18,12 @@ spec:
   template:
     metadata:
       labels:
-        name: zookeeper-operator
-        release: {{ .Release.Name }}
+        app.kubernetes.io/name: {{ template "name" . }}
+        helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+        app.kubernetes.io/managed-by: {{ .Release.Service }}
+        app.kubernetes.io/instance: {{ .Release.Name }}
+        app.kubernetes.io/version: {{ .Chart.AppVersion }}
+        app.kubernetes.io/component: zookeeper-operator
     spec:
       containers:
         - name: zookeeper-operator
