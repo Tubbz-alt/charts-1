@@ -2,8 +2,21 @@ apiVersion: v1
 entries:
   decks:
   - apiVersion: v1
+    appVersion: 1.0.0-16
+    created: "2019-11-06T19:02:31.066733564-08:00"
+    description: A Helm chart for Dell EMC Common Kubernetes Services
+    digest: 997262e15badcf8eac7968652275f83eba9ce664d2bf72e4d0c61bfa3431e3fd
+    icon: https://avatars0.githubusercontent.com/u/12926680
+    maintainers:
+    - name: Dell EMC
+      url: http://dellemc.com
+    name: decks
+    urls:
+    - decks-0.16.0.tgz
+    version: 0.16.0
+  - apiVersion: v1
     appVersion: 0.14.0
-    created: "2019-10-16T17:04:00.151528609-04:00"
+    created: "2019-11-06T19:02:31.066187687-08:00"
     description: A Helm chart for Dell EMC Common Kubernetes Services
     digest: 94167731cb38bf9978d7d6d5635bd91227665e62d1fbc5b6bfce8de0c5eaeac8
     icon: https://avatars0.githubusercontent.com/u/12926680
@@ -120,8 +133,18 @@ entries:
     version: 0.2.0
   dellemc-license:
   - apiVersion: v1
+    appVersion: 1.0.0-16
+    created: "2019-11-06T19:02:31.078313953-08:00"
+    description: A Helm chart for applying a Dell EMC License for a product in the
+      k8s cluster
+    digest: 3dedc60445d646486a30bfda03bd0abcc3f79df84f26fddf45116d9be1722c77
+    name: dellemc-license
+    urls:
+    - dellemc-license-0.16.0.tgz
+    version: 0.16.0
+  - apiVersion: v1
     appVersion: 0.14.0
-    created: "2019-10-16T17:04:00.160655789-04:00"
+    created: "2019-11-06T19:02:31.078023891-08:00"
     description: A Helm chart for applying a Dell EMC License for a product in the
       k8s cluster
     digest: fa3ff38bf91d18dd5179163a790cbef6b9eaf7380664c6cc91b8bf0f6c9de553
@@ -161,8 +184,17 @@ entries:
     version: 0.6.0
   dks-testapp:
   - apiVersion: v1
+    appVersion: 1.0.0-16
+    created: "2019-11-06T19:02:31.079774551-08:00"
+    description: A Helm chart for DKS (DECKS, KAHM, and SRSGateway) test application
+    digest: 532bbf12d2dd48af65dc130c150e610e47872706698a6fde90e4ab9a09468070
+    name: dks-testapp
+    urls:
+    - dks-testapp-0.16.0.tgz
+    version: 0.16.0
+  - apiVersion: v1
     appVersion: 0.14.0
-    created: "2019-10-16T17:04:00.16280597-04:00"
+    created: "2019-11-06T19:02:31.07947072-08:00"
     description: A Helm chart for DKS (DECKS, KAHM, and SRSGateway) test application
     digest: f5c9449be7a604de051498a1cc26b168b7aae765c688956c7e91f38553c12d01
     name: dks-testapp
@@ -634,8 +666,21 @@ entries:
     version: 0.3.5
   kahm:
   - apiVersion: v1
+    appVersion: 1.0.0-16
+    created: "2019-11-06T19:02:31.100767077-08:00"
+    description: A Helm chart for Kubernetes Applications Health Management
+    digest: 9f58205ad33d9cb7ad3ee0381e143356237fe97ff04db23452a9cd65107799ec
+    icon: https://avatars0.githubusercontent.com/u/12926680
+    maintainers:
+    - name: Dell EMC
+      url: http://dellemc.com
+    name: kahm
+    urls:
+    - kahm-0.16.0.tgz
+    version: 0.16.0
+  - apiVersion: v1
     appVersion: 0.14.0
-    created: "2019-10-16T17:04:00.198408565-04:00"
+    created: "2019-11-06T19:02:31.100317828-08:00"
     description: A Helm chart for Kubernetes Applications Health Management
     digest: d79bae1fb9396021ee0a11cdda6d40684c5d8597041482405eed0da7f0034850
     icon: https://avatars0.githubusercontent.com/u/12926680
@@ -808,10 +853,37 @@ entries:
     urls:
     - mongoose-0.1.0.tgz
     version: 0.1.0
+  service-pod:
+  - apiVersion: v1
+    appVersion: 1.0.0-16
+    created: "2019-11-06T19:02:31.106368399-08:00"
+    description: A Helm chart for Dell EMC Service Pod
+    digest: 2d832c7b972f502cfa7fcfb2cd02985d0b028d64e078aef317e8584e2252de44
+    icon: https://avatars0.githubusercontent.com/u/12926680
+    maintainers:
+    - name: Dell EMC
+      url: http://dellemc.com
+    name: service-pod
+    urls:
+    - service-pod-0.16.0.tgz
+    version: 0.16.0
+  - apiVersion: v1
+    appVersion: 0.14.0
+    created: "2019-11-06T19:02:31.105939097-08:00"
+    description: A Helm chart for Dell EMC Service Pod
+    digest: f65d26b2f3d998176f2cd4534f05a142d0bbfbd994b19f91d5d06ab22d29ca3d
+    icon: https://avatars0.githubusercontent.com/u/12926680
+    maintainers:
+    - name: Dell EMC
+      url: http://dellemc.com
+    name: service-pod
+    urls:
+    - service-pod-0.14.0.tgz
+    version: 0.14.0
   sonobuoy:
   - apiVersion: v1
     appVersion: 0.14.0
-    created: "2019-10-16T17:04:00.207390963-04:00"
+    created: "2019-11-06T19:02:31.107337047-08:00"
     description: A Helm chart for sonobuoy
     digest: ca0d9b22cfa7d0491587cc7506ec3d4f9a39bbc96a3b94691066cefadba9761d
     icon: https://avatars2.githubusercontent.com/u/22035492
@@ -915,8 +987,21 @@ entries:
     version: 0.3.5
   srs-gateway:
   - apiVersion: v1
+    appVersion: 1.0.0-16
+    created: "2019-11-06T19:02:31.113550427-08:00"
+    description: A Helm chart for Dell EMC SRS Gateway Custom Resource Support
+    digest: 140607f9f7530d172a09ab22070dcf912b07e16b5f4f845ca5f05c9e6ec4cd1d
+    icon: https://avatars0.githubusercontent.com/u/12926680
+    maintainers:
+    - name: Dell EMC
+      url: http://dellemc.com
+    name: srs-gateway
+    urls:
+    - srs-gateway-0.16.0.tgz
+    version: 0.16.0
+  - apiVersion: v1
     appVersion: 0.14.0
-    created: "2019-10-16T17:04:00.213319199-04:00"
+    created: "2019-11-06T19:02:31.112860203-08:00"
     description: A Helm chart for Dell EMC SRS Gateway Custom Resource Support
     digest: e874ee2486845039b80ed40fee06427f2b9eaf1ea71e250527cc24e42d7c84fc
     icon: https://avatars0.githubusercontent.com/u/12926680
