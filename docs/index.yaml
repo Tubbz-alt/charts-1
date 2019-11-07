@@ -16,7 +16,7 @@ entries:
     version: 0.16.0
   - apiVersion: v1
     appVersion: 0.14.0
-    created: "2019-11-06T19:02:31.066187687-08:00"
+    created: "2019-10-16T17:04:00.151528609-04:00"
     description: A Helm chart for Dell EMC Common Kubernetes Services
     digest: 94167731cb38bf9978d7d6d5635bd91227665e62d1fbc5b6bfce8de0c5eaeac8
     icon: https://avatars0.githubusercontent.com/u/12926680
@@ -144,7 +144,7 @@ entries:
     version: 0.16.0
   - apiVersion: v1
     appVersion: 0.14.0
-    created: "2019-11-06T19:02:31.078023891-08:00"
+    created: "2019-10-16T17:04:00.160655789-04:00"
     description: A Helm chart for applying a Dell EMC License for a product in the
       k8s cluster
     digest: fa3ff38bf91d18dd5179163a790cbef6b9eaf7380664c6cc91b8bf0f6c9de553
@@ -194,7 +194,7 @@ entries:
     version: 0.16.0
   - apiVersion: v1
     appVersion: 0.14.0
-    created: "2019-11-06T19:02:31.07947072-08:00"
+    created: "2019-10-16T17:04:00.16280597-04:00"
     description: A Helm chart for DKS (DECKS, KAHM, and SRSGateway) test application
     digest: f5c9449be7a604de051498a1cc26b168b7aae765c688956c7e91f38553c12d01
     name: dks-testapp
@@ -680,7 +680,7 @@ entries:
     version: 0.16.0
   - apiVersion: v1
     appVersion: 0.14.0
-    created: "2019-11-06T19:02:31.100317828-08:00"
+    created: "2019-10-16T17:04:00.198408565-04:00"
     description: A Helm chart for Kubernetes Applications Health Management
     digest: d79bae1fb9396021ee0a11cdda6d40684c5d8597041482405eed0da7f0034850
     icon: https://avatars0.githubusercontent.com/u/12926680
@@ -883,7 +883,7 @@ entries:
   sonobuoy:
   - apiVersion: v1
     appVersion: 0.14.0
-    created: "2019-11-06T19:02:31.107337047-08:00"
+    created: "2019-10-16T17:04:00.207390963-04:00"
     description: A Helm chart for sonobuoy
     digest: ca0d9b22cfa7d0491587cc7506ec3d4f9a39bbc96a3b94691066cefadba9761d
     icon: https://avatars2.githubusercontent.com/u/22035492
@@ -1001,7 +1001,7 @@ entries:
     version: 0.16.0
   - apiVersion: v1
     appVersion: 0.14.0
-    created: "2019-11-06T19:02:31.112860203-08:00"
+    created: "2019-10-16T17:04:00.213319199-04:00"
     description: A Helm chart for Dell EMC SRS Gateway Custom Resource Support
     digest: e874ee2486845039b80ed40fee06427f2b9eaf1ea71e250527cc24e42d7c84fc
     icon: https://avatars0.githubusercontent.com/u/12926680
