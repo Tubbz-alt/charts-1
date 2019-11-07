@@ -18,7 +18,7 @@ DECKS includes a Kubernetes deployment that manage DECKS controller.
 ```bash
 $ kubectl get deployment decks
 NAME   DESIRED   CURRENT   UP-TO-DATE   AVAILABLE   AGE
-decks   1         1         1            1           70m
+decks   1         1         1            1          70m
 ```
 
 ## Requirements
@@ -53,16 +53,14 @@ There are [configuration options](#configuration) you can peruse later at your h
 DECKS can be configured to manage a single namespace within a Kubernetes cluster, or all namespaces. To configure a specific namespace, simply set the `global.watchNamespace` setting:
 
 ```bash
-$ helm install --name decks \
-    --set global.watchNamespace=my-namespace \
-    ecs/decks
+$ helm install --name decks --set global.watchNamespace=my-namespace ecs/decks
 ```
 
 To use the decks with any namespace on the Kubernetes cluster, you can retain the default configuration, which is to set the `global.watchNamespace` setting to an empty string (`""`).
 
 ### Private Docker Registry
 
-While the ECS Flex container images are hosted publicly, DECKS also supports configuration of a private Docker registry for offline Kubernetes clusters or those that do not have access to public registries. To configure a private registry:
+While the container images are hosted publicly, DECKS also supports configuration of a private Docker registry for offline Kubernetes clusters or those that do not have access to public registries. To configure a private registry:
 
 1. Download the DECKS container image from [support.emc.com] and upload the images to your private registry.
 
@@ -95,7 +93,7 @@ _*TODO: Add download link once available*_
        `kubectl logs <release-name>-deck-test` should show the testapp output logs.
    - This is the *helm upgrade* to use to set the srs gateway params for the test:
     ```bash
-       helm upgrade --name decks ecs/decks --set helmTestConfig.srsGateway.hostname="10.249.253.18" --set helmTestConfig.srsGateway.login=scott.jones@nordstrom.com:Password1 --set helmTestConfig.srsGateway.product=OBJECTSCALE
+       helm upgrade decks ecs/decks --set helmTestConfig.srsGateway.hostname="10.249.253.18" --set helmTestConfig.srsGateway.login=scott.jones@nordstrom.com:Password1 --set helmTestConfig.srsGateway.product=OBJECTSCALE
 
        helm test <release-name>
 

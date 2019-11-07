@@ -22,13 +22,13 @@ tests:
   - it: should have a selector
     asserts:
       - matchRegex:
-          path: spec.selector.matchLabels.name
+          path: spec.selector.matchLabels.app\.kubernetes\.io/component
           pattern: ^.+-graphql$
   - it: should have a name label
     asserts:
       - matchRegex:
-          path: spec.template.metadata.labels.name
-          pattern: ^.+-graphql$
+          path: spec.template.metadata.labels.app\.kubernetes\.io/component
+          pattern: ^.*$
   - it: should configure the image
     set:
       global.registry: REGISTRY

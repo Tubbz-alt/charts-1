@@ -56,7 +56,7 @@ helmTestConfig:
     # The login setting configures the user/password credentials
     # for registering a product with the test SRS gateway
     #    login: "testuser123@example.com:MyFavePassword"
-    # 
+    #
     # The gateway hostname can be an IP address or an FQDN
     #    hostname: "10.11.12.13"
     ##   port: 9443

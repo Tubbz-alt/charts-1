@@ -34,11 +34,17 @@ spec:
     - name: DECKS_NAMESPACE
       value: "{{ .Release.Namespace}}"
     - name: SRS_TEST_GATEWAY_HOSTNAME
+{{- if .Values.helmTestConfig.srsGateway.hostname }}
       value: {{ .Values.helmTestConfig.srsGateway.hostname }}
+{{- end }}
     - name: SRS_TEST_GATEWAY_PORT
+{{- if .Values.helmTestConfig.srsGateway.port }}
       value: "{{ .Values.helmTestConfig.srsGateway.port }}"
+{{- end }}
     - name: SRS_TEST_GATEWAY_LOGIN
+{{- if .Values.helmTestConfig.srsGateway.login }}
       value: {{ .Values.helmTestConfig.srsGateway.login }}
+{{- end }}
     - name: GLOBAL_IMAGE_TAG
       value: {{ .Values.tag }}
 
