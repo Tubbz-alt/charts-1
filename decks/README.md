@@ -93,7 +93,7 @@ _*TODO: Add download link once available*_
        `kubectl logs <release-name>-deck-test` should show the testapp output logs.
    - This is the *helm upgrade* to use to set the srs gateway params for the test:
     ```bash
-       helm upgrade decks ecs/decks --set helmTestConfig.srsGateway.hostname="10.249.253.18" --set helmTestConfig.srsGateway.login=scott.jones@nordstrom.com:Password1 --set helmTestConfig.srsGateway.product=OBJECTSCALE
+       helm upgrade decks ecs/decks --set helmTestConfig.srsGateway.hostname="10.11.12.13" --set helmTestConfig.srsGateway.login=testuser123@example.com:MyFavePassword --set helmTestConfig.srsGateway.product=OBJECTSCALE
 
        helm test <release-name>
 

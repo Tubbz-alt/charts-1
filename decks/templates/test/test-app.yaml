@@ -34,11 +34,11 @@ spec:
     - name: DECKS_NAMESPACE
       value: "{{ .Release.Namespace}}"
     - name: SRS_TEST_GATEWAY_HOSTNAME
-      value: {{ default .Values.helmTestConfig.srsGateway.hostname "10.11.12.13" }}
+      value: {{ default .Values.helmTestConfig.srsGateway.hostname "10.11.12.13"}}
     - name: SRS_TEST_GATEWAY_PORT
-      value: {{ default .Values.helmTestConfig.srsGateway.port "9443" }}
+      value: "{{ .Values.helmTestConfig.srsGateway.port }}"
     - name: SRS_TEST_GATEWAY_LOGIN
-      value: {{ default .Values.helmTestConfig.srsGateway.login "testuser123" }}
+      value: {{ default .Values.helmTestConfig.srsGateway.login "testuser123"}}
     - name: GLOBAL_IMAGE_TAG
       value: {{ .Values.tag }}
   restartPolicy: Never

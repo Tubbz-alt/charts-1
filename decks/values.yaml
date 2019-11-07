@@ -56,13 +56,9 @@ helmTestConfig:
     # The login setting configures the user/password credentials
     # for registering a product with the test SRS gateway
     # login: "testuser123@example.com:MyFavePassword"
-    #
     # The gateway hostname can be an IP address or an FQDN
     # hostname: "10.11.12.13"
     port: 9443
-    #
-    # to run a helm test you'll need to set the login, hostname and port on a helm upgrade
-    # refer to the README.md file for details
 
 # We usually recommend not to specify default resources and to leave this as a conscious
 # choice for the user. This also increases chances charts run on environments with little
