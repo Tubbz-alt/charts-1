@@ -3,9 +3,22 @@ entries:
   decks:
   - apiVersion: v1
     appVersion: 1.0.0-16
-    created: "2019-11-07T08:43:16.667886106-08:00"
+    created: "2019-11-08T12:11:54.498179-06:00"
     description: A Helm chart for Dell EMC Common Kubernetes Services
-    digest: 8067e6362a9a2690e8349b67f3892ef494c799296e155495291dd4738b857302
+    digest: 532624f40d57a2c8fcfedb214d5bc2a50b35f11f870fd458fe03d268c0c3deb7
+    icon: https://avatars0.githubusercontent.com/u/12926680
+    maintainers:
+    - name: Dell EMC
+      url: http://dellemc.com
+    name: decks
+    urls:
+    - decks-0.16.1.tgz
+    version: 0.16.1
+  - apiVersion: v1
+    appVersion: 1.0.1-16
+    created: "2019-11-08T12:11:54.497547-06:00"
+    description: A Helm chart for Dell EMC Common Kubernetes Services
+    digest: b1563005d624bc68344c0d5ec1ef9ca61a3946010a19714a8553db5c122773e9
     icon: https://avatars0.githubusercontent.com/u/12926680
     maintainers:
     - name: Dell EMC
