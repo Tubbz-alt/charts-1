@@ -9,8 +9,8 @@ metadata:
   namespace: "{{ .Release.Namespace }}"
 spec:
   containers:
-  - command: ["/bin/sh", "-c"]
-    args: ["./run-deos-hc.sh"]
+  - command: ["deos-hc"]
+    args: ["all"]
     env:
     - name: POD_NAMESPACE
       value: "{{ .Release.Namespace }}"

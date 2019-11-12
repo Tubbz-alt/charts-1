@@ -1,7 +1,7 @@
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: {{ .Release.Name }}-deos-hc-cronjob
+  name: {{ .Release.Name }}-healthcheck
   labels:
     release: {{ .Release.Name }}
   namespace: {{ .Release.Namespace}}
@@ -14,8 +14,8 @@ spec:
       template:
         spec:
           containers:
-          - command: ["/bin/sh", "-c"]
-            args: ["./run-deos-hc.sh"]
+          - command: ["deos-hc"]
+            args: ["all"]
             env:
             - name: POD_NAMESPACE
               value: "{{ .Release.Namespace }}"
@@ -32,11 +32,7 @@ spec:
                   name: decks-webdav-secret
                   key: password
             image: {{ .Values.global.registry }}/{{ .Values.deos_hc.image.repository }}:{{ .Values.tag }}
-{{- if .Values.deos_hc.image.pullPolicy }}
-            imagePullPolicy: {{ .Values.deos_hc.image.pullPolicy }}
-{{- else }}
-            imagePullPolicy: {{ .Values.pullPolicy }}
-{{- end }}
+            imagePullPolicy: {{ default .Values.deos_hc.image.pullPolicy .Values.pullPolicy }}
             name: hc-container
 {{- if .Values.global.registrySecret }}
           imagePullSecrets:
