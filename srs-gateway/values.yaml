@@ -96,3 +96,8 @@ configUpload:
   # pullPolicy: "Always"
   uploadPeriodHours: 12
   restartPolicy: "Never"
+
+hook:
+  registry: "lachlanevenson"
+  repository: "k8s-kubectl"
+  tag: "v1.13.4"
