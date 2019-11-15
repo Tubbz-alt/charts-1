@@ -146,7 +146,7 @@ spec:
     uploadPeriodHours: 12
   connectionInfo:
     credsSecret: objectscale-srs-creds-secret
-    hostname: 10.249.253.18
+    hostname: 10.11.12.13
     port: 9443
     product: OBJECTSCALE
   dockerSecret: ""
@@ -185,7 +185,7 @@ status:
     service: objectscale-srs-notifier-svc
   remoteAccess:
     deployment: objectscale-remote-access
-    extIP: 10.240.135.165
+    extIP: 10.13.14.145
     service: objectscale-remote-service
 $
 ```
@@ -288,18 +288,18 @@ This should be set to the user:password that was supplied by Dell/EMC for regist
 
 If the Docker registry being used for the remote access and notifier images do not require authentication:
 ```bash
-$ helm install --name srs-gateway ecs/srs-gateway --set product=OBJECTSCALE --set gateway.hostname=10.249.253.18 --set gateway.login=john.doe@example.com:MyPassword
+$ helm install --name srs-gateway ecs/srs-gateway --set product=OBJECTSCALE --set gateway.hostname=10.11.12.13 --set gateway.login=john.doe@example.com:MyPassword
 ```
 
 Alternatively, if you have an existing Docker registry secret:
 ```bash
-$ helm install --name srs-gateway ecs/srs-gateway --set product=OBJECTSCALE --set gateway.hostname=10.249.253.18 --set gateway.login=john.doe@example.com:MyPassword --set dockerSecret=my-existing-registry-secret
+$ helm install --name srs-gateway ecs/srs-gateway --set product=OBJECTSCALE --set gateway.hostname=10.11.12.13 --set gateway.login=john.doe@example.com:MyPassword --set dockerSecret=my-existing-registry-secret
 ...
 ```
 
 Or if you want this helm chart to generate and use a new Docker registry secret:
 ```bash
-$ helm install --name srs-gateway ecs/srs-gateway --set product=OBJECTSCALE --set gateway.hostname=10.249.253.18 --set gateway.login=john.doe@example.com:MyPassword --set dockerUsername=janedoe --set dockerPassword=MyPassword
+$ helm install --name srs-gateway ecs/srs-gateway --set product=OBJECTSCALE --set gateway.hostname=10.11.12.13 --set gateway.login=john.doe@example.com:MyPassword --set dockerUsername=janedoe --set dockerPassword=MyPassword
 ...
 ```
 
@@ -320,7 +320,7 @@ Can be either the IP address or an FQDN for accessing the SRS gateway.
 
 Example helm install command line setting:
 ```
---set gateway.hostname=10.249.253.18
+--set gateway.hostname=10.11.12.13
 ```
 
 ### gateway.login - MANDATORY
@@ -363,7 +363,7 @@ Defaults:
 
 Example helm install command line setting:
 ```
---set registry=harbor.lss.emc.com/ecs
+--set registry=mydockerrepo.example.com
 --set tag=latest
 --set pullPolicy=IfNotPresent
 ```
