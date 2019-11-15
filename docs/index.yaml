@@ -1086,6 +1086,19 @@ entries:
     version: 0.3.5
   srs-gateway:
   - apiVersion: v1
+    appVersion: 1.0.1-17
+    created: "2019-11-13T23:00:03.21692362-05:00"
+    description: A Helm chart for Dell EMC SRS Gateway Custom Resource Support
+    digest: 90eb205b7dd775853f90bb8728ebdda92378ecb12cfd5b0f4867acb53345c029
+    icon: https://avatars0.githubusercontent.com/u/12926680
+    maintainers:
+    - name: Dell EMC
+      url: http://dellemc.com
+    name: srs-gateway
+    urls:
+    - srs-gateway-0.17.1.tgz
+    version: 0.17.1
+  - apiVersion: v1
     appVersion: 1.0.0-17
     created: 2019-11-15T15:37:03.512041626-05:00
     description: A Helm chart for Dell EMC SRS Gateway Custom Resource Support

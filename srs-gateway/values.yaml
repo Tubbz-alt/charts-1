@@ -34,7 +34,7 @@ gateway:
 
   # ==================== MANDATORY SETTING ====================
   # The gateway hostname can be an IP address or an FQDN
-  # hostname: "10.249.253.18"
+  # hostname: "10.11.12.13"
   # ===========================================================
 
   # Port that the SRS Gateway is listening on for RESTful API requests.
