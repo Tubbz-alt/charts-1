@@ -10,7 +10,7 @@ rules:
 - apiGroups:
   - decks.ecs.dellemc.com 
   resources:
-  - "*" 
+  - srsgateways
   verbs:
   - get
   - list
@@ -51,7 +51,6 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: "{{.Release.Name}}-post-delete"
-  namespace: {{ .Release.Namespace }}
   labels:
     app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
     app.kubernetes.io/instance: {{ .Release.Name | quote }}
