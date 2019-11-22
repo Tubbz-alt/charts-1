@@ -16,6 +16,10 @@ spec:
       value: "{{ .Release.Namespace }}"
     - name: RELEASE_NAME
       value: "{{ .Release.Name }}"
+    - name: POD_NAME
+      valueFrom:
+        fieldRef:
+          fieldPath: metadata.name
     - name: WEBDAV_SECRET_USERNAME
       valueFrom:
         secretKeyRef:
