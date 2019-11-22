@@ -47,6 +47,9 @@ NAME:   my-cluster
 ...
 ```
 
+For provisioning storage you should to provide license file:
+    --set-file objectsvsLicenseFile=/path/to/the/license.xml
+
 There are [configuration options](#configuration) for that, too.
 
 5. Check the notes printed after the install. They offer a helpful guide to get access to your cluster via S3.

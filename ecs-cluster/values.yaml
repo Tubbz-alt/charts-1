@@ -475,3 +475,7 @@ deosEvents:
     repository: deos-events
     # tag: stable
     # pullPolicy: IfNotPresent
+
+
+# DO NOT UNCOMMENT IT. the location of the license file must be supplied as a command line.
+# objectsvsLicenseFile: "/home/john/objectscale-license.xml"
