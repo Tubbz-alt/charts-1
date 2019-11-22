@@ -59,6 +59,18 @@ spec:
 {{- end }}
         - name: RELEASE_NAME
           value: {{ .Release.Name }}
+        - name: POD_NAMESPACE
+          value: "{{ .Release.Namespace }}"
+        - name: WEBDAV_SECRET_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: decks-webdav-secret
+              key: username
+        - name: WEBDAV_SECRET_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: decks-webdav-secret
+              key: password
 {{- if .Values.resources }}
         resources:
 {{- if .Values.resources.requests.storage }}
