@@ -47,7 +47,7 @@ NAME:   my-cluster
 ...
 ```
 
-For provisioning storage you should to provide license file:
+For provisioning storage you should provide a license file:
     --set-file objectLicenseFile=/path/to/the/license.xml
 
 There are [configuration options](#configuration) for that, too.
