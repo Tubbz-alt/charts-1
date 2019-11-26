@@ -17,7 +17,7 @@ spec:
 {{- if .Values.telemetry.schedule }}
   schedule: "{{ .Values.telemetry.schedule }}"
 {{- else }}
-  schedule: "* */12 * * *"
+  schedule: "0 */12 * * *"
 {{- end }}
   jobTemplate:
     spec:

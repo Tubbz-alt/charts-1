@@ -124,7 +124,7 @@ telemetry:
     # tag: stable
     # pullPolicy: Always
   # this is as per cronjob schedule, please follow the cronjob format to edit it
-  schedule: "* */12 * * *"
+  schedule: "0 */12 * * *"
 
 nodeSelector: {}
 
