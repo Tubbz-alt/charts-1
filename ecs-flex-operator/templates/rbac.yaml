@@ -29,6 +29,11 @@ metadata:
     release: {{ .Release.Name }}
 rules:
 - apiGroups:
+  - ""
+  resources:
+  - nodes 
+  verbs: ["get", "watch", "list"]
+- apiGroups:
   - ecs.dellemc.com
   resources:
   - "*"
