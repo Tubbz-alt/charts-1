@@ -4,10 +4,17 @@ S3-compatible object storage.
 
 Your release is named {{ .Release.Name }}.
 
+{{- if not .Values.objectLicenseFile}}
+
+***************** ATTENTION *****************
+License file was not provided. Provision job will not run and storage will not be provisioning.
+{{- end }}
+
+{{- if and (.Values.provision.enabled) (.Values.objectLicenseFile)}}
 To get started, simply read your access keys and endpoint(s):
 
-  $ read -r ACCESS_KEY SECRET_KEY \
-        <<<$(kubectl get secret {{ .Release.Name }}-initial-user -o jsonpath='{.data.accessKey}' | base64 -d; echo -n " "; kubectl get secret {{ .Release.Name }}-initial-user -o jsonpath='{.data.secretKey}' | base64 -d )
+$ read -r ACCESS_KEY SECRET_KEY \
+    <<<$(kubectl get secret {{ .Release.Name }}-initial-user -o jsonpath='{.data.accessKey}' | base64 -d; echo -n " "; kubectl get secret {{ .Release.Name }}-initial-user -o jsonpath='{.data.secretKey}' | base64 -d )
 {{- if eq .Values.objectHeads.service.type "LoadBalancer" }}
   $ read -r INTERNAL_ENDPOINT EXTERNAL_ENDPOINT \
         <<<$(kubectl get svc {{ .Release.Name }}-heads \
@@ -32,4 +39,5 @@ NOTE: This cluster has been provisioned with only an internal ClusterIP. If you
 
 NOTE: Ensure that you retain any other configuration settings by using a custom
       "values.yaml" file, or other "--set" options.
+{{- end }}
 {{- end }}

@@ -530,7 +530,7 @@ spec:
       {{ toYaml .Values.nginx.service | nindent 6 | trim }}
 
   provision:
-    enabled: {{.Values.provision.enabled }}
+    enabled: {{ and (.Values.objectLicenseFile) (.Values.provision.enabled) }}
     image:
       repository: {{ .Values.global.registry }}/{{ .Values.provision.image.repository }}
 {{- if .Values.provision.image.tag }}
