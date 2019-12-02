@@ -3,10 +3,10 @@
 apiVersion: app.k8s.io/v1beta1
 kind: Application
 metadata:
-  name: deos-{{.Release.Name}}
+  name: {{.Release.Name}}
   namespace: {{.Release.Namespace}}
   labels:
-    app.kubernetes.io/name: deos-{{.Release.Name}}
+    app.kubernetes.io/name: {{.Release.Name}}
     app.kubernetes.io/version: {{.Values.tag}}
     app.kubernetes.io/instance: {{.Release.Name}}
     app.kubernetes.io/managed-by: {{.Release.Service}}
@@ -18,17 +18,20 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app.kubernetes.io/name: deos-{{.Release.Name}}
+      app.kubernetes.io/name: {{.Release.Name}}
   componentKinds:
     - group: core
       kind: ConfigMaps
     - group: core
       kind: Secrets
-    - group: CustomResourceDefinition
-      kind: ECSClusters
+      ## do we need to enumerate all the other components such as
+      ## ReplicaSets, StatefulSets, PVCs etc...
+      # eventually this will be objectstores
+    - group: ecsclusters.ecs.dellemc.com
+      kind: ECSCluster   # aka objectstore here too
   assemblyPhase: "Pending"
   descriptor:
-    type: deos-objectstore
+    type: objectstore
     version: {{.Values.tag}}
     description: >
       Dell EMC ObjectScale Object Store
@@ -40,5 +43,5 @@ spec:
       - "ecs"
       - "s3"
     info:
-      - "Copyright © 2019 Dell Inc. or its subsidiaries. All Rights Reserved."
+      - "Copyright © 2019-2020 Dell Inc. or its subsidiaries. All Rights Reserved."
 {{- end}}

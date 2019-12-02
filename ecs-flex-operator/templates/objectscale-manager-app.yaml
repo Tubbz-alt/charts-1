@@ -1,0 +1,52 @@
+---
+{{- if .Values.createObjectScaleMgrsAppResource}}
+apiVersion: app.k8s.io/v1beta1
+kind: Application
+metadata:
+  name: "objectscale-manager"
+  namespace: {{.Release.Namespace}}
+  labels:
+    app.kubernetes.io/name: "objectscale-manager"
+    app.kubernetes.io/version: {{.Values.tag}}
+    app.kubernetes.io/instance: {{.Release.Name}}
+    app.kubernetes.io/managed-by: nautilus
+    helm.sh/chart: {{.Chart.Name}}-{{.Chart.Version | replace "+" "_"}}
+    product: "objectscale"
+    release: {{.Release.Name}}
+  annotations:
+    com.dellemc.kahm.subscribed: "true"
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: "objectscale-manager"
+  componentKinds:
+    - group: apps
+      kind: Deployment
+    - group: core
+      kind: ConfigMap
+    - group: core
+      kind: ServiceAccount
+    - group: core
+      kind: Pod
+    - group: apps
+      kind: ReplicaSet
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRoles
+    - group: rbac.authorization.k8s.io
+      kind: ClusterRoleBinding
+  assemblyPhase: "Pending"
+  descriptor:
+    type: "objectscale-manager"
+    version: {{.Values.tag}}
+    description: >
+      Dell EMC ObjectScale manager of Object Stores
+    keywords:
+      - "deos"
+      - "objectscale"
+      - "object store"
+      - "flex"
+      - "ecs"
+      - "s3"
+    info:
+      - "Copyright (c) 2019-2020 Dell Inc. or its subsidiaries. All Rights Reserved."
+{{- end}}
