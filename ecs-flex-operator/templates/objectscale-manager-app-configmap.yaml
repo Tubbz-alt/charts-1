@@ -5,7 +5,7 @@ metadata:
     name: objectscale-manager-app-config
     namespace: {{.Release.namespace}}
     labels:
-        app.kubernetes.io/name: "deos-manager"
+        app.kubernetes.io/name: "objectscale-manager"
         app.kubernetes.io/version: {{.Values.tag}}
         app.kubernetes.io/instance: {{.Release.Name}}
         app.kubernetes.io/managed-by: {{.Release.Service}}
