@@ -9,7 +9,7 @@ metadata:
     app.kubernetes.io/name: "decks"
     app.kubernetes.io/version: {{.Values.tag}}
     app.kubernetes.io/instance: {{.Release.Name}}
-    app.kubernetes.io/managed-by: {{.Release.Service}}
+    app.kubernetes.io/managed-by: nautilus
     helm.sh/chart: {{.Chart.Name}}-{{.Chart.Version | replace "+" "_"}}
     release: {{.Release.Name}}
   annotations:
@@ -22,11 +22,15 @@ spec:
     - group: apps
       kind: Deployment
     - group: core
-      kind: ConfigMaps
+      kind: ConfigMap
     - group: core
       kind: ServiceAccount
+    - group: core
+      kind: Pod
+    - group: apps
+      kind: ReplicaSet
     - group: rbac.authorization.k8s.io
-      kind: ClusterRole
+      kind: ClusterRoles
     - group: rbac.authorization.k8s.io
       kind: ClusterRoleBinding
   assemblyPhase: "Pending"

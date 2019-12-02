@@ -1,0 +1,76 @@
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: "{{.Release.Name}}-post-delete"
+  annotations:
+    "helm.sh/hook": post-delete
+    "helm.sh/hook-weight": "1"
+    "helm.sh/hook-delete-policy": hook-succeeded, before-hook-creation, hook-failed
+rules:
+- apiGroups:
+  - decks.ecs.dellemc.com 
+  resources:
+  - srsgateways
+  verbs:
+  - get
+  - list
+
+---
+
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1beta1
+metadata:
+  name: "{{.Release.Name}}-post-delete"
+  annotations:
+    "helm.sh/hook": post-delete
+    "helm.sh/hook-weight": "1"
+    "helm.sh/hook-delete-policy": hook-succeeded, before-hook-creation, hook-failed
+subjects:
+- kind: ServiceAccount
+  name: "{{.Release.Name}}-post-delete"
+  namespace: "{{.Release.Namespace}}"
+roleRef:
+  kind: ClusterRole
+  name: "{{.Release.Name}}-post-delete"
+  apiGroup: rbac.authorization.k8s.io
+  
+---
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: "{{.Release.Name}}-post-delete"
+  annotations:
+    "helm.sh/hook": post-delete
+    "helm.sh/hook-weight": "1"
+    "helm.sh/hook-delete-policy": hook-succeeded, before-hook-creation, hook-failed
+
+---
+
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: "{{.Release.Name}}-post-delete"
+  labels:
+    app.kubernetes.io/managed-by: {{ .Release.Service | quote }}
+    app.kubernetes.io/instance: {{ .Release.Name | quote }}
+    app.kubernetes.io/version: {{ .Chart.AppVersion }}
+    helm.sh/chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    product: {{ required "product (e.g. OBJECTSCALE) is required" .Values.product | lower }}
+  annotations:
+    "helm.sh/hook": post-delete
+    "helm.sh/hook-weight": "2"
+    "helm.sh/hook-delete-policy": hook-succeeded, before-hook-creation, hook-failed
+spec:
+  backoffLimit: 4
+  activeDeadlineSeconds: 60 
+  template:
+    metadata:
+      name: "{{.Release.Name}}-post-delete"
+    spec:
+      serviceAccountName: "{{.Release.Name}}-post-delete"
+      restartPolicy: Never
+      containers:
+      - name: post-delete-job
+        image: "{{ .Values.hook.registry }}/{{.Values.hook.repository }}:{{ .Values.hook.tag }}"
+        command: ["sh", "-c", "[ $(kubectl get srsgateways {{ .Values.product | lower }} -n {{ .Release.Namespace }} --no-headers | wc -l) = 0 ]"]

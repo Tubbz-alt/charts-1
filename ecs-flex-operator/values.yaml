@@ -17,7 +17,7 @@ global:
 
 # The default docker tag and pull policy for the ECS Flex operator and
 # logReceiver
-tag: 0.14.0
+tag: 0.17.0
 pullPolicy: Always
 
 # The number of replicas for the ECS Flex Operator deployment
@@ -104,19 +104,27 @@ influx:
   image:
     repository: influxdb-operator
     # registry: ecs
-    tag: v1
+    # tag: v1
     # pullPolicy: Always
   replicas: 1
 
 graphql:
   image:
     repository: ecs-flex-graphql
-    # tag: 0.12.0
+    # tag: stable
     # pullPolicy: Always
   withPlayground: false
   port: 8080
   service:
     type: LoadBalancer
+
+telemetry:
+  image:
+    repository: telemetry-upload
+    # tag: stable
+    # pullPolicy: Always
+  # this is as per cronjob schedule, please follow the cronjob format to edit it
+  schedule: "* */12 * * *"
 
 nodeSelector: {}
 
