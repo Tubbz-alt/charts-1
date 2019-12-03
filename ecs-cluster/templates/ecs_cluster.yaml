@@ -114,15 +114,14 @@ spec:
 
     instances:
     {{- range $k, $v := .Values.storageServer.instances }}
-      {{- if . }}
       {{ $k }}:
         volume:
-          storageClassName: {{ default .storageClassName }}
+          storageClassName: {{ default $.Values.storageClassName $v.storageClassName }}
           resources:
             requests:
-              storage: {{ required "Sze should set for a ss instance" .size }}
-          volumesCount: {{ default .volumesCount }}
-      {{- end }}
+              storage: {{ $v.size }}
+          volumesCount: {{ $v.volumesCount }}
+        nodeName: {{ $v.nodeName | quote }}
     {{- end }}
     protectedVolumes: {{ .Values.storageServer.protectedVolumes }}
     image:

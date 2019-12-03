@@ -85,9 +85,10 @@ tests:
   - it: should customize SC for all persistance fields
     set:
       storageClassName: my-sc
+      storageServer.instances.yellow.storageClassName:
     asserts:
     - equal:
-        path: spec.storageServer.volumes.storageClassName
+        path: spec.storageServer.instances.yellow.volume.storageClassName
         value: my-sc
     - equal:
         path: spec.vnest.volumes.storageClassName
@@ -98,10 +99,10 @@ tests:
   # when we have separate SC for a service
   - it: should customize SC for SS persistance field
     set:
-      storageServer.persistence.storageClassName: my-sc
+      storageServer.instances.yellow.storageClassName: my-sc
     asserts:
     - equal:
-        path: spec.storageServer.volumes.storageClassName
+        path: spec.storageServer.instances.yellow.volume.storageClassName
         value: my-sc
   - it: should customize SC for VNest persistance field
     set:
@@ -122,10 +123,10 @@ tests:
   - it: should customize separate SC for SS with global SC
     set:
       storageClassName: my-sc
-      storageServer.persistence.storageClassName: my-ss-sc
+      storageServer.instances.yellow.storageClassName: my-ss-sc
     asserts:
     - equal:
-        path: spec.storageServer.volumes.storageClassName
+        path: spec.storageServer.instances.yellow.volume.storageClassName
         value: my-ss-sc
     - equal:
         path: spec.vnest.volumes.storageClassName
@@ -137,9 +138,10 @@ tests:
     set:
       storageClassName: my-sc
       vnest.persistence.storageClassName: my-vnest-sc
+      storageServer.instances.yellow.storageClassName:
     asserts:
     - equal:
-        path: spec.storageServer.volumes.storageClassName
+        path: spec.storageServer.instances.yellow.volume.storageClassName
         value: my-sc
     - equal:
         path: spec.vnest.volumes.storageClassName
@@ -151,9 +153,10 @@ tests:
     set:
       storageClassName: my-sc
       zookeeper.persistence.storageClassName: my-zookeeper-sc
+      storageServer.instances.yellow.storageClassName:
     asserts:
     - equal:
-        path: spec.storageServer.volumes.storageClassName
+        path: spec.storageServer.instances.yellow.volume.storageClassName
         value: my-sc
     - equal:
         path: spec.vnest.volumes.storageClassName

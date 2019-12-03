@@ -87,11 +87,14 @@ storageServer:
   # Instances contains instances of storageserver that will be deployed on different nodes.
   instances:
       # Size of each volume to be provisioned
-    - size: 20Gi
+    yellow:
+      size: 20Gi
       # Number of volumes to be provisioned for each storage server instance
       volumesCount: 1
       # Name of the storage class that storage should be provisioned from
       storageClassName:
+      # nodeName contains a name of node where the instance will be placed
+      nodeName:
     # Indicates that the storage volumes provisioned are highly available and
     # not dependent on a single node to function
   protectedVolumes: true
