@@ -84,20 +84,17 @@ storageServer:
     # tag: stable
     # pullPolicy: IfNotPresent
 
-  # Persistent storage options for storage server volume requests
-  persistence:
+  # Instances contains instances of storageserver that will be deployed on different nodes.
+  instances:
+      # Size of each volume to be provisioned
+    - size: 20Gi
+      # Number of volumes to be provisioned for each storage server instance
+      volumesCount: 1
+      # Name of the storage class that storage should be provisioned from
+      storageClassName:
     # Indicates that the storage volumes provisioned are highly available and
     # not dependent on a single node to function
-    protected: true
-
-    # Number of volumes to be provisioned for each storage server instance
-    # volumesCount: 1
-
-    # Size of each volume to be provisioned
-    size: 200Gi
-
-    # Name of the storage class that storage should be provisioned from
-    # storageClassName:
+  protectedVolumes: true
 
 # The ECS chunk manager configuration specification
 chunkManager:
