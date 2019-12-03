@@ -99,6 +99,9 @@ resources: {}
 # Will install crd for object store
 installObjectStoreCRD: true
 
+# installApplicationCRD will install crd for application resources
+installApplicationCRD: true
+
 # installInfluxCRD will install crd for influx
 installInfluxCRD: true
 
