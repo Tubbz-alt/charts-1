@@ -1,52 +1,62 @@
+{{- if .Values.createApplicationResource }}
 ---
-{{- if .Values.createObjectScaleMgrsAppResource}}
 apiVersion: app.k8s.io/v1beta1
 kind: Application
 metadata:
-  name: "objectscale-manager"
+  name: objectscale-manager
   namespace: {{.Release.Namespace}}
   labels:
-    app.kubernetes.io/name: "objectscale-manager"
-    app.kubernetes.io/version: {{.Values.tag}}
-    app.kubernetes.io/instance: {{.Release.Name}}
-    app.kubernetes.io/managed-by: nautilus
+    app.kubernetes.io/name: objectscale-manager
+    app.kubernetes.io/version: {{ .Chart.AppVersion }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
     helm.sh/chart: {{.Chart.Name}}-{{.Chart.Version | replace "+" "_"}}
-    product: "objectscale"
-    release: {{.Release.Name}}
+    release: {{ .Release.Name }}
+    product: objectscale
   annotations:
     com.dellemc.kahm.subscribed: "true"
+    nautilus.dellemc.com/run-level: "10"
+    nautilus.dellemc.com/chart-name: ecs-flex-operator
+    nautilus.dellemc.com/chart-version: {{ .Chart.Version }}
+    nautilus.dellemc.com/chart-values: {{ .Values | toJson | quote }}
 spec:
+  assemblyPhase: Pending
   selector:
     matchLabels:
-      app.kubernetes.io/name: "objectscale-manager"
+      app.kubernetes.io/name: objectscale-manager
   componentKinds:
+    - group: core
+      kind: Service
     - group: apps
       kind: Deployment
+    - group: core
+      kind: Pod
+    - group: core
+      kind: ReplicaSet
     - group: core
       kind: ConfigMap
     - group: core
       kind: ServiceAccount
+    - group: rbac.authorization.k8s.io
+      kind: Role
+    - group: rbac.authorization.k8s.io
+      kind: RoleBinding
+    - group: batch
+      kind: CronJob
+    - group: batch
+      kind: Job
     - group: core
-      kind: Pod
-    - group: apps
-      kind: ReplicaSet
-    - group: rbac.authorization.k8s.io
-      kind: ClusterRoles
-    - group: rbac.authorization.k8s.io
-      kind: ClusterRoleBinding
-  assemblyPhase: "Pending"
+      kind: Secret
   descriptor:
-    type: "objectscale-manager"
-    version: {{.Values.tag}}
-    description: >
-      Dell EMC ObjectScale manager of Object Stores
+    type: objectscale-manager
+    description: Cluster-level management of Dell EMC ObjecScale Object Stores
     keywords:
-      - "deos"
-      - "objectscale"
-      - "object store"
-      - "flex"
-      - "ecs"
-      - "s3"
+      - deos
+      - objectscale
+      - object store
+      - flex
+      - ecs
+      - s3
     info:
-      - "Copyright (c) 2019-2020 Dell Inc. or its subsidiaries. All Rights Reserved."
-{{- end}}
+      - "Copyright © 2019 Dell Inc. or its subsidiaries. All Rights Reserved."
+{{- end }}
