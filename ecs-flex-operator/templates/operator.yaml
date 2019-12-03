@@ -57,6 +57,10 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.name
+        - name: OPERATOR_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
 {{- if .Values.logReceiver.create }}
         - name: LOG_RECEIVER_TYPE
           value: Syslog
@@ -110,7 +114,3 @@ spec:
         - name: REGISTRY_SECRET
           value: {{ .Values.global.registrySecret }}
 {{- end }}
-        - name: OPERATOR_NAME
-          valueFrom:
-            fieldRef:
-              fieldPath: .metadata.name
