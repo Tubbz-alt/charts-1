@@ -87,7 +87,7 @@ tests:
             name: OPERATOR_NAME
             valueFrom:
               fieldRef:
-                fieldPath: .metadata.name
+                fieldPath: metadata.name
       - contains:
           path: spec.template.spec.containers[0].env
           content:
@@ -103,7 +103,7 @@ tests:
             name: OPERATOR_NAME
             valueFrom:
               fieldRef:
-                fieldPath: .metadata.name
+                fieldPath: metadata.name
       - contains:
           path: spec.template.spec.containers[0].env
           content:
