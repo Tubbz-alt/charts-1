@@ -72,7 +72,7 @@ zookeeper:
     # storageClassName:
 
 # The ECS storage server configuration specification
-storageServer:
+storageServerSet:
 
   # Override the number of storage server replicas to run with the the
   # stateful-set
@@ -95,8 +95,8 @@ storageServer:
       # storageClassName:
       # nodeName contains a name of node where the instance will be placed
       # nodeName:
-    # Indicates that the storage volumes provisioned are highly available and
-    # not dependent on a single node to function
+  # Indicates that the storage volumes provisioned are highly available and
+  # not dependent on a single node to function
   protectedVolumes: true
 
 # The ECS chunk manager configuration specification

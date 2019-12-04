@@ -36,18 +36,18 @@ tests:
   - it: should customize the storage storage
     set:
       global.registry: my-registry
-      storageServer.image.repository: my-ss
-      storageServer.image.tag: latest
-      storageServer.image.pullPolicy: IfNotPresent
+      storageServerSet.image.repository: my-ss
+      storageServerSet.image.tag: latest
+      storageServerSet.image.pullPolicy: IfNotPresent
     asserts:
     - equal:
-        path: spec.storageServer.image.repository
+        path: spec.storageServerSet.image.repository
         value: my-registry/my-ss
     - equal:
-        path: spec.storageServer.image.tag
+        path: spec.storageServerSet.image.tag
         value: latest
     - equal:
-        path: spec.storageServer.image.pullPolicy
+        path: spec.storageServerSet.image.pullPolicy
         value: IfNotPresent
   # when we have global SC settin
   - it: should monitoring components not be deployed when advanced metrics is off
@@ -85,10 +85,10 @@ tests:
   - it: should customize SC for all persistance fields
     set:
       storageClassName: my-sc
-      storageServer.instances.yellow.storageClassName:
+      storageServerSet.instances.yellow.storageClassName:
     asserts:
     - equal:
-        path: spec.storageServer.instances.yellow.volume.storageClassName
+        path: spec.storageServerSet.instances.yellow.volume.storageClassName
         value: my-sc
     - equal:
         path: spec.vnest.volumes.storageClassName
@@ -99,10 +99,10 @@ tests:
   # when we have separate SC for a service
   - it: should customize SC for SS persistance field
     set:
-      storageServer.instances.yellow.storageClassName: my-sc
+      storageServerSet.instances.yellow.storageClassName: my-sc
     asserts:
     - equal:
-        path: spec.storageServer.instances.yellow.volume.storageClassName
+        path: spec.storageServerSet.instances.yellow.volume.storageClassName
         value: my-sc
   - it: should customize SC for VNest persistance field
     set:
@@ -123,10 +123,10 @@ tests:
   - it: should customize separate SC for SS with global SC
     set:
       storageClassName: my-sc
-      storageServer.instances.yellow.storageClassName: my-ss-sc
+      storageServerSet.instances.yellow.storageClassName: my-ss-sc
     asserts:
     - equal:
-        path: spec.storageServer.instances.yellow.volume.storageClassName
+        path: spec.storageServerSet.instances.yellow.volume.storageClassName
         value: my-ss-sc
     - equal:
         path: spec.vnest.volumes.storageClassName
@@ -138,10 +138,10 @@ tests:
     set:
       storageClassName: my-sc
       vnest.persistence.storageClassName: my-vnest-sc
-      storageServer.instances.yellow.storageClassName:
+      storageServerSet.instances.yellow.storageClassName:
     asserts:
     - equal:
-        path: spec.storageServer.instances.yellow.volume.storageClassName
+        path: spec.storageServerSet.instances.yellow.volume.storageClassName
         value: my-sc
     - equal:
         path: spec.vnest.volumes.storageClassName
@@ -153,10 +153,10 @@ tests:
     set:
       storageClassName: my-sc
       zookeeper.persistence.storageClassName: my-zookeeper-sc
-      storageServer.instances.yellow.storageClassName:
+      storageServerSet.instances.yellow.storageClassName:
     asserts:
     - equal:
-        path: spec.storageServer.instances.yellow.volume.storageClassName
+        path: spec.storageServerSet.instances.yellow.volume.storageClassName
         value: my-sc
     - equal:
         path: spec.vnest.volumes.storageClassName

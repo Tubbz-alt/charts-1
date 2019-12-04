@@ -107,13 +107,13 @@ spec:
         requests:
           storage: {{ .Values.zookeeper.persistence.size }}
 
-  storageServer:
-{{- if .Values.storageServer.replicas }}
-    replicas: {{ .Values.storageServer.replicas }}
+  storageServerSet:
+{{- if .Values.storageServerSet.replicas }}
+    replicas: {{ .Values.storageServerSet.replicas }}
 {{- end }}
 
     instances:
-    {{- range $k, $v := .Values.storageServer.instances }}
+    {{- range $k, $v := .Values.storageServerSet.instances }}
       {{ $k }}:
         volume:
           storageClassName: {{ default $.Values.storageClassName $v.storageClassName }}
@@ -123,16 +123,16 @@ spec:
           volumesCount: {{ $v.volumesCount }}
         nodeName: {{ $v.nodeName | quote }}
     {{- end }}
-    protectedVolumes: {{ .Values.storageServer.protectedVolumes }}
+    protectedVolumes: {{ .Values.storageServerSet.protectedVolumes }}
     image:
-      repository: {{ .Values.global.registry }}/{{ .Values.storageServer.image.repository }}
-{{- if .Values.storageServer.image.tag }}
-      tag: {{ .Values.storageServer.image.tag }}
+      repository: {{ .Values.global.registry }}/{{ .Values.storageServerSet.image.repository }}
+{{- if .Values.storageServerSet.image.tag }}
+      tag: {{ .Values.storageServerSet.image.tag }}
 {{- else }}
       tag: {{ .Values.tag }}
 {{- end }}
-{{- if .Values.storageServer.image.pullPolicy }}
-      pullPolicy: {{ .Values.storageServer.image.pullPolicy }}
+{{- if .Values.storageServerSet.image.pullPolicy }}
+      pullPolicy: {{ .Values.storageServerSet.image.pullPolicy }}
 {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
 {{- end }}
