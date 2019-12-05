@@ -146,24 +146,6 @@ data:
                 }
               },
               {
-                "name": "WEBDAV_SECRET_USERNAME",
-                "valueFrom": {
-                  "secretKeyRef": {
-                    "name": "decks-webdav-secret",
-                    "key": "username"
-                  }
-                }
-              },
-              {
-                "name": "WEBDAV_SECRET_PASSWORD",
-                "valueFrom": {
-                  "secretKeyRef": {
-                    "name": "decks-webdav-secret",
-                    "key": "password"
-                  }
-                }
-              },
-              {
                 "name": "POD_NAMESPACE",
                 "valueFrom": {
                   "fieldRef": {

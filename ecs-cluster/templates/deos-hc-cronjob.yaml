@@ -14,8 +14,8 @@ spec:
       template:
         spec:
           containers:
-          - command: ["deos-hc"]
-            args: ["all"]
+          - command: ["/bin/sh", "-c"]
+            args: ["sh /run-deos-hc.sh"]
             env:
             - name: POD_NAMESPACE
               value: "{{ .Release.Namespace }}"
@@ -25,16 +25,6 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.name
-            - name: WEBDAV_SECRET_USERNAME
-              valueFrom:
-                secretKeyRef:
-                  name: decks-webdav-secret
-                  key: username
-            - name: WEBDAV_SECRET_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: decks-webdav-secret
-                  key: password
             image: {{ .Values.global.registry }}/{{ .Values.deos_hc.image.repository }}:{{ .Values.tag }}
             imagePullPolicy: {{ default .Values.deos_hc.image.pullPolicy .Values.pullPolicy }}
             name: hc-container

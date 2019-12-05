@@ -28,16 +28,6 @@ spec:
               env:
               - name: FIO_TEST_CONFIG_FILE
                 value : default-config.fio
-              - name: WEBDAV_SECRET_USERNAME
-                valueFrom:
-                  secretKeyRef:
-                    name: decks-webdav-secret
-                    key: username
-              - name: WEBDAV_SECRET_PASSWORD
-                valueFrom:
-                  secretKeyRef:
-                    name: decks-webdav-secret
-                    key: password
               - name: POD_NAMESPACE
                 valueFrom:
                   fieldRef:
@@ -52,4 +42,8 @@ spec:
               configMap:
                 name: {{ .Release.Name }}-fio-config
           restartPolicy: Never
+{{- if .Values.global.registrySecret }}
+          imagePullSecrets:
+          - name: {{ .Values.global.registrySecret }}
+{{- end }}
 #                    --output-format=json
