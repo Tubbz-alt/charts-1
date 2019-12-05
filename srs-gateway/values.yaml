@@ -25,7 +25,7 @@
 # The default docker registry, tag and pull policy for the remote access and
 # notifier pods that are created as SRS gateway CR secondary resources.
 registry: "emccorp"
-tag: 0.14.0
+tag: 1.0.2-17
 pullPolicy: "Always"
 
 gateway:
@@ -34,7 +34,7 @@ gateway:
 
   # ==================== MANDATORY SETTING ====================
   # The gateway hostname can be an IP address or an FQDN
-  # hostname: "10.249.253.18"
+  # hostname: "10.11.12.13"
   # ===========================================================
 
   # Port that the SRS Gateway is listening on for RESTful API requests.
@@ -96,3 +96,8 @@ configUpload:
   # pullPolicy: "Always"
   uploadPeriodHours: 12
   restartPolicy: "Never"
+
+hook:
+  registry: "lachlanevenson"
+  repository: "k8s-kubectl"
+  tag: "v1.13.4"

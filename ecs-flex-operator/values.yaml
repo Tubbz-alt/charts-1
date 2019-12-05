@@ -15,9 +15,13 @@ global:
   # Default: "" == Watch ALL namespaces
   watchNamespace: ""
 
+# Create an application resource for management using Dell EMC common installer or other application-resource
+# controllers
+createApplicationResource: true
+
 # The default docker tag and pull policy for the ECS Flex operator and
 # logReceiver
-tag: 0.14.0
+tag: 0.17.0
 pullPolicy: Always
 
 # The number of replicas for the ECS Flex Operator deployment
@@ -78,7 +82,7 @@ logReceiver:
     enabled: true
     accessMode: ReadWriteOnce
     size: 50Gi
-    # storageClass: default
+    # storageClassName: default
 
 # We usually recommend not to specify default resources and to leave this as a conscious
 # choice for the user. This also increases chances charts run on environments with little
@@ -95,6 +99,9 @@ resources: {}
 # Will install crd for object store
 installObjectStoreCRD: true
 
+# installApplicationCRD will install crd for application resources
+installApplicationCRD: true
+
 # installInfluxCRD will install crd for influx
 installInfluxCRD: true
 
@@ -104,19 +111,31 @@ influx:
   image:
     repository: influxdb-operator
     # registry: ecs
-    tag: v1
+    # tag: v1
     # pullPolicy: Always
   replicas: 1
 
 graphql:
   image:
     repository: ecs-flex-graphql
-    # tag: 0.12.0
+    # tag: stable
     # pullPolicy: Always
   withPlayground: false
   port: 8080
   service:
     type: LoadBalancer
+
+telemetry:
+  image:
+    repository: telemetry-upload
+    # tag: stable
+    # pullPolicy: Always
+  # this is as per cronjob schedule, please follow the cronjob format to edit it
+  schedule: "* */12 * * *"
+
+installcontroller:
+  image:
+    repository: install-controller
 
 nodeSelector: {}
 

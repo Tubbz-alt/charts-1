@@ -11,14 +11,14 @@ global:
   registry: emccorp
 
 # The default docker tag and pull policy for the ECS Cluster
-tag: 0.14.0
+tag: 0.17.0
 pullPolicy: Always
 
 # Override the default number of replicas which taken according to performance profile for each service
 # replicas: 4
 
 # The default performance profile for the ECS cluster. Valid values are "Micro",
-# "Default", and  "Small"
+# "Small", and "Large"
 performanceProfile: Small
 
 # Name of the storage class that all PVC should be provisioned from
@@ -29,6 +29,11 @@ performanceProfile: Small
 # restrictions.
 serviceDiscovery: FabricProxySidecar
 
+# Create an application resource for management using Dell EMC common installer or other application-resource
+# controllers
+createApplicationResource: true
+
+# Enable collection of objectstore stats via InfluxDB time-series database
 enableAdvancedStatistics: true
 
 #
