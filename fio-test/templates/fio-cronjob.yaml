@@ -5,8 +5,8 @@ metadata:
   labels:
     release: {{ .Release.Name }}
   namespace: {{ .Release.Namespace}}
-spec: 
-  schedule: "0 */6 * * *"   #job execution period, use cron string format, the job is running every 6 hours by default
+spec:
+  schedule: "0 */6 * * *"   # job execution period, use cron string format, the job is running every 6 hours by default
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 1
   jobTemplate:
@@ -27,7 +27,7 @@ spec:
                       sh /usr/local/bin/run-fio-test.sh;"]
               env:
               - name: FIO_TEST_CONFIG_FILE
-                value : default-config.fio
+                value: default-config.fio
               - name: POD_NAMESPACE
                 valueFrom:
                   fieldRef:

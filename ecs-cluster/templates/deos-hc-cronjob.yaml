@@ -5,7 +5,7 @@ metadata:
   labels:
     release: {{ .Release.Name }}
   namespace: {{ .Release.Namespace}}
-spec: 
+spec:
   schedule: "0 */6 * * *"
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 0
