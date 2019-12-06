@@ -17,8 +17,6 @@ spec:
             - name: curSecret
               value: {{ .Values.global.registrySecret }}
             command:
-              - /bin/sh
-              - -c
               - sh /create-sonobuoy-job.sh
             imagePullPolicy: {{ .Values.pullPolicy }}
             name: alpine-curl
