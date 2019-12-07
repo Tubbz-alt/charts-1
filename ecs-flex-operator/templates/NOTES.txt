@@ -4,6 +4,43 @@ highly scalable, private, S3-compatible object storage.
 
 Your release is named {{ .Release.Name }}.
 
+{{- if .Values.vSpherePlugin.enabled }}
+Congratulations! You've enabled the vSphere Plugin, so you can manage this installation
+directly from vCenter.  To enable the plug-in, add your vCenter details with these
+environment variables:
+
+VC_ADDRESS=<address and port of vCenter>
+VC_USERNAME=<username of vCenter admin user>
+VC_PASSWORD=<password of vCenter admin user>
+PLUGIN_ADDR=$(kubectl get svc objectscale-vsphere-plugin -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+
+Then from the this Helm chart directory (charts/{{ .Chart.Name }}):
+
+./scripts/extension-registration.sh \
+    -action registerPlugin \
+    -remote \
+    -url https://${VC_ADDRESS}/sdk \
+    -username ${VC_USERNAME} \
+    -password ${VC_PASSWORD} \
+    -key com.vmware.sample.docker \
+    -version {{ .Chart.AppVersion }} \
+    -pluginUrl https:///${PLUGIN_ADDR}/plugin.json \
+    -serverThumbprint 1a:8c:e0:17:57:46:a6:4c:5d:97:29:b8:f3:02:9c:b3:43:90:60:f9 \
+    -c 'Docker, Inc.' \
+    -n 'ECS-FLEX-UI-AARON-DOCKER' \
+    -s 'Testing ECS Flex plugin Docker'
+
+You can then check plugin deployment status from vCenter under:
+
+    Home -> Administration -> Solutions -> Client Plugins
+
+Once deployed, you can manage object stores from:
+
+    Hosts and Clusters -> <Your Cluster Name> -> Configure -> ObjectScale -> Object Stores
+
+Enjoy!
+{{- else }}
+
 To get started, install your first ECS cluster, you can use the Helm chart:
 
   $ helm install <repository name>/ecs-cluster
@@ -12,3 +49,4 @@ For more information on the installation and configuration options, see the
 README at https://github.com/EMCECS/charts/tree/master/ecs-cluster and the
 `values.yaml` file at
 https://github.com/EMCECS/charts/blob/master/ecs-cluster/values.yaml
+{{- end }}

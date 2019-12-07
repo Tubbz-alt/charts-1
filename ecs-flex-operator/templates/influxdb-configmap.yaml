@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: influxdb-config
+  name: objectscale-influxdb-config
   labels:
     app.kubernetes.io/name: objectscale-manager
     app.kubernetes.io/instance: {{ .Release.Name }}

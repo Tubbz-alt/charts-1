@@ -115,6 +115,16 @@ influx:
     # pullPolicy: Always
   replicas: 1
 
+vSpherePlugin:
+  enabled: true
+  image:
+    repository: ecs-flex-vsphere-plugin
+    # tag: stable
+    # pullPolicy: Always
+  port: 4443
+  service:
+    type: LoadBalancer
+
 graphql:
   image:
     repository: ecs-flex-graphql
@@ -123,7 +133,7 @@ graphql:
   withPlayground: false
   port: 8080
   service:
-    type: LoadBalancer
+    type: ClusterIP
 
 telemetry:
   image:
