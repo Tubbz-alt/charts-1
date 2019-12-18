@@ -32,7 +32,7 @@ data:
     health: |-
       spec:
         healthchecks:
-          fielddefine:
+          fielddefinitions:
             - name: deos-hc
               fields:
               - name: name
