@@ -17,7 +17,7 @@ global:
 
 # Create an application resource for management using Dell EMC common installer or other application-resource
 # controllers
-createApplicationResource: true
+installApplicationCRD: true
 
 # The default docker tag and pull policy for the ECS Flex operator and
 # logReceiver

@@ -14,6 +14,9 @@ metadata:
     release: {{.Release.Name}}
   annotations:
     com.dellemc.kahm.subscribed: "true"
+    nautilus.dellemc.com/chart-version: {{ .Chart.Version }}
+    nautilus.dellemc.com/chart-values: {{ .Values | toJson | quote }}
+
 spec:
   selector:
     matchLabels:
