@@ -16,10 +16,10 @@ metadata:
     operator: objectscale-operator
     product: objectscale
 spec:
-{{- if .Values.telemetry.schedule }}
+        {{- if .Values.telemetry.schedule }}
   schedule: "{{ .Values.telemetry.schedule }}"
 {{- else }}
-  schedule: "* */12 * * *"
+  schedule: "0 */12 * * *"
 {{- end }}
   jobTemplate:
     spec:
