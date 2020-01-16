@@ -32,7 +32,7 @@ data:
     health: |-
       spec:
         healthchecks:
-          fielddefinitions:
+          fieldcolumns:
             - name: deos-hc
               fields:
               - name: name
@@ -50,7 +50,7 @@ data:
               - name: message
                 type: string
           name: objectstore-healthchecks
-        status:
+        healthcheckstatus:
           deos-hc:
             overview: red
             rows:
