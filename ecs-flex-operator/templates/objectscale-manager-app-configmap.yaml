@@ -21,7 +21,7 @@ data:
     health: |-
       spec:
         healthchecks:
-          fielddefine:
+          fieldcolumns:
             - name: deos-fio
               fields:
                 - name: name
@@ -55,7 +55,7 @@ data:
                 - name: message
                   type: string
           name: objectscale-manager-healthchecks
-        status:
+        healthcheckstatus:
           deos-fio:
             overview: green
             rows:
