@@ -3,4 +3,4 @@ dependencies:
   repository: file://../zookeeper-operator
   version: 0.20.0
 digest: sha256:371f115bce19340b9d53c122b2e1f2d97ca99ad2cad51ce5f6cc440ea314e949
-generated: "2020-01-16T17:37:41.355667323-05:00"
+generated: "2020-01-17T09:55:34.798586768-05:00"
