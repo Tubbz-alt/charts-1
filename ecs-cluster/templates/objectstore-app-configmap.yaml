@@ -401,420 +401,420 @@ data:
               value: DEOS-4007
           notifiers:
             - objectscale-srs
-        - description: "v 2.2: Disk Failure Event/v 2.2.1: Disk {diskSerialNumber} on node {nodeId} has failed/v 3.0: Disk {diskSerialNumber} on node {fqdn} has failed/v 3.5: Disk SN={diskSerialNumber} on rack={rack}, node={fqdn}, slot={slot number} has FAILED. Disk Details: Type={disk type}, Model="{VID PID}", Size="{disk size} GB", Firmware={firmware version}""
-          matchon:
-            - label: SymptomID
-              value: DEOS-2002
-          notifiers:
-            - objectscale-srs
-        - description: "v 2.2: Disk Suspect Event/v 2.2.1: Disk {diskSerialNumber} on node {nodeId} has suspected/v 3.0: Disk {diskSerialNumber} on node {fqdn} has suspected/v 3.5: Disk SN={diskSerialNumber} on rack={rack}, node={fqdn}, slot={slot number} has SUSPECTED. Disk Details: Type={disk type}, Model="{VID PID}", Size="{disk size} GB", Firmware={firmware version}""
-          matchon:
-            - label: SymptomID
-              value: DEOS-2003
-          notifiers:
-            - objectscale-srs
-        - description: "v 2.2: Node Failure Event/v 2.2.1: Node {nodeId} has failed/v 3.0: Node {fqdn} has failed"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2006
-          notifiers:
-            - objectscale-srs
-        - description: "v 2.2: Node Suspect Event/v 2.2.1: Node {nodeId} has suspected/v 3.0: Node {fqdn} has suspected"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2007
-          notifiers:
-            - objectscale-srs
-        - description: "v.2.2: Service Health Failure Event/v 3.0: Service {serviceName} has failed on node {fqdn}"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2011
-          notifiers:
-            - objectscale-srs
-        - description: "v 2.2: Service Health Suspect event/v 3.0: Service {serviceName} has suspected on node {fqdn}"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2012
-          notifiers:
-            - objectscale-srs
-        - description: "v 2.2: FabricAgent Failure Event/v 3.0: FabricAgent has failed on node {fqdn}"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2013
-          notifiers:
-            - objectscale-srs
-        - description: "v 2.2: FabricAgent Suspect Event/v 3.0: FabricAgent has suspected on node {fqdn}"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2014
-          notifiers:
-            - objectscale-srs
-        - description: "v 2.2.1: Container {containerName} has stopped on node {nodeId}/v 3.0: Container {containerName} has stopped on node {fqdn}"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2015
-          notifiers:
-            - objectscale-srs
-        - description: "v 2.2.1:Container {containerName} is up on node {nodeId}/v 3.0: Container {containerName} is up on node {fqdn}"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2016
-          notifiers:
-            - objectscale-srs
-        - description: "v 2.2.1: Container {containerName} has paused on node {nodeId}/v 3.0: Container {containerName} has paused on node {fqdn}"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2017
-          notifiers:
-            - objectscale-srs
-        - description: "v 2.2.1 Node {nodeId} is up/v 3.0: Node {fqdn} is up"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2018
-          notifiers:
-            - objectscale-srs
-        - description: "v 2.2.1 Disk {diskSerialNumber} on node {nodeId} was added/v 3.0 Disk {diskSerialNumber} on node {fqdn} was added"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2019
-          notifiers:
-            - objectscale-srs
-        - description: "v 2.2.1 Disk {diskSerialNumber} on node {nodeId} was removed/v 3.0 Disk {diskSerialNumber} on node {fqdn} was removed"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2020
-          notifiers:
-            - objectscale-srs
-        - description: "v 3.1: Disk {diskSerialNumber} on node {fqdn} has mounted"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2035
-          notifiers:
-            - objectscale-srs
-        - description: "v 3.1: Disk {diskSerialNumber} on node {fqdn} has unmounted"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2036
-          notifiers:
-            - objectscale-srs
-        - description: "Disk SN=${disk sn} in rack={rack}, node={fqdn}, slot={slot number}  has been marked "Ready to Replace". Disk Details: Type={disk type}, Model={vendor model}, Size={disk size} GB, Firmware=${firmware version}. Refer to disk replacement procedure."
-          matchon:
-            - label: SymptomID
-              value: DEOS-2061
-          notifiers:
-            - objectscale-srs
-        - description: "Disk SN={diskSerialNumber} in rack={rack}, node={fqdn}, slot={slot} cannot be removed. Disk Details: Type={disk type}, Model={Vendor Model}, Size={size} GB, Firmware={firmware}, reason: {reason}"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2062
-          notifiers:
-            - objectscale-srs
-        - description: "Disk SN={diskSerialNumber} in rack={rack}, node={fqdn}, slot={slot} is missing. Disk Details: Type={HDD/SSD}, Model={Vendor Model}, Size={size} GB, Firmware={firmware}, reason: {reason}"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2063
-          notifiers:
-            - objectscale-srs
-        - description: "Disk replacement successfully completed. Disk SN={diskSerialNumber}  in rack={rack}, node={fqdn}, slot={slot}. Disk Details: Type={disk type}, Model={vendor model}, Size={disk size} GB, Firmware=${firmware version}."
-          matchon:
-            - label: SymptomID
-              value: DEOS-2064
-          notifiers:
-            - objectscale-srs
-        - description: "v 2.2.1: Container {containerName} is permanently down on node {nodeId}/v 3.0: Container {containerName} is permanently down on node {fqdn}"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2021
-          notifiers:
-            - objectscale-srs
-        - description: "v 3.0: Container {containerName} configuration has failed on node {fqdn} with exit code {exitCode} {happenedOn}"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2022
-          notifiers:
-            - objectscale-srs
-        - description: "v 3.0: Net interface {$netInterfaceName}[ on node $FQDN] is down[ with ip address $IP]"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2023
-          notifiers:
-            - objectscale-srs
-        - description: "v 3.0: Net interface {$netInterfaceName}[ on node $FQDN] is up[ with ip address $IP]"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2024
-          notifiers:
-            - objectscale-srs
-        - description: "v 3.0: Disk {diskSerialNumber} on node {fqdn} was revived"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2025
-          notifiers:
-            - objectscale-srs
-        - description: "v 3.0: Net interface {$netInterfaceName}[ on node $FQDN] is permanently down[ with ip address $IP]"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2026
-          notifiers:
-            - objectscale-srs
-        - description: "v 3.0: Net interface"s {netInterfaceName} ip address on node {fqdn} was changed to {newIpAddress}"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2027
-          notifiers:
-            - objectscale-srs
-        - description: "Event was not delivered via {SMTP|ESRS}: {events description}"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2038
-          notifiers:
-            - objectscale-srs
-        - description: "Root File System is {percent} % full on node.{node}"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2039
-          notifiers:
-            - objectscale-srs
-        - description: "Root File System is {percent} % full on node.{node}"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2042
-          notifiers:
-            - objectscale-srs
-        - description: "Root File System is {percent} % full on node.{node}"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2043
-          notifiers:
-            - objectscale-srs
-        - description: "Firewall health is BAD! {node}"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2051
-          notifiers:
-            - objectscale-srs
-        - description: "Firewall health is SUSPECT! {node}"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2052
-          notifiers:
-            - objectscale-srs
-        - description: "Generic xDoctor Report"
-          matchon:
-            - label: SymptomID
-              value: DEOS-7000
-          notifiers:
-            - objectscale-srs
-        - description: "DOM Failure on node {node} labeled as device {device} located in slot {slot}. The Disk Status is {status}"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2000
-          notifiers:
-            - objectscale-srs
-        - description: "Internal Disk Failure on {node} labeled as device {device} located in slot {slot}. The Disk Status is {status}"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2001
-          notifiers:
-            - objectscale-srs
-        - description: "DAE Failure on {node} for Element {element}. More Info: {info}/DAE Failure on {node} in enclosure {device}. The Status of DAE Element {element} is {status}. More Info: {info}"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2004
-          notifiers:
-            - objectscale-srs
-        - description: "DAE is Unavailable on {node} labeled as enclosure {device}"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2005
-          notifiers:
-            - objectscale-srs
-        - description: "A {fan} failed on {node} labeled as {item}. The Fan status is {status}. More Info: {info}"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2008
-          notifiers:
-            - objectscale-srs
-        - description: "A Power Supply failed on {node} labeled as {item}. The Power Supply status is {status}. More Info: {info}"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2009
-          notifiers:
-            - objectscale-srs
-        - description: "Temperature failure on {node} located on [{entity}] and labeled as {item}. The Temperature Status is {status}. More Info: {info}"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2010
-          notifiers:
-            - objectscale-srs
-        - description: "The maximum number of concurrent alerts allowed on this system is configured to {max}. The current backlog is {backlog}. More Info: {info}"
-          matchon:
-            - label: SymptomID
-              value: DEOS-29.AAA1.900
-          notifiers:
-            - objectscale-srs
-        - description: "One or more network interfaces are down or missing"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2026
-          notifiers:
-            - objectscale-srs
-        - description: "File system root (/) - low disk space"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2028
-          notifiers:
-            - objectscale-srs
-        - description: "Docker Memory over threshold on one or more nodes."
-          matchon:
-            - label: SymptomID
-              value: DEOS-2029
-          notifiers:
-            - objectscale-srs
-        - description: "Storage Pool Capacity is above the Severity 1 Threshold"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2030
-          notifiers:
-            - objectscale-srs
-        - description: "Storage Pool Capacity is above the Severity 2 Threshold"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2031
-          notifiers:
-            - objectscale-srs
-        - description: "Storage Pool Capacity is above the Severity 3 Threshold"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2032
-          notifiers:
-            - objectscale-srs
-        - description: "Not enough available nodes for new ingest"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2033
-          notifiers:
-            - objectscale-srs
-        - description: "Storage Pool Capacity is getting above the Severity 3 Threshold within LEAD_TIME"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2034
-          notifiers:
-            - objectscale-srs
-        - description: "DellEMC did not receive any xDoctor Reports for more than {days} days."
-          matchon:
-            - label: SymptomID
-              value: DEOS-2040
-          notifiers:
-            - objectscale-srs
-        - description: "Hardware Issue found on a Dell Node"
-          matchon:
-            - label: SymptomID
-              value: DEOS-Specific Dell Event Codes +200 events
-          notifiers:
-            - objectscale-srs
-        - description: "Hardware Issue found on a Dell Switch"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2041
-          notifiers:
-            - objectscale-srs
-        - description: "CAS clips with potentially missing chunk ids, offset or endOffset"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2044
-          notifiers:
-            - objectscale-srs
-        - description: "A SAS cable on a Gen 2 node has been detected as disconnected/missing."
-          matchon:
-            - label: SymptomID
-              value: DEOS-2045
-          notifiers:
-            - objectscale-srs
-        - description: "xDoctor has cannot communicate on the private network indicating that communication with the Turtle switch has been lost."
-          matchon:
-            - label: SymptomID
-              value: DEOS-2046
-          notifiers:
-            - objectscale-srs
-        - description: "xDoctor has detected that write cache is enabled on an EX3000 system running on code below 3.3."
-          matchon:
-            - label: SymptomID
-              value: DEOS-2047
-          notifiers:
-            - objectscale-srs
-        - description: "ntpd not running/NTP servers are NOT suitable for synchronization/Adjust time server OFFSET higher than threshold"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2048
-          notifiers:
-            - objectscale-srs
-        - description: "Zookeeper snapshots above threshold"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2049
-          notifiers:
-            - objectscale-srs
-        - description: "Number of open file descriptors is above threshold"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2050
-          notifiers:
-            - objectscale-srs
-        - description: "PSO Detected"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2053
-          notifiers:
-            - objectscale-srs
-        - description: "Read offset exceed chunk sealedLength"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2054
-          notifiers:
-            - objectscale-srs
-        - description: "Replay when spillover chunk is deleted"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2055
-          notifiers:
-            - objectscale-srs
-        - description: "An issue was detected with easy_recovery.py recovery script or easy_recovery.py identified chunks that require further investigation. See DTA: https://support.emc.com/kb/535583"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2056
-          notifiers:
-            - objectscale-srs
-        - description: "Capacity API Errors and no alternative capacity data available or up-to-date"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2057
-          notifiers:
-            - objectscale-srs
-        - description: "DAE Failure on {node} for Element {element}. More Info: {info}/DAE Failure on {node} in enclosure {device}. The Status of DAE Element {element} is {status}. More Info: {info}"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2058
-          notifiers:
-            - objectscale-srs
-        - description: "Detected VLT port channel down on switch"
-          matchon:
-            - label: SymptomID
-              value: DEOS-2059
-          notifiers:
-            - objectscale-srs
-        - description: "TCP InCsumErrors count has exceeded the xDoctor threshold."
-          matchon:
-            - label: SymptomID
-              value: DEOS-2060
-          notifiers:
-            - objectscale-srs
-        - description: "SSM Device(s) found that are not in SS_UP state."
-          matchon:
-            - label: SymptomID
-              value: DEOS-XDR_ECS_RAP030
-          notifiers:
-            - objectscale-srs
+        # - description: "v 2.2: Disk Failure Event/v 2.2.1: Disk {diskSerialNumber} on node {nodeId} has failed/v 3.0: Disk {diskSerialNumber} on node {fqdn} has failed/v 3.5: Disk SN={diskSerialNumber} on rack={rack}, node={fqdn}, slot={slot number} has FAILED. Disk Details: Type={disk type}, Model="{VID PID}", Size="{disk size} GB", Firmware={firmware version}""
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2002
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "v 2.2: Disk Suspect Event/v 2.2.1: Disk {diskSerialNumber} on node {nodeId} has suspected/v 3.0: Disk {diskSerialNumber} on node {fqdn} has suspected/v 3.5: Disk SN={diskSerialNumber} on rack={rack}, node={fqdn}, slot={slot number} has SUSPECTED. Disk Details: Type={disk type}, Model="{VID PID}", Size="{disk size} GB", Firmware={firmware version}""
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2003
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "v 2.2: Node Failure Event/v 2.2.1: Node {nodeId} has failed/v 3.0: Node {fqdn} has failed"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2006
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "v 2.2: Node Suspect Event/v 2.2.1: Node {nodeId} has suspected/v 3.0: Node {fqdn} has suspected"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2007
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "v.2.2: Service Health Failure Event/v 3.0: Service {serviceName} has failed on node {fqdn}"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2011
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "v 2.2: Service Health Suspect event/v 3.0: Service {serviceName} has suspected on node {fqdn}"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2012
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "v 2.2: FabricAgent Failure Event/v 3.0: FabricAgent has failed on node {fqdn}"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2013
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "v 2.2: FabricAgent Suspect Event/v 3.0: FabricAgent has suspected on node {fqdn}"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2014
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "v 2.2.1: Container {containerName} has stopped on node {nodeId}/v 3.0: Container {containerName} has stopped on node {fqdn}"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2015
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "v 2.2.1:Container {containerName} is up on node {nodeId}/v 3.0: Container {containerName} is up on node {fqdn}"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2016
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "v 2.2.1: Container {containerName} has paused on node {nodeId}/v 3.0: Container {containerName} has paused on node {fqdn}"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2017
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "v 2.2.1 Node {nodeId} is up/v 3.0: Node {fqdn} is up"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2018
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "v 2.2.1 Disk {diskSerialNumber} on node {nodeId} was added/v 3.0 Disk {diskSerialNumber} on node {fqdn} was added"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2019
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "v 2.2.1 Disk {diskSerialNumber} on node {nodeId} was removed/v 3.0 Disk {diskSerialNumber} on node {fqdn} was removed"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2020
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "v 3.1: Disk {diskSerialNumber} on node {fqdn} has mounted"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2035
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "v 3.1: Disk {diskSerialNumber} on node {fqdn} has unmounted"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2036
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "Disk SN=${disk sn} in rack={rack}, node={fqdn}, slot={slot number}  has been marked "Ready to Replace". Disk Details: Type={disk type}, Model={vendor model}, Size={disk size} GB, Firmware=${firmware version}. Refer to disk replacement procedure."
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2061
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "Disk SN={diskSerialNumber} in rack={rack}, node={fqdn}, slot={slot} cannot be removed. Disk Details: Type={disk type}, Model={Vendor Model}, Size={size} GB, Firmware={firmware}, reason: {reason}"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2062
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "Disk SN={diskSerialNumber} in rack={rack}, node={fqdn}, slot={slot} is missing. Disk Details: Type={HDD/SSD}, Model={Vendor Model}, Size={size} GB, Firmware={firmware}, reason: {reason}"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2063
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "Disk replacement successfully completed. Disk SN={diskSerialNumber}  in rack={rack}, node={fqdn}, slot={slot}. Disk Details: Type={disk type}, Model={vendor model}, Size={disk size} GB, Firmware=${firmware version}."
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2064
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "v 2.2.1: Container {containerName} is permanently down on node {nodeId}/v 3.0: Container {containerName} is permanently down on node {fqdn}"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2021
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "v 3.0: Container {containerName} configuration has failed on node {fqdn} with exit code {exitCode} {happenedOn}"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2022
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "v 3.0: Net interface {$netInterfaceName}[ on node $FQDN] is down[ with ip address $IP]"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2023
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "v 3.0: Net interface {$netInterfaceName}[ on node $FQDN] is up[ with ip address $IP]"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2024
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "v 3.0: Disk {diskSerialNumber} on node {fqdn} was revived"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2025
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "v 3.0: Net interface {$netInterfaceName}[ on node $FQDN] is permanently down[ with ip address $IP]"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2026
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "v 3.0: Net interface"s {netInterfaceName} ip address on node {fqdn} was changed to {newIpAddress}"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2027
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "Event was not delivered via {SMTP|ESRS}: {events description}"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2038
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "Root File System is {percent} % full on node.{node}"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2039
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "Root File System is {percent} % full on node.{node}"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2042
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "Root File System is {percent} % full on node.{node}"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2043
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "Firewall health is BAD! {node}"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2051
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "Firewall health is SUSPECT! {node}"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2052
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "Generic xDoctor Report"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-7000
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "DOM Failure on node {node} labeled as device {device} located in slot {slot}. The Disk Status is {status}"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2000
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "Internal Disk Failure on {node} labeled as device {device} located in slot {slot}. The Disk Status is {status}"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2001
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "DAE Failure on {node} for Element {element}. More Info: {info}/DAE Failure on {node} in enclosure {device}. The Status of DAE Element {element} is {status}. More Info: {info}"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2004
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "DAE is Unavailable on {node} labeled as enclosure {device}"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2005
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "A {fan} failed on {node} labeled as {item}. The Fan status is {status}. More Info: {info}"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2008
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "A Power Supply failed on {node} labeled as {item}. The Power Supply status is {status}. More Info: {info}"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2009
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "Temperature failure on {node} located on [{entity}] and labeled as {item}. The Temperature Status is {status}. More Info: {info}"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2010
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "The maximum number of concurrent alerts allowed on this system is configured to {max}. The current backlog is {backlog}. More Info: {info}"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-29.AAA1.900
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "One or more network interfaces are down or missing"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2026
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "File system root (/) - low disk space"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2028
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "Docker Memory over threshold on one or more nodes."
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2029
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "Storage Pool Capacity is above the Severity 1 Threshold"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2030
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "Storage Pool Capacity is above the Severity 2 Threshold"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2031
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "Storage Pool Capacity is above the Severity 3 Threshold"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2032
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "Not enough available nodes for new ingest"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2033
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "Storage Pool Capacity is getting above the Severity 3 Threshold within LEAD_TIME"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2034
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "DellEMC did not receive any xDoctor Reports for more than {days} days."
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2040
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "Hardware Issue found on a Dell Node"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-Specific Dell Event Codes +200 events
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "Hardware Issue found on a Dell Switch"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2041
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "CAS clips with potentially missing chunk ids, offset or endOffset"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2044
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "A SAS cable on a Gen 2 node has been detected as disconnected/missing."
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2045
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "xDoctor has cannot communicate on the private network indicating that communication with the Turtle switch has been lost."
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2046
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "xDoctor has detected that write cache is enabled on an EX3000 system running on code below 3.3."
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2047
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "ntpd not running/NTP servers are NOT suitable for synchronization/Adjust time server OFFSET higher than threshold"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2048
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "Zookeeper snapshots above threshold"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2049
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "Number of open file descriptors is above threshold"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2050
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "PSO Detected"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2053
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "Read offset exceed chunk sealedLength"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2054
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "Replay when spillover chunk is deleted"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2055
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "An issue was detected with easy_recovery.py recovery script or easy_recovery.py identified chunks that require further investigation. See DTA: https://support.emc.com/kb/535583"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2056
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "Capacity API Errors and no alternative capacity data available or up-to-date"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2057
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "DAE Failure on {node} for Element {element}. More Info: {info}/DAE Failure on {node} in enclosure {device}. The Status of DAE Element {element} is {status}. More Info: {info}"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2058
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "Detected VLT port channel down on switch"
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2059
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "TCP InCsumErrors count has exceeded the xDoctor threshold."
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-2060
+        #   notifiers:
+        #     - objectscale-srs
+        # - description: "SSM Device(s) found that are not in SS_UP state."
+        #   matchon:
+        #     - label: SymptomID
+        #       value: DEOS-XDR_ECS_RAP030
+        #   notifiers:
+        #     - objectscale-srs
     eventRemedies: |-
       symptoms:
         - symptomid: DEOS-100
@@ -1073,323 +1073,324 @@ data:
           description: Disk space usage is ${inspectorValue}% crosses threshold ${thresholdValue}%
           remedies:
             - If Disk usage percent crosses the threshold specified then the alert is triggered.
-        - symptomid: DEOS-2002
-          description: v 2.2: Disk Failure Event/v 2.2.1: Disk {diskSerialNumber} on node {nodeId} has failed/v 3.0: Disk {diskSerialNumber} on node {fqdn} has failed/v 3.5: Disk SN={diskSerialNumber} on rack={rack}, node={fqdn}, slot={slot number} has FAILED. Disk Details: Type={disk type}, Model="{VID PID}", Size="{disk size} GB", Firmware={firmware version}"
-          remedies:
-            - Health of disk changed to BAD
-        - symptomid: DEOS-2003
-          description: v 2.2: Disk Suspect Event/v 2.2.1: Disk {diskSerialNumber} on node {nodeId} has suspected/v 3.0: Disk {diskSerialNumber} on node {fqdn} has suspected/v 3.5: Disk SN={diskSerialNumber} on rack={rack}, node={fqdn}, slot={slot number} has SUSPECTED. Disk Details: Type={disk type}, Model="{VID PID}", Size="{disk size} GB", Firmware={firmware version}"
-          remedies:
-            - Health of disk changed to SUSPECT
-        - symptomid: DEOS-2006
-          description: v 2.2: Node Failure Event/v 2.2.1: Node {nodeId} has failed/v 3.0: Node {fqdn} has failed
-          remedies:
-            - Node is not reachable for 30 minutes
-        - symptomid: DEOS-2007
-          description: v 2.2: Node Suspect Event/v 2.2.1: Node {nodeId} has suspected/v 3.0: Node {fqdn} has suspected
-          remedies:
-            - Node is not reachable for 15 minutes
-        - symptomid: DEOS-2011
-          description: v.2.2: Service Health Failure Event/v 3.0: Service {serviceName} has failed on node {fqdn}
-          remedies:
-            - Service health (fabric/object) changed to BAD
-        - symptomid: DEOS-2012
-          description: v 2.2: Service Health Suspect event/v 3.0: Service {serviceName} has suspected on node {fqdn}
-          remedies:
-            - Service health (fabric/object) changed to SUSPECT
-        - symptomid: DEOS-2013
-          description: v 2.2: FabricAgent Failure Event/v 3.0: FabricAgent has failed on node {fqdn}
-          remedies:
-            - Fabric agent health changed to BAD
-        - symptomid: DEOS-2014
-          description: v 2.2: FabricAgent Suspect Event/v 3.0: FabricAgent has suspected on node {fqdn}
-          remedies:
-            - Fabric agent health changed to SUSPECT
-        - symptomid: DEOS-2015
-          description: v 2.2.1: Container {containerName} has stopped on node {nodeId}/v 3.0: Container {containerName} has stopped on node {fqdn}
-          remedies:
-            - Container stopped
-        - symptomid: DEOS-2016
-          description: v 2.2.1:Container {containerName} is up on node {nodeId}/v 3.0: Container {containerName} is up on node {fqdn}
-          remedies:
-            - Container moved to running state
-        - symptomid: DEOS-2017
-          description: v 2.2.1: Container {containerName} has paused on node {nodeId}/v 3.0: Container {containerName} has paused on node {fqdn}
-          remedies:
-            - Container paused
-        - symptomid: DEOS-2018
-          description: v 2.2.1 Node {nodeId} is up/v 3.0: Node {fqdn} is up
-          remedies:
-            - Node moved to 'up' state after it was down for at least 15 minutes
-        - symptomid: DEOS-2019
-          description: v 2.2.1: Disk {diskSerialNumber} on node {nodeId} was added/v 3.0: Disk {diskSerialNumber} on node {fqdn} was added
-          remedies:
-            - Disk was added
-        - symptomid: DEOS-2020
-          description: v 2.2.1: Disk {diskSerialNumber} on node {nodeId} was removed/v 3.0: Disk {diskSerialNumber} on node {fqdn} was removed
-          remedies:
-            - Disk was removed
-        - symptomid: DEOS-2035
-          description: v 3.1: Disk {diskSerialNumber} on node {fqdn} has mounted
-          remedies:
-            - Disk was mounted
-        - symptomid: DEOS-2036
-          description: v 3.1: Disk {diskSerialNumber} on node {fqdn} has unmounted
-          remedies:
-            - Disk was unmounted
-        - symptomid: DEOS-2061
-          description: Disk SN=${disk sn} in rack={rack}, node={fqdn}, slot={slot number}  has been marked 'Ready to Replace'. Disk Details: Type={disk type}, Model={vendor model}, Size={disk size} GB, Firmware=${firmware version}. Refer to disk replacement procedure.
-          remedies:
-            - Disk with SUSPECT/BAD health is stopped using by Object service, is unmounted and is ready to be replaced.
-        - symptomid: DEOS-2062
-          description: Disk SN={diskSerialNumber} in rack={rack}, node={fqdn}, slot={slot} cannot be removed. Disk Details: Type={disk type}, Model={Vendor Model}, Size={size} GB, Firmware={firmware}, reason: {reason}
-          remedies:
-            - Disk started to have SUSPECT/BAD health, Fabric started process to remove that disk from usage, but something went wrong.
-        - symptomid: DEOS-2063
-          description: Disk SN={diskSerialNumber} in rack={rack}, node={fqdn}, slot={slot} is missing. Disk Details: Type={HDD/SSD}, Model={Vendor Model}, Size={size} GB, Firmware={firmware}, reason: {reason}
-          remedies:
-            - Fabric couldn't detect of an assigned disk or its partition.
-        - symptomid: DEOS-2064
-          description: Disk replacement successfully completed. Disk SN={diskSerialNumber}  in rack={rack}, node={fqdn}, slot={slot}. Disk Details: Type={disk type}, Model={vendor model}, Size={disk size} GB, Firmware=${firmware version}.
-          remedies:
-            - Disk was replaced successfully.
-        - symptomid: DEOS-2021
-          description: v 2.2.1: Container {containerName} is permanently down on node {nodeId}/v 3.0: Container {containerName} is permanently down on node {fqdn}
-          remedies:
-            - Container stopped/paused or not started at all for at least 10 minutes
-        - symptomid: DEOS-2022
-          description: v 3.0: Container {containerName} configuration has failed on node {fqdn} with exit code {exitCode} {happenedOn}
-          remedies:
-            - Configure script returned non-zero exit code
-        - symptomid: DEOS-2023
-          description: v 3.0: Net interface {$netInterfaceName}[ on node $FQDN] is down[ with ip address $IP]
-          remedies:
-            - Fabric's net interface is down
-        - symptomid: DEOS-2024
-          description: v 3.0: Net interface {$netInterfaceName}[ on node $FQDN] is up[ with ip address $IP]
-          remedies:
-            - Fabric's net interface is up
-        - symptomid: DEOS-2025
-          description: v 3.0: Disk {diskSerialNumber} on node {fqdn} was revived
-          remedies:
-            - Disk was revived
-        - symptomid: DEOS-2026
-          description: v 3.0: Net interface {$netInterfaceName}[ on node $FQDN] is permanently down[ with ip address $IP]
-          remedies:
-            - Net interface is down for at least 10 minutes
-        - symptomid: DEOS-2027
-          description: v 3.0: Net interface's {netInterfaceName} ip address on node {fqdn} was changed to {newIpAddress}
-          remedies:
-            - Fabric's net interface IP address changed
-        - symptomid: DEOS-2038
-          description: Event was not delivered via {SMTP|ESRS}: {events description}
-          remedies:
-            - Some event(s) can not be delivered via channel and were erased because the Fabric can not save an event(s) too long. In common case this means that channel is configured but remote side do not accept event(s).
-        - symptomid: DEOS-2039
-          description: Root File System is {percent} % full on node.{node}
-          remedies:
-            - filling percent between 85 and 95
-        - symptomid: DEOS-2042
-          description: filling percent greater 95
-          remedies:
-            - filling percent greater 95
-        - symptomid: DEOS-2043
-          description: filling percent less 83
-          remedies:
-            - filling percent less 83
-        - symptomid: DEOS-2051
-          description: Firewall health is BAD! {node}
-          remedies:
-            - rules or ipsets aren't exist, system firewall is off, iptables or ipset utils aren't exist
-        - symptomid: DEOS-2052
-          description: 
-          remedies:
-            - rules or ipsets aren't exist, trying to recover Firewall health is SUSPECT! {node}
-        - symptomid: DEOS-7000
-          description: Generic xDoctor Report 
-          remedies:
-            - Uses the Fabric CLI to send.alert. Will only work in SRS 3.x with status=CONNECTED
-        - symptomid: DEOS-2000
-          description: DOM Failure on node {node} labeled as device {device} located in slot {slot}. The Disk Status is {status}
-          remedies:
-            - 
-        - symptomid: DEOS-2001
-          description: Internal Disk Failure on {node} labeled as device {device} located in slot {slot}. The Disk Status is {status}
-          remedies:
-            - 
-        - symptomid: DEOS-2004
-          description: DAE Failure on {node} for Element {element}. More Info: {info}
-          remedies:
-            - 
-        - symptomid: DEOS-2005
-          description: DAE is Unavailable on {node} labeled as enclosure {device}
-          remedies:
-            - 
-        - symptomid: DEOS-2008
-          description: A {fan} failed on {node} labeled as {item}. The Fan status is {status}. More Info: {info}
-          remedies:
-            - 
-        - symptomid: DEOS-2009
-          description: A Power Supply failed on {node} labeled as {item}. The Power Supply status is {status}. More Info: {info}
-          remedies:
-            - 
-        - symptomid: DEOS-2010
-          description: Temperature failure on {node} located on [{entity}] and labeled as {item}. The Temperature Status is {status}. More Info: {info}
-          remedies:
-            - 
-        - symptomid: DEOS-29.AAA1.900
-          description: The maximum number of concurrent alerts allowed on this system is configured to {max}. The current backlog is {backlog}. More Info: {info}
-          remedies:
-            - 
-        - symptomid: DEOS-2026
-          description: One or more network interfaces are down or missing
-          remedies:
-            - Note: Uses existing symptom code 2026
-        - symptomid: DEOS-2028
-          description: File system root (/) - low disk space
-          remedies:
-            - Usage exceeds 90%
-        - symptomid: DEOS-2029
-          description: Docker Memory over threshold on one or more nodes.
-          remedies:
-            - Usage exceeds 8GB
-        - symptomid: DEOS-2030
-          description: Storage Pool Capacity is above the Severity 1 Threshold
-          remedies:
-            - SP_FULL_THRESHOLD_SEV_1 = 85 %
-        - symptomid: DEOS-2031
-          description: Storage Pool Capacity is above the Severity 2 Threshold
-          remedies:
-            - SP_FULL_THRESHOLD_SEV_2 = 80 %
-        - symptomid: DEOS-2032
-          description: Storage Pool Capacity is above the Severity 3 Threshold
-          remedies:
-            - SP_FULL_THRESHOLD_SEV_3 = 70 %
-        - symptomid: DEOS-2033
-          description: Not enough available nodes for new ingest
-          remedies:
-            - Less than 4 nodes with 15% Free Capacity
-        - symptomid: DEOS-2034
-          description: Storage Pool Capacity is getting above the Severity 3 Threshold within LEAD_TIME
-          remedies:
-            - SP_FULL_THRESHOLD_SEV_3 = 80 %
-        - symptomid: DEOS-
-          description:  LEAD_TIME = 180 days
-          remedies:
-            -  LEAD_TIME = 180 days
-        - symptomid: DEOS-2040
-          description: DellEMC did not receive any xDoctor Reports for more than {days} days.
-          remedies:
-            - Default: 3 days, Reminder: 7 days
-        - symptomid: DEOS-Specific Dell Event Codes +200 events
-          description: Hardware Issue found on a Dell Node
-          remedies:
-            - Critical Dell Node Issue
-        - symptomid: DEOS-2041
-          description: Hardware Issue found on a Dell Switch
-          remedies:
-            - Critical Dell Switch Issue
-        - symptomid: DEOS-2044
-          description: CAS clips with potentially missing chunk ids, offset or endOffset
-          remedies:
-            - blobsvc TaskScheduler-BlobService-REPO_SCAN::Caused by: java.lang.IllegalArgumentException: invalid offset and endOffset
-        - symptomid: DEOS-2045
-          description: A SAS cable on a Gen 2 node has been detected as disconnected/missing.
-          remedies:
-            - SAS Cable on Gen2 Nodes
-        - symptomid: DEOS-2046
-          description: xDoctor has cannot communicate on the private network indicating that communication with the Turtle switch has been lost.
-          remedies:
-            - Turtle switch
-        - symptomid: DEOS-2047
-          description: xDoctor has detected that write cache is enabled on an EX3000 system running on code below 3.3.
-          remedies:
-            - EX3000 hardware issue
-        - symptomid: DEOS-2048
-          description: (1) ntpd not running/(2) NTP servers are NOT suitable for synchronization/(3) Adjust time server OFFSET higher than threshold
-          remedies:
-            - ERROR_OFFSET = 10 seconds
-              WARNING_OFFSET = 5 seconds
-        - symptomid: DEOS-2049
-          description: Zookeeper snapshots above threshold
-          remedies:
-            - ERROR >= 100MB
-              CRITICAL >= 150 MB
-        - symptomid: DEOS-2050
-          description: Number of open file descriptors is above threshold
-          remedies:
-            - ERROR >= 75%
-              CRITICAL >= 80%
-        - symptomid: DEOS-2053
-          description: PSO Detected
-          remedies:
-            - PSO Detected
-              ECS >= 3.3.0.0 and ECS < 3.3.0.0 GP13
-              com.emc.ecs.prtable.gc.enabled = true
-        - symptomid: DEOS-2054
-          description: Read offset exceed chunk sealedLength
-          remedies:
-            - dataheadsvc StreamingOutputFactoryImpl.java::ObjectControllerException: read offset should not exceed chunk sealedLength
-        - symptomid: DEOS-2055
-          description: Replay when spillover chunk is deleted
-          remedies:
-            - blobsvc-georeplayer JournalEntryFeeder.java::chunk Pair.*not found
-        - symptomid: DEOS-2056
-          description: An issue was detected with easy_recovery.py recovery script or easy_recovery.py identified chunks that require further investigation. See DTA: https://support.emc.com/kb/535583
-          remedies:
-            - Script ended unexpectedly. 
-              Script did not end with a "success" exit code.
-              CRITICAL entries found in result log.
-              Chunks identified that require further investigation.
-        - symptomid: DEOS-2057
-          description: Capacity API Errors and no alternative capacity data available or up-to-date
-          remedies:
-            - data = dashboard_api() # Total and Allocated
-              if data.error: data = l1_l2() # Sum of Total and Allocated from each node
-              if data.error: data = varray_ssm() # Total and Allocated
-              if data.error: raise symptom_code() # SR creation
-        - symptomid: DEOS-2058
-          description: DAE Failure on {node} for Element {element}. More Info: {info}/DAE Failure on {node} in enclosure {device}. The Status of DAE Element {element} is {status}. More Info: {info}
-          remedies:
-            - 
-        - symptomid: DEOS-2059
-          description: Detected VLT port channel down on switch
-          remedies:
-            - rabbit# show vlt 1 vlt-port-detail
-              vlt-port-channel ID : 1
-              VLT Unit ID    Port-Channel      Status    Configured ports    Active ports
-              -------------------------------------------------------------------------------
-              * 1            port-channel1      down      1                   1    <------------------------
-                2            port-channel1      up        1                   1
-        - symptomid: DEOS-2060
-          description: TCP InCsumErrors count has exceeded the xDoctor threshold.
-          remedies:
-            - > 20,000 TCP InCsumErrors
-        - symptomid: DEOS-XDR_ECS_RAP030
-          description: SSM Device(s) found that are not in SS_UP state.
-          remedies:
-            - SSM Device state is not equal to SS_UP.
+        # - symptomid: DEOS-2002
+        #   description: v 2.2: Disk Failure Event/v 2.2.1: Disk {diskSerialNumber} on node {nodeId} has failed/v 3.0: Disk {diskSerialNumber} on node {fqdn} has failed/v 3.5: Disk SN={diskSerialNumber} on rack={rack}, node={fqdn}, slot={slot number} has FAILED. Disk Details: Type={disk type}, Model="{VID PID}", Size="{disk size} GB", Firmware={firmware version}"
+        #   remedies:
+        #     - Health of disk changed to BAD
+        # - symptomid: DEOS-2003
+        #   description: v 2.2: Disk Suspect Event/v 2.2.1: Disk {diskSerialNumber} on node {nodeId} has suspected/v 3.0: Disk {diskSerialNumber} on node {fqdn} has suspected/v 3.5: Disk SN={diskSerialNumber} on rack={rack}, node={fqdn}, slot={slot number} has SUSPECTED. Disk Details: Type={disk type}, Model="{VID PID}", Size="{disk size} GB", Firmware={firmware version}"
+        #   remedies:
+        #     - Health of disk changed to SUSPECT
+        # - symptomid: DEOS-2006
+        #   description: v 2.2: Node Failure Event/v 2.2.1: Node {nodeId} has failed/v 3.0: Node {fqdn} has failed
+        #   remedies:
+        #     - Node is not reachable for 30 minutes
+        # - symptomid: DEOS-2007
+        #   description: v 2.2: Node Suspect Event/v 2.2.1: Node {nodeId} has suspected/v 3.0: Node {fqdn} has suspected
+        #   remedies:
+        #     - Node is not reachable for 15 minutes
+        # - symptomid: DEOS-2011
+        #   description: v.2.2: Service Health Failure Event/v 3.0: Service {serviceName} has failed on node {fqdn}
+        #   remedies:
+        #     - Service health (fabric/object) changed to BAD
+        # - symptomid: DEOS-2012
+        #   description: v 2.2: Service Health Suspect event/v 3.0: Service {serviceName} has suspected on node {fqdn}
+        #   remedies:
+        #     - Service health (fabric/object) changed to SUSPECT
+        # - symptomid: DEOS-2013
+        #   description: v 2.2: FabricAgent Failure Event/v 3.0: FabricAgent has failed on node {fqdn}
+        #   remedies:
+        #     - Fabric agent health changed to BAD
+        # - symptomid: DEOS-2014
+        #   description: v 2.2: FabricAgent Suspect Event/v 3.0: FabricAgent has suspected on node {fqdn}
+        #   remedies:
+        #     - Fabric agent health changed to SUSPECT
+        # - symptomid: DEOS-2015
+        #   description: v 2.2.1: Container {containerName} has stopped on node {nodeId}/v 3.0: Container {containerName} has stopped on node {fqdn}
+        #   remedies:
+        #     - Container stopped
+        # - symptomid: DEOS-2016
+        #   description: v 2.2.1:Container {containerName} is up on node {nodeId}/v 3.0: Container {containerName} is up on node {fqdn}
+        #   remedies:
+        #     - Container moved to running state
+        # - symptomid: DEOS-2017
+        #   description: v 2.2.1: Container {containerName} has paused on node {nodeId}/v 3.0: Container {containerName} has paused on node {fqdn}
+        #   remedies:
+        #     - Container paused
+        # - symptomid: DEOS-2018
+        #   description: v 2.2.1 Node {nodeId} is up/v 3.0: Node {fqdn} is up
+        #   remedies:
+        #     - Node moved to 'up' state after it was down for at least 15 minutes
+        # - symptomid: DEOS-2019
+        #   description: v 2.2.1: Disk {diskSerialNumber} on node {nodeId} was added/v 3.0: Disk {diskSerialNumber} on node {fqdn} was added
+        #   remedies:
+        #     - Disk was added
+        # - symptomid: DEOS-2020
+        #   description: v 2.2.1: Disk {diskSerialNumber} on node {nodeId} was removed/v 3.0: Disk {diskSerialNumber} on node {fqdn} was removed
+        #   remedies:
+        #     - Disk was removed
+        # - symptomid: DEOS-2035
+        #   description: v 3.1: Disk {diskSerialNumber} on node {fqdn} has mounted
+        #   remedies:
+        #     - Disk was mounted
+        # - symptomid: DEOS-2036
+        #   description: v 3.1: Disk {diskSerialNumber} on node {fqdn} has unmounted
+        #   remedies:
+        #     - Disk was unmounted
+        # - symptomid: DEOS-2061
+        #   description: Disk SN=${disk sn} in rack={rack}, node={fqdn}, slot={slot number}  has been marked 'Ready to Replace'. Disk Details: Type={disk type}, Model={vendor model}, Size={disk size} GB, Firmware=${firmware version}. Refer to disk replacement procedure.
+        #   remedies:
+        #     - Disk with SUSPECT/BAD health is stopped using by Object service, is unmounted and is ready to be replaced.
+        # - symptomid: DEOS-2062
+        #   description: Disk SN={diskSerialNumber} in rack={rack}, node={fqdn}, slot={slot} cannot be removed. Disk Details: Type={disk type}, Model={Vendor Model}, Size={size} GB, Firmware={firmware}, reason: {reason}
+        #   remedies:
+        #     - Disk started to have SUSPECT/BAD health, Fabric started process to remove that disk from usage, but something went wrong.
+        # - symptomid: DEOS-2063
+        #   description: Disk SN={diskSerialNumber} in rack={rack}, node={fqdn}, slot={slot} is missing. Disk Details: Type={HDD/SSD}, Model={Vendor Model}, Size={size} GB, Firmware={firmware}, reason: {reason}
+        #   remedies:
+        #     - Fabric couldn't detect of an assigned disk or its partition.
+        # - symptomid: DEOS-2064
+        #   description: Disk replacement successfully completed. Disk SN={diskSerialNumber}  in rack={rack}, node={fqdn}, slot={slot}. Disk Details: Type={disk type}, Model={vendor model}, Size={disk size} GB, Firmware=${firmware version}.
+        #   remedies:
+        #     - Disk was replaced successfully.
+        # - symptomid: DEOS-2021
+        #   description: v 2.2.1: Container {containerName} is permanently down on node {nodeId}/v 3.0: Container {containerName} is permanently down on node {fqdn}
+        #   remedies:
+        #     - Container stopped/paused or not started at all for at least 10 minutes
+        # - symptomid: DEOS-2022
+        #   description: v 3.0: Container {containerName} configuration has failed on node {fqdn} with exit code {exitCode} {happenedOn}
+        #   remedies:
+        #     - Configure script returned non-zero exit code
+        # - symptomid: DEOS-2023
+        #   description: v 3.0: Net interface {$netInterfaceName}[ on node $FQDN] is down[ with ip address $IP]
+        #   remedies:
+        #     - Fabric's net interface is down
+        # - symptomid: DEOS-2024
+        #   description: v 3.0: Net interface {$netInterfaceName}[ on node $FQDN] is up[ with ip address $IP]
+        #   remedies:
+        #     - Fabric's net interface is up
+        # - symptomid: DEOS-2025
+        #   description: v 3.0: Disk {diskSerialNumber} on node {fqdn} was revived
+        #   remedies:
+        #     - Disk was revived
+        # - symptomid: DEOS-2026
+        #   description: v 3.0: Net interface {$netInterfaceName}[ on node $FQDN] is permanently down[ with ip address $IP]
+        #   remedies:
+        #     - Net interface is down for at least 10 minutes
+        # - symptomid: DEOS-2027
+        #   description: v 3.0: Net interface's {netInterfaceName} ip address on node {fqdn} was changed to {newIpAddress}
+        #   remedies:
+        #     - Fabric's net interface IP address changed
+        # - symptomid: DEOS-2038
+        #   description: Event was not delivered via {SMTP|ESRS}: {events description}
+        #   remedies:
+        #     - Some event(s) can not be delivered via channel and were erased because the Fabric can not save an event(s) too long. In common case this means that channel is configured but remote side do not accept event(s).
+        # - symptomid: DEOS-2039
+        #   description: Root File System is {percent} % full on node.{node}
+        #   remedies:
+        #     - filling percent between 85 and 95
+        # - symptomid: DEOS-2042
+        #   description: filling percent greater 95
+        #   remedies:
+        #     - filling percent greater 95
+        # - symptomid: DEOS-2043
+        #   description: filling percent less 83
+        #   remedies:
+        #     - filling percent less 83
+        # - symptomid: DEOS-2051
+        #   description: Firewall health is BAD! {node}
+        #   remedies:
+        #     - rules or ipsets aren't exist, system firewall is off, iptables or ipset utils aren't exist
+        # - symptomid: DEOS-2052
+        #   description: 
+        #   remedies:
+        #     - rules or ipsets aren't exist, trying to recover Firewall health is SUSPECT! {node}
+        # - symptomid: DEOS-7000
+        #   description: Generic xDoctor Report 
+        #   remedies:
+        #     - Uses the Fabric CLI to send.alert. Will only work in SRS 3.x with status=CONNECTED
+        # - symptomid: DEOS-2000
+        #   description: DOM Failure on node {node} labeled as device {device} located in slot {slot}. The Disk Status is {status}
+        #   remedies:
+        #     - 
+        # - symptomid: DEOS-2001
+        #   description: Internal Disk Failure on {node} labeled as device {device} located in slot {slot}. The Disk Status is {status}
+        #   remedies:
+        #     - 
+        # - symptomid: DEOS-2004
+        #   description: DAE Failure on {node} for Element {element}. More Info: {info}
+        #   remedies:
+        #     - 
+        # - symptomid: DEOS-2005
+        #   description: DAE is Unavailable on {node} labeled as enclosure {device}
+        #   remedies:
+        #     - 
+        # - symptomid: DEOS-2008
+        #   description: A {fan} failed on {node} labeled as {item}. The Fan status is {status}. More Info: {info}
+        #   remedies:
+        #     - 
+        # - symptomid: DEOS-2009
+        #   description: A Power Supply failed on {node} labeled as {item}. The Power Supply status is {status}. More Info: {info}
+        #   remedies:
+        #     - 
+        # - symptomid: DEOS-2010
+        #   description: Temperature failure on {node} located on [{entity}] and labeled as {item}. The Temperature Status is {status}. More Info: {info}
+        #   remedies:
+        #     - 
+        # - symptomid: DEOS-29.AAA1.900
+        #   description: The maximum number of concurrent alerts allowed on this system is configured to {max}. The current backlog is {backlog}. More Info: {info}
+        #   remedies:
+        #     - 
+        # - symptomid: DEOS-2026
+        #   description: One or more network interfaces are down or missing
+        #   remedies:
+        #     - Note: Uses existing symptom code 2026
+        # - symptomid: DEOS-2028
+        #   description: File system root (/) - low disk space
+        #   remedies:
+        #     - Usage exceeds 90%
+        # - symptomid: DEOS-2029
+        #   description: Docker Memory over threshold on one or more nodes.
+        #   remedies:
+        #     - Usage exceeds 8GB
+        # - symptomid: DEOS-2030
+        #   description: Storage Pool Capacity is above the Severity 1 Threshold
+        #   remedies:
+        #     - SP_FULL_THRESHOLD_SEV_1 = 85 %
+        # - symptomid: DEOS-2031
+        #   description: Storage Pool Capacity is above the Severity 2 Threshold
+        #   remedies:
+        #     - SP_FULL_THRESHOLD_SEV_2 = 80 %
+        # - symptomid: DEOS-2032
+        #   description: Storage Pool Capacity is above the Severity 3 Threshold
+        #   remedies:
+        #     - SP_FULL_THRESHOLD_SEV_3 = 70 %
+        # - symptomid: DEOS-2033
+        #   description: Not enough available nodes for new ingest
+        #   remedies:
+        #     - Less than 4 nodes with 15% Free Capacity
+        # - symptomid: DEOS-2034
+        #   description: Storage Pool Capacity is getting above the Severity 3 Threshold within LEAD_TIME
+        #   remedies:
+        #     - SP_FULL_THRESHOLD_SEV_3 = 80 %
+        # - symptomid: DEOS-
+        #   description:  LEAD_TIME = 180 days
+        #   remedies:
+        #     -  LEAD_TIME = 180 days
+        # - symptomid: DEOS-2040
+        #   description: DellEMC did not receive any xDoctor Reports for more than {days} days.
+        #   remedies:
+        #     - Default: 3 days, Reminder: 7 days
+        # - symptomid: DEOS-Specific Dell Event Codes +200 events
+        #   description: Hardware Issue found on a Dell Node
+        #   remedies:
+        #     - Critical Dell Node Issue
+        # - symptomid: DEOS-2041
+        #   description: Hardware Issue found on a Dell Switch
+        #   remedies:
+        #     - Critical Dell Switch Issue
+        # - symptomid: DEOS-2044
+        #   description: CAS clips with potentially missing chunk ids, offset or endOffset
+        #   remedies:
+        #     - blobsvc TaskScheduler-BlobService-REPO_SCAN::Caused by: java.lang.IllegalArgumentException: invalid offset and endOffset
+        # - symptomid: DEOS-2045
+        #   description: A SAS cable on a Gen 2 node has been detected as disconnected/missing.
+        #   remedies:
+        #     - SAS Cable on Gen2 Nodes
+        # - symptomid: DEOS-2046
+        #   description: xDoctor has cannot communicate on the private network indicating that communication with the Turtle switch has been lost.
+        #   remedies:
+        #     - Turtle switch
+        # - symptomid: DEOS-2047
+        #   description: xDoctor has detected that write cache is enabled on an EX3000 system running on code below 3.3.
+        #   remedies:
+        #     - EX3000 hardware issue
+        # - symptomid: DEOS-2048
+        #   description: (1) ntpd not running/(2) NTP servers are NOT suitable for synchronization/(3) Adjust time server OFFSET higher than threshold
+        #   remedies:
+        #     - ERROR_OFFSET = 10 seconds
+        #       WARNING_OFFSET = 5 seconds
+        # - symptomid: DEOS-2049
+        #   description: Zookeeper snapshots above threshold
+        #   remedies:
+        #     - ERROR >= 100MB
+        #       CRITICAL >= 150 MB
+        # - symptomid: DEOS-2050
+        #   description: Number of open file descriptors is above threshold
+        #   remedies:
+        #     - ERROR >= 75%
+        #       CRITICAL >= 80%
+        # - symptomid: DEOS-2053
+        #   description: PSO Detected
+        #   remedies:
+        #     - PSO Detected
+        #       ECS >= 3.3.0.0 and ECS < 3.3.0.0 GP13
+        #       com.emc.ecs.prtable.gc.enabled = true
+        # - symptomid: DEOS-2054
+        #   description: Read offset exceed chunk sealedLength
+        #   remedies:
+        #     - dataheadsvc StreamingOutputFactoryImpl.java::ObjectControllerException: read offset should not exceed chunk sealedLength
+        # - symptomid: DEOS-2055
+        #   description: Replay when spillover chunk is deleted
+        #   remedies:
+        #     - blobsvc-georeplayer JournalEntryFeeder.java::chunk Pair.*not found
+        # - symptomid: DEOS-2056
+        #   description: An issue was detected with easy_recovery.py recovery script or easy_recovery.py identified chunks that require further investigation. See DTA: https://support.emc.com/kb/535583
+        #   remedies:
+        #     - Script ended unexpectedly. 
+        #       Script did not end with a "success" exit code.
+        #       CRITICAL entries found in result log.
+        #       Chunks identified that require further investigation.
+        # - symptomid: DEOS-2057
+        #   description: Capacity API Errors and no alternative capacity data available or up-to-date
+        #   remedies:
+        #     - data = dashboard_api() # Total and Allocated
+        #       if data.error: data = l1_l2() # Sum of Total and Allocated from each node
+        #       if data.error: data = varray_ssm() # Total and Allocated
+        #       if data.error: raise symptom_code() # SR creation
+        # - symptomid: DEOS-2058
+        #   description: DAE Failure on {node} for Element {element}. More Info: {info}/DAE Failure on {node} in enclosure {device}. The Status of DAE Element {element} is {status}. More Info: {info}
+        #   remedies:
+        #     - 
+        # - symptomid: DEOS-2059
+        #   description: Detected VLT port channel down on switch
+        #   remedies:
+        #     - rabbit# show vlt 1 vlt-port-detail
+        #       vlt-port-channel ID : 1
+        #       VLT Unit ID    Port-Channel      Status    Configured ports    Active ports
+        #       -------------------------------------------------------------------------------
+        #       * 1            port-channel1      down      1                   1    <------------------------
+        #         2            port-channel1      up        1                   1
+        # - symptomid: DEOS-2060
+        #   description: TCP InCsumErrors count has exceeded the xDoctor threshold.
+        #   remedies:
+        #     - > 20,000 TCP InCsumErrors
+        # - symptomid: DEOS-XDR_ECS_RAP030
+        #   description: SSM Device(s) found that are not in SS_UP state.
+        #   remedies:
+        #     - SSM Device state is not equal to SS_UP.
     health: |-
       spec:
         healthchecks:
-          - fields:
-            - name: name
-              type: string
-            - name: description
-              type: string
-            - name: enabled
-              type: boolean
-            - name: schedule
-              type: string
-            - name: latestSuccess
-              type: date
-            - name: latestFailure
-              type: date
-            - name: message
-              type: string
-            name: objectstore healthchecks
+          fieldcolumns:
+            - fields:
+              - name: name
+                type: string
+              - name: description
+                type: string
+              - name: enabled
+                type: boolean
+              - name: schedule
+                type: string
+              - name: latestSuccess
+                type: date
+              - name: latestFailure
+                type: date
+              - name: message
+                type: string
+              name: objectstore healthchecks
           name: objectstore-healthchecks
-        status:
+        healthcheckstatus:
           deos-hc:
             overview: red
             rows:
