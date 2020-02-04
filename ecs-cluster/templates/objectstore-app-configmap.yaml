@@ -1373,7 +1373,8 @@ data:
       spec:
         healthchecks:
           fieldcolumns:
-            - fields:
+            - name: deos-hc
+              fields:
               - name: name
                 type: string
               - name: description
@@ -1388,7 +1389,6 @@ data:
                 type: date
               - name: message
                 type: string
-              name: objectstore healthchecks
           name: objectstore-healthchecks
         healthcheckstatus:
           deos-hc:
