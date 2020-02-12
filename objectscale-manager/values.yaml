@@ -175,12 +175,14 @@ fio:
   storageClass: vsphere
 
 # tag for alpine-curl image should be hard-coded here
-alpine_curl_image:
-  repository: alpine-curl
-  ## tag should only be updated when new version created.
-  tag: 7.65
+alpine_curl:
+  image:
+    repository: alpine-curl
+    ## tag should only be updated when new version created.
+    tag: 7.65
 
-sonobuoy_image:
-  repository: sonobuoy
-  ## tag should only be updated when new version is created
-  tag: v0.14
+sonobuoy:
+  image:
+    repository: sonobuoy
+    ## tag should only be updated when new version is created
+    tag: v0.14

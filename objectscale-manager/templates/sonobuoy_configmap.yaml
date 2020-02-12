@@ -158,7 +158,7 @@ data:
                 "value": "deos-mgr"
               }
             ],
-            "image": "{{ .Values.global.registry }}/{{ .Values.sonobuoy_image.repository }}:{{ .Values.sonobuoy_image.tag }}",
+            "image": "{{ .Values.global.registry }}/{{ .Values.sonobuoy.image.repository }}:{{ .Values.sonobuoy.image.tag }}",
             "imagePullPolicy": "{{ .Values.pullPolicy }}",
             "name": "kube-sonobuoy",
             "volumeMounts": [
