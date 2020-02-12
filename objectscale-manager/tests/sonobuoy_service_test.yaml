@@ -1,0 +1,28 @@
+suite: test sonobuoy
+templates:
+  - sonobuoy_service.yaml
+tests:
+  - it: should create a service
+    asserts:
+    - isKind:
+        of: Service
+  - it: should have name ending with sonobuoy
+    asserts:
+    - matchRegex:
+        path: metadata.name
+        pattern: ^sonobuoy-master$
+  - it: should have a component label
+    asserts:
+    - matchRegex:
+        path: metadata.labels.component
+        pattern: ^sonobuoy$
+  - it: should have a run label
+    asserts:
+    - matchRegex:
+        path: metadata.labels.run
+        pattern: ^sonobuoy-master$
+  - it: should have a sonobuoy namespace
+    asserts:
+    - matchRegex:
+        path: metadata.namespace
+        pattern: ^heptio-sonobuoy$

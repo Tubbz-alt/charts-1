@@ -1,0 +1,18 @@
+suite: test sonobuoy
+templates:
+  - sonobuoy_clusterrole.yaml
+tests:
+  - it: should create a ClusterRole
+    asserts:
+    - isKind:
+        of: ClusterRole
+  - it: should have name ending with serviceaccount
+    asserts:
+    - matchRegex:
+        path: metadata.name
+        pattern: ^sonobuoy-serviceaccount$
+  - it: should have a component label
+    asserts:
+    - matchRegex:
+        path: metadata.labels.component
+        pattern: ^sonobuoy$

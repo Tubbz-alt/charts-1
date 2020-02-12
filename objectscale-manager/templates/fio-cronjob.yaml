@@ -1,0 +1,49 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ .Release.Name }}-fio-cronjob
+  labels:
+    release: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace}}
+spec:
+  schedule: "40 */1 * * *"   # job execution period, use cron string format, the job is running every 6 hours by default
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 1
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: {{ .Release.Name }}
+              image: {{ .Values.global.registry }}/{{ .Values.fio.image.repository}}:{{ .Values.fio.image.tag }}
+              imagePullPolicy: {{ .Values.fio.image.pullPolicy }}
+              volumeMounts:
+                - name: {{ .Release.Name }}-fio-test-volume
+                  mountPath: /data
+                - name: {{ .Release.Name }}-fio-config-volume
+                  mountPath: /etc/config
+              command: ["/bin/sh", "-c"]
+              args: [ "chmod +x /usr/local/bin/*.sh;
+                      sh /usr/local/bin/run-fio-test.sh;"]
+              env:
+              - name: FIO_TEST_CONFIG_FILE
+                value: default-config.fio
+              - name: POD_NAMESPACE
+                valueFrom:
+                  fieldRef:
+                    fieldPath: metadata.namespace
+              - name: APP_NAME
+                value: deos-mgr
+          volumes:
+            - name: {{ .Release.Name }}-fio-test-volume
+              persistentVolumeClaim:
+                claimName: {{ .Release.Name }}-fio-test-volume
+            - name: {{ .Release.Name }}-fio-config-volume
+              configMap:
+                name: {{ .Release.Name }}-fio-config
+          restartPolicy: Never
+{{- if .Values.global.registrySecret }}
+          imagePullSecrets:
+          - name: {{ .Values.global.registrySecret }}
+{{- end }}
+#                    --output-format=json

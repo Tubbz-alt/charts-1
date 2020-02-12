@@ -1,0 +1,13 @@
+suite: test sonobuoy
+templates:
+  - sonobuoy_namespace.yaml
+tests:
+  - it: should create a namespace
+    asserts:
+    - isKind:
+        of: Namespace
+  - it: should have name ending with sonobuoy
+    asserts:
+    - matchRegex:
+        path: metadata.name
+        pattern: ^heptio-sonobuoy$

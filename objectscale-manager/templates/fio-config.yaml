@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-fio-config
+data:
+  default-config.fio: |-
+    # fio config parameters ref : https://fio.readthedocs.io/en/latest/fio_doc.html#command-line-options
+    [global]
+    ioengine=libaio
+    direct=1
+    buffered=0
+    iodepth=1
+    size=60m
+    directory=/data
+    group_reporting
+
+    #
+    [big write]
+    stonewall
+    rw=write
+    numjobs=3
+    bs=2m
+    verify=crc64
+    filename=repo_file
+
+    #
+    [small write]
+    stonewall
+    numjobs=3
+    rw=write
+    bs=2k
+    verify=crc64
+    filename=btree_dump_file
+
+    #
+    [small read]
+    stonewall
+    rw=read
+    numjobs=1
+    bs=2k
+    filename=btree_dump_file

@@ -166,3 +166,21 @@ fluentbitAgent:
     repository: fluent-bit
     tag: 0.22.0
     # pullPolicy: IfNotPresent
+
+fio:
+  image:
+    repository: deos-fio
+    tag: 3.14
+    pullPolicy: Always
+  storageClass: vsphere
+
+# tag for alpine-curl image should be hard-coded here
+alpine_curl_image:
+  repository: alpine-curl
+  ## tag should only be updated when new version created.
+  tag: 7.65
+
+sonobuoy_image:
+  repository: sonobuoy
+  ## tag should only be updated when new version is created
+  tag: v0.14

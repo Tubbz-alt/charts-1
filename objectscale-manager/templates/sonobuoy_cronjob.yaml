@@ -1,0 +1,37 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: sonobuoy-cronjob
+  namespace: default
+spec:
+  schedule: "48 */1 * * *"
+  #schedule: "0 2 * * 1" # The job is running every Monday at 2am by default
+  successfulJobsHistoryLimit: 1
+  failedJobsHistoryLimit: 0
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - image: {{ .Values.global.registry }}/{{ .Values.alpine_curl_image.repository }}:{{ .Values.alpine_curl_image.tag }}
+            env:
+            - name: curSecret
+              value: {{ .Values.global.registrySecret }}
+            command:
+              - /bin/sh 
+              - -c
+              - ./create-sonobuoy-job.sh
+            imagePullPolicy: {{ .Values.pullPolicy }}
+            name: alpine-curl
+            volumeMounts:
+            - mountPath: /etc/sonobuoy
+              name: sonobuoy-volume-config
+          restartPolicy: Never
+{{- if .Values.global.registrySecret }}
+          imagePullSecrets:
+          - name: {{ .Values.global.registrySecret }}
+{{- end }}
+          volumes:
+          - configMap:
+              name: sonobuoy-config-cronjob
+            name: sonobuoy-volume-config
