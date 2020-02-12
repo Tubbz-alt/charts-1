@@ -90,8 +90,8 @@ data:
     spec:
       env:
       - name: E2E_FOCUS
-        #value: '\[Conformance\]'
-        value: "Pods should be submitted and removed"
+        value: '\[Conformance\]'
+        #value: "Pods should be submitted and removed"
       - name: E2E_SKIP
         value: 'Alpha|\[(Disruptive|Feature:[^\]]+|Flaky)\]'
       - name: E2E_PARALLEL

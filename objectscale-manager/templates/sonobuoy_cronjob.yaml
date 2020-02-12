@@ -4,8 +4,7 @@ metadata:
   name: sonobuoy-cronjob
   namespace: default
 spec:
-  schedule: "48 */1 * * *"
-  #schedule: "0 2 * * 1" # The job is running every Monday at 2am by default
+  schedule: "0 2 * * 1" # The job is running every Monday at 2am by default
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 0
   jobTemplate:
