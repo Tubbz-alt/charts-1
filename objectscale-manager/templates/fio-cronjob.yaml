@@ -6,7 +6,7 @@ metadata:
     release: {{ .Release.Name }}
   namespace: {{ .Release.Namespace}}
 spec:
-  schedule: "40 */1 * * *"   # job execution period, use cron string format, the job is running every 6 hours by default
+  schedule: "0 */6 * * *"   # job execution period, use cron string format, the job is running every 6 hours by default
   successfulJobsHistoryLimit: 1
   failedJobsHistoryLimit: 1
   jobTemplate:
