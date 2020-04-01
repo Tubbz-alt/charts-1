@@ -202,6 +202,9 @@ decks:
     service:
       name: decks-support-store
       port: 7443
+  config:
+    licenseChartVersion: "1.1.0"
+    srsGatewayChartVersion: "1.1.0"
 
 installcontroller:
   image:

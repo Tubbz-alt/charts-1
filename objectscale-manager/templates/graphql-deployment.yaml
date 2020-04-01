@@ -43,6 +43,22 @@ spec:
           env:
             - name: OBJSTORE_AVAILABLE_VERSIONS
               value: {{ .Values.objectStoreAvailableVersions | toJson | quote }}
+            - name: GRAPHQL_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: LICENSE_CHART_VERSION
+              {{- if .Values.decks.config}}
+              value: {{.Values.decks.config.licenseChartVersion}}
+              {{- else}}
+              value: "1.1.0"
+              {{- end}}
+            - name: SRSGATEWAY_CHART_VERSION
+              {{- if .Values.decks.config}}
+              value: {{.Values.decks.config.srsGatewayChartVersion}}
+              {{- else}}
+              value: "1.1.0"
+              {{- end}}
             - name: OPERATOR_NAME
               value: objectscale-operator
             - name: LOG_DIRECTION
@@ -88,4 +104,3 @@ spec:
           configMap:
             name: {{ .Release.Name }}-manager-logs-config
 {{- end }}
-

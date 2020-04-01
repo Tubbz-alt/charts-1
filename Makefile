@@ -8,6 +8,9 @@ DECKSCHARTS := decks kahm srs-gateway dks-testapp dellemc-license service-pod
 FLEXCHARTS := ecs-cluster objectscale-manager zookeeper-operator
 
 test:
+	echo "looking for yamlint"
+	which yamllint
+	echo "found it"
 	for CHART in ${CHARTS}; do \
 		set -x ; \
 		helm lint $$CHART ; \
