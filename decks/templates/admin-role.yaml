@@ -8,18 +8,8 @@ apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: decks-admin
 {{- if ne .Values.global.watchAllNamespaces true }}
-    namespace: {{ .Release.Namespace }}
-rules:
-- apiGroups:
-  - decks.ecs.dellemc.com
-  resources:
-  - "*"
-  verbs:
-  - "*"
-- apiGroups:
-  - kahm.emcecs.github.com
-  resources:
-{{- else }}
+  namespace: {{ .Release.Namespace }}
+{{- end }}
   labels:
     app.kubernetes.io/name: "decks"
     app.kubernetes.io/version: {{.Values.tag}}
