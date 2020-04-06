@@ -20,8 +20,8 @@ global:
   # The private docker registry hosting containers for ECS Flex
   registry: emccorp
 
-  # Default: "" == Watch ALL namespaces
-  watchNamespace: ""
+  # Default: true == Watch ALL namespaces
+  watchAllNamespaces: true
 
   # Start the  FIO and sonobouy cronjobs to gather the healthcheck of the k8s cluster
   # this flag is set under global because the FIO and sonobouy are sub-charts and the cronjobs runs under the sub-charts
