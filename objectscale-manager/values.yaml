@@ -208,9 +208,9 @@ decks:
     service:
       name: decks-support-store
       port: 7443
-  config:
-    licenseChartVersion: "1.1.0"
-    srsGatewayChartVersion: "1.1.0"
+  ## used by graphql to set chart versions during creation of licenses and srs gateways
+  licenseChartVersion: "1.1.0"
+  srsGatewayChartVersion: "1.2.0"
 
 installcontroller:
   image:

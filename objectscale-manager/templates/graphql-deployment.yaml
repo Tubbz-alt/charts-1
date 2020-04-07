@@ -48,17 +48,9 @@ spec:
                 fieldRef:
                   fieldPath: metadata.namespace
             - name: LICENSE_CHART_VERSION
-              {{- if .Values.decks.config}}
-              value: {{.Values.decks.config.licenseChartVersion}}
-              {{- else}}
-              value: "1.1.0"
-              {{- end}}
+              value: {{ default "1.1.0" .Values.decks.licenseChartVersion }}
             - name: SRSGATEWAY_CHART_VERSION
-              {{- if .Values.decks.config}}
-              value: {{.Values.decks.config.srsGatewayChartVersion}}
-              {{- else}}
-              value: "1.1.0"
-              {{- end}}
+              value: {{ default "1.1.0" .Values.decks.srsGatewayChartVersion }}
             - name: OPERATOR_NAME
               value: objectscale-operator
             - name: LOG_DIRECTION
