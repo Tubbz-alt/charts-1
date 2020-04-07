@@ -210,7 +210,7 @@ decks:
       port: 7443
   ## used by graphql to set chart versions during creation of licenses and srs gateways
   licenseChartVersion: "1.1.0"
-  srsGatewayChartVersion: "1.2.0"
+  srsGatewayChartVersion: "1.1.0"
 
 installcontroller:
   image:
