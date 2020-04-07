@@ -31,7 +31,8 @@ spec:
                 - name: |-
                      {{.Release.Name}}-fio-config-volume
                   mountPath: /etc/config
-              command: ["/usr/local/bin/run-fio-test.sh"]
+              command:
+                - deos-fio
               env:
                 - name: FIO_TEST_CONFIG_FILE
                   value: default-config.fio
