@@ -76,12 +76,13 @@ flexver:
 	done ;
 
 build:
-	echo "looking for yq command"
+	@echo "looking for yq command"
 	which yq
-	echo "Found it"
+	@echo "Ensure no helm repo accessible" 
+	helm repo list | grep .; \
+        if [ $${?} -eq 0 ]; then exit 1; fi
 	REINDEX=0; \
 	for CHART in ${CHARTS}; do \
-		set -x; \
 		CURRENT_VER=`yq r $$CHART/Chart.yaml version` ; \
 		yq r docs/index.yaml "entries.$${CHART}[*].version" | grep -q "\- $${CURRENT_VER}$$" ; \
 		if [ "$${?}" -eq "1" ] || [ "$${REBUILDHELMPKG}" ] ; then \
