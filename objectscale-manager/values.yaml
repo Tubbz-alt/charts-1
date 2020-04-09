@@ -10,6 +10,7 @@ global:
   # By setting this value all necessary resources for ecs-flex will be created and configured accordingly.
   # Valid values are
   # "VMware" - VMWare Persistent Services Platform
+  # "Vmware-PKS" - PKS platform with vSphere UI integration
   # "Atlantic" - Project Atlantic Bare-Metal Kubernetes platform
   # "Default" - All others
   platform: Default

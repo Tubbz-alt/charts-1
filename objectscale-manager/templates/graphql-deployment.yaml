@@ -47,6 +47,8 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.namespace
+            - name: GLOBAL_REGISTRY
+              value: {{ .Values.global.registry }}
             - name: LICENSE_CHART_VERSION
               value: {{ default "1.1.0" .Values.decks.licenseChartVersion }}
             - name: SRSGATEWAY_CHART_VERSION
