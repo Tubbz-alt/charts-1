@@ -298,10 +298,10 @@ spec:
     replicas: {{ .Values.diagnostic.replicas }}
 {{- end }}
 
-    dthealthimage:
-      repository: {{ .Values.global.registry }}/{{ .Values.diagnostic.dthealthimage.repository }}
-{{- if .Values.diagnostic.dthealthimage.tag }}
-      tag: {{ .Values.diagnostic.dthealthimage.tag }}
+    dtHealthImage:
+      repository: {{ .Values.global.registry }}/{{ .Values.diagnostic.dtHealthImage.repository }}
+{{- if .Values.diagnostic.dtHealthImage.tag }}
+      tag: {{ .Values.diagnostic.dtHealthImage.tag }}
 {{- else }}
       tag: {{ .Values.tag }}
 {{- end }}
