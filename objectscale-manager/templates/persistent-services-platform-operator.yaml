@@ -5,12 +5,12 @@ kind: Operator
 metadata:
   labels:
     controller-tools.k8s.io: "1.0"
-  name: objectscale-ui
+  name: objectscale-ui-{{ .Release.Namespace }}
   namespace: {{ .Release.Namespace }}
 spec:
-  name: ObjectScale
-  uiBackendSecret: flex-plugin-secret
+  name: ObjectScale-{{ .Release.Namespace }}
+  uiBackendSecret: flex-plugin-secret-{{ .Release.Namespace }}
   uiBackendService: objectscale-vsphere-plugin
   vSphereUiPluginUrl: /plugin.json
-  vSphereExtensionKey: com.dellemc.vsphere.plugin
+  vSphereExtensionKey: com.dellemc.vsphere.plugin.{{ .Release.Namespace }}
 {{- end }}
