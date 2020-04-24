@@ -68,7 +68,7 @@ data:
             {{- end}}
             location /platform {
                 default_type application/json;
-                return 200 '{"value":"VMware"}';
+                return 200 '{"value":"{{ .Values.global.platform }}"}';
             }
             location / {
                 root   /usr/share/nginx/html;
