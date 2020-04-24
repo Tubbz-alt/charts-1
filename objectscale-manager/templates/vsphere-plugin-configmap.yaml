@@ -163,7 +163,7 @@ data:
                 ],
                 "definitions": {
                     "plugin.name": {
-                    {{- if (eq $useUniqueNames true) }}
+                    {{- if and (eq $useUniqueNames true) (eq .Values.global.platform "VMware") }}
                         "en-US": "ObjectScale-{{ .Release.Namespace }}",
                         "de-DE": "ObjectScale-{{ .Release.Namespace }}",
                         "fr-FR": "ObjectScale-{{ .Release.Namespace }}"
@@ -174,7 +174,7 @@ data:
                     {{- end}}
                     },
                     "cluster.monitor.list.events": {
-                    {{- if (eq $useUniqueNames true) }}
+                    {{- if and (eq $useUniqueNames true) (eq .Values.global.platform "VMware") }}
                         "en-US": "Events-{{ .Release.Namespace }}",
                         "de-DE": "Events-{{ .Release.Namespace }}",
                         "fr-FR": "Events-{{ .Release.Namespace }}"
@@ -185,7 +185,7 @@ data:
                     {{- end}}
                     },
                     "cluster.monitor.list.health": {
-                    {{- if (eq $useUniqueNames true) }}
+                    {{- if and (eq $useUniqueNames true) (eq .Values.global.platform "VMware") }}
                         "en-US": "Health-{{ .Release.Namespace }}",
                         "de-DE": "Health-{{ .Release.Namespace }}",
                         "fr-FR": "Health-{{ .Release.Namespace }}"
@@ -196,7 +196,7 @@ data:
                     {{- end}}
                     },
                     "cluster.configure.list.dashboard": {
-                    {{- if (eq $useUniqueNames true) }}
+                    {{- if and (eq $useUniqueNames true) (eq .Values.global.platform "VMware") }}
                         "en-US": "Dashboard-{{ .Release.Namespace }}",
                         "de-DE": "Dashboard-{{ .Release.Namespace }}",
                         "fr-FR": "Dashboard-{{ .Release.Namespace }}"
@@ -207,7 +207,7 @@ data:
                     {{- end}}
                     },
                     "cluster.configure.list.objectstores": {
-                    {{- if (eq $useUniqueNames true) }}
+                    {{- if and (eq $useUniqueNames true) (eq .Values.global.platform "VMware") }}
                         "en-US": "Object Stores-{{ .Release.Namespace }}",
                         "de-DE": "Object Stores-{{ .Release.Namespace }}",
                         "fr-FR": "Object Stores-{{ .Release.Namespace }}"
@@ -218,7 +218,7 @@ data:
                     {{- end}}
                     },
                     "cluster.configure.list.settings": {
-                    {{- if (eq $useUniqueNames true) }}
+                    {{- if and (eq $useUniqueNames true) (eq .Values.global.platform "VMware") }}
                         "en-US": "Settings-{{ .Release.Namespace }}",
                         "de-DE": "Settings-{{ .Release.Namespace }}",
                         "fr-FR": "Settings-{{ .Release.Namespace }}"
@@ -229,7 +229,7 @@ data:
                     {{- end}}
                     },
                     "cluster.action.deploy.label": {
-                    {{- if (eq $useUniqueNames true) }}
+                    {{- if and (eq $useUniqueNames true) (eq .Values.global.platform "VMware") }}
                         "en-US": "Deploy ECS-{{ .Release.Namespace }}",
                         "de-DE": "Deploy ECS-{{ .Release.Namespace }}",
                         "fr-FR": "Deploy ECS-{{ .Release.Namespace }}"
