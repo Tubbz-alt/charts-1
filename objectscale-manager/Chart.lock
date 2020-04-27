@@ -8,8 +8,5 @@ dependencies:
 - name: fio-test
   repository: file://../fio-test
   version: 0.22.2
-- name: sonobuoy
-  repository: file://../sonobuoy
-  version: 0.16.6
-digest: sha256:e10015f011ae84893cf7a2886613e1875ec71af428cabcd27d5ea0df0f4f3493
-generated: "2020-04-10T10:41:47.403042266-04:00"
+digest: sha256:1b84e9d79d4c365a444f48b8f93c7c79e7bd4a9209c28bc39cdf586491d82b8d
+generated: "2020-04-26T21:53:29.51420737-04:00"

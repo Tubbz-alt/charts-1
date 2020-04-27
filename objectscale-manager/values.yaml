@@ -24,8 +24,8 @@ global:
   # Default: true == Watch ALL namespaces
   watchAllNamespaces: true
 
-  # Start the  FIO and sonobuoy cronjobs to gather the healthcheck of the k8s cluster
-  # this flag is set under global because the FIO and sonobuoy are sub-charts and the cronjobs runs under the sub-charts
+  # Start the fio cronjob to obtain the healthcheck of the k8s cluster
+  # this flag is set under global because fio is a subchart which manages the fio cronjob
   enableHealthcheck: true
 
 # This is the list of available objectsore versions to graphql for UI to configure the store.
@@ -216,9 +216,6 @@ decks:
 installcontroller:
   image:
     repository: install-controller
-
-sonobuoy:
-  enabled: true
 
 nodeSelector: {}
 

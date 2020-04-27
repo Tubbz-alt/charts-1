@@ -38,44 +38,8 @@ data:
                   type: date
                 - name: message
                   type: string
-            - name: sonobuoy
-              fields:
-                - name: name
-                  type: string
-                - name: description
-                  type: string
-                - name: enabled
-                  type: boolean
-                - name: schedule
-                  type: string
-                - name: latestSuccess
-                  type: date
-                - name: latestFailure
-                  type: date
-                - name: message
-                  type: string
           name: objectscale-manager-healthchecks
         healthcheckstatus:
-          deos-fio:
-            overview: green
-            rows:
-            - name: deos-fio
-              description: deos file I/O test
-              enabled: true
-              schedule: Every 12 hours
-              latestSuccess: 2019-10-18 12:01
-              latestFailure: 2019-10-12 17:00
-              message: <<insert fio stats here>>
-          sonobuoy:
-            overview: green
-            rows:
-            - name: sonobuoy
-              description: Validate k8s configuration
-              enabled: true
-              schedule: Every 12 hours
-              latestSuccess: 2019-10-20 12:01
-              latestFailure: none
-              message: Latest sonobuoy run was healthy
     eventRemedies: |-
       symptoms:
         - symptomid: DEOS-MGR-1001
