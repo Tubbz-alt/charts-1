@@ -128,7 +128,7 @@ create-manager-manifest:
 
 create-kahm-manifest:
 	helm template kahm ./kahm -n ${NAMESPACE} --set global.watchAllNamespaces=false \
-	--set global.registry=${REGISTRY} -f kahm/values.yaml >> ${TEMP_PACKAGE}/${KAHM_MANIFEST}
+	--set global.registry=${REGISTRY} --set storageClassName=vsphere -f kahm/values.yaml >> ${TEMP_PACKAGE}/${KAHM_MANIFEST}
 
 create-decks-manifest:
 	helm template decks ./decks -n ${NAMESPACE} --set global.watchAllNamespaces=false \
