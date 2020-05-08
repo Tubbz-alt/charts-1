@@ -419,6 +419,12 @@ expandsp:
   image:
     repository: provision
 
+# The job can be spawned to modify CMF parameters (Object services configuration)
+cmfswitch:
+  image:
+    repository: cmf-switch
+    tag: green
+
 #
 # Sidecar configuration
 #
