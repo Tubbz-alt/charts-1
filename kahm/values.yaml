@@ -15,6 +15,9 @@ global:
   # Default: true == Watch ALL namespaces
   watchAllNamespaces: true
 
+  # Platform:
+  platform: Default
+
 # The default docker tag and pull policy for the KAHM
 tag: 1.1.0-1
 pullPolicy: Always

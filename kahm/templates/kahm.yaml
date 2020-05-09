@@ -88,7 +88,7 @@ spec:
       - ReadWriteOnce
       {{- if .Values.storageClassName}}
       storageClassName: {{.Values.storageClassName}}
-      {{-end}}
+      {{- end}}
       dataSource: null
       resources:
         requests:
