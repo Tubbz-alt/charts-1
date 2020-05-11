@@ -20,13 +20,9 @@ STORAGECLASSNAME  = dellemc-objectscale-highly-available
 clean: clean-package
 
 test:
+	helm lint ${CHARTS} --set product=objectscale
+	helm unittest ${CHARTS}
 	for CHART in ${CHARTS}; do \
-		set -x ; \
-		helm lint $$CHART ; \
-		helm unittest $$CHART ; \
-		if [ "$${?}" -eq "1" ] ; then \
-			exit 1 ; \
-		fi ; \
 		yamllint -c .yamllint.yml -s $$CHART/Chart.yaml $$CHART/values.yaml ; \
 		if [ "$${?}" -eq "1" ] ; then \
 			exit 1 ; \
