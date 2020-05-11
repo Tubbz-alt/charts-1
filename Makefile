@@ -133,8 +133,9 @@ create-kahm-manifest:
 	--set storageClassName=${STORAGECLASSNAME} -f kahm/values.yaml >> ${TEMP_PACKAGE}/${KAHM_MANIFEST}
 
 create-decks-manifest:
-	helm template decks ./decks -n ${NAMESPACE} --set global.watchAllNamespaces=false \
-	--set global.registry=${REGISTRY} -f decks/values.yaml >> ${TEMP_PACKAGE}/${DECKS_MANIFEST}
+	helm template decks ./decks -n ${NAMESPACE} --set global.platform=VMware \
+	--set global.watchAllNamespaces=false --set global.registry=${REGISTRY} \
+	--set storageClassName=${STORAGECLASSNAME} -f decks/values.yaml >> ${TEMP_PACKAGE}/${DECKS_MANIFEST}
 
 archive-package:
 	tar -zcvf ${PACKAGE_NAME} ${TEMP_PACKAGE}/*
