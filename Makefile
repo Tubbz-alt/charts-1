@@ -13,7 +13,7 @@ MANAGER_MANIFEST := objectscale-manager.yaml
 KAHM_MANIFEST    := kahm.yaml
 DECKS_MANIFEST   := decks.yaml
 PACKAGE_NAME     := objectscale-charts-package.tgz
-NAMESPACE         = dellemc-objectscale-system
+NAMESPACE         = shanghai-flex
 REGISTRY          = objectscale
 STORAGECLASSNAME  = dellemc-objectscale-highly-available
 
