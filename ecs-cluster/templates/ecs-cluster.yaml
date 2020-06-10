@@ -25,7 +25,13 @@ spec:
   replicas: {{ .Values.replicas }}
 {{- end }}
   performanceProfile: {{ .Values.performanceProfile }}
-  logReceiver: {{ .Values.logReceiver }}
+{{- if .Values.logReceiver }}
+  logReceiver:
+    type: {{ .Values.logReceiver.type }}
+    host: {{ .Values.logReceiver.host }}
+    protocol: {{ .Values.logReceiver.protocol }}
+    port: {{ .Values.logReceiver.port }}
+{{- end }}
 
   atlas:
     replicas: {{ coalesce .Values.atlas.replicas (index (dict "Large" 3) (title .Values.performanceProfile)) 1 }}
