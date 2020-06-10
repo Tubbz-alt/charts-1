@@ -25,6 +25,7 @@ spec:
   replicas: {{ .Values.replicas }}
 {{- end }}
   performanceProfile: {{ .Values.performanceProfile }}
+  logReceiver: {{ .Values.logReceiver }}
 
   atlas:
     replicas: {{ coalesce .Values.atlas.replicas (index (dict "Large" 3) (title .Values.performanceProfile)) 1 }}
