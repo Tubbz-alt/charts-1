@@ -37,7 +37,7 @@ spec:
     protocol: {{ .Values.logReceiver.protocol }}
 {{- end }}
 {{- if .Values.logReceiver.port }}
-    port: {{ .Values.logReceiver.port }}
+    port: "{{ .Values.logReceiver.port }}"
 {{- end }}
 {{- end }}
 
