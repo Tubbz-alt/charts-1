@@ -27,10 +27,18 @@ spec:
   performanceProfile: {{ .Values.performanceProfile }}
 {{- if .Values.logReceiver }}
   logReceiver:
+{{- if .Values.logReceiver.type }}
     type: {{ .Values.logReceiver.type }}
+{{- end }}
+{{- if .Values.logReceiver.host }}
     host: {{ .Values.logReceiver.host }}
+{{- end }}
+{{- if .Values.logReceiver.protocol }}
     protocol: {{ .Values.logReceiver.protocol }}
+{{- end }}
+{{- if .Values.logReceiver.port }}
     port: {{ .Values.logReceiver.port }}
+{{- end }}
 {{- end }}
 
   atlas:
