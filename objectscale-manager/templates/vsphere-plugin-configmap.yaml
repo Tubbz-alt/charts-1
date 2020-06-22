@@ -26,16 +26,14 @@ data:
         server {{ .Values.decks.supportStore.service.name }}:{{ .Values.decks.supportStore.service.port }};
     }
   nginx.conf: |
-    load_module "/usr/lib64/nginx/modules/ngx_http_lua_module.so";
     events {
-      worker_connections  4096;  ## Default: 1024
-    }
+        worker_connections  4096;  ## Default: 1024
+    } 
     http {
         include /etc/nginx/mime.types;
         include /conf/upstream.conf;
         server {
-            set_by_lua $resolver 'os.execute("getent hosts kube-dns.kube-system.svc.cluster.local")';
-            resolver $resolver;
+            resolver kube-dns.kube-system.svc.cluster.local;
             resolver_timeout 10s;
             listen       4443;
             server_name  localhost;
@@ -62,8 +60,10 @@ data:
             location /data {
                 proxy_pass https://decks;
             }
-            location ~ /grafana/(.*)/(.*)/(.*) {
-                set $proxy http://$2-grafana.$1.svc.cluster.local:3000/$1/$2/$3;
+            location ~* ^/grafana {
+                rewrite ^/grafana/(\w+)/(\w+)/(.*) /$3 break;
+                rewrite ^/grafana/(\w+)/(\w+) / break;
+                set $proxy http://$2-grafana.$1.svc.cluster.local:3000;
                 proxy_pass $proxy;
             }
             location /platform {
