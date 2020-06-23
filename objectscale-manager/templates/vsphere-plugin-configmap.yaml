@@ -28,13 +28,12 @@ data:
   nginx.conf: |
     events {
         worker_connections  4096;  ## Default: 1024
-    } 
+    }
     http {
         include /etc/nginx/mime.types;
         include /conf/upstream.conf;
         server {
             resolver kube-dns.kube-system.svc.cluster.local;
-            resolver_timeout 10s;
             listen       4443;
             server_name  localhost;
             access_log /dev/stdout;
