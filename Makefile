@@ -99,7 +99,7 @@ build:
 		cd docs && helm repo index . ; \
 	fi
 
-package: create-temp-package create-manifests combine-crds create-vmware-package archive-package
+package: clean-package create-temp-package create-manifests combine-crds create-vmware-package archive-package
 create-temp-package:
 	mkdir -p ${TEMP_PACKAGE}
 
@@ -122,6 +122,7 @@ create-manager-manifest: create-temp-package
 	--set global.platform=VMware --set global.watchAllNamespaces=false \
 	--set sonobuoy.enabled=false --set global.registry=${REGISTRY} \
 	--set global.storageClassName=${STORAGECLASSNAME} \
+	--set logReceiver.persistence.storageClassName=${STORAGECLASSNAME} \
 	-f objectscale-manager/values.yaml >> ${TEMP_PACKAGE}/${MANAGER_MANIFEST}
 
 create-kahm-manifest: create-temp-package
@@ -137,8 +138,10 @@ create-decks-manifest: create-temp-package
 create-deploy-script: create-temp-package
 	echo "kubectl apply -f ./objectscale-manager.yaml -f ./decks.yaml -f ./kahm.yaml" > ${TEMP_PACKAGE}/deploy-${NAMESPACE}.sh
 	sed -n "/fio-pvc/,/^---/p" temp_package/objectscale-manager.yaml > ${TEMP_PACKAGE}/fio-pvc.yaml
+	sed -n "/syslog-pvc/,/^---/p" temp_package/objectscale-manager.yaml > ${TEMP_PACKAGE}/syslog-pvc.yaml
 	echo "sleep 1" >> ${TEMP_PACKAGE}/deploy-${NAMESPACE}.sh
 	echo "kubectl apply -f ./fio-pvc.yaml" >> ${TEMP_PACKAGE}/deploy-${NAMESPACE}.sh
+	echo "kubectl apply -f ./syslog-pvc.yaml" >> ${TEMP_PACKAGE}/deploy-${NAMESPACE}.sh
 	chmod 700 ${TEMP_PACKAGE}/deploy-${NAMESPACE}.sh
 
 archive-package:

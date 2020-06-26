@@ -138,31 +138,4 @@ data:
     uucp,news.crit                                          action(type="omfile" file="/var/log/spooler")
     local7.*                                                action(type="omfile" file="/var/log/boot.log")
     $IncludeConfig /etc/rsyslog.d/*.conf
-{{- if .Values.logReceiver.persistence.enabled }}
----
-kind: PersistentVolumeClaim
-apiVersion: v1
-metadata:
-  name: objectscale-syslog
-  labels:
-    app.kubernetes.io/name: objectscale-manager
-    app.kubernetes.io/instance: {{ .Release.Name }}
-    app.kubernetes.io/managed-by: {{ .Release.Service }}
-    app.kubernetes.io/version: {{ .Chart.AppVersion }}
-    app.kubernetes.io/component: objectscale-syslog
-    app.kubernetes.io/part-of: {{ .Release.Name }}
-    helm.sh/chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
-    release: {{ .Release.Name}}
-    operator: objectscale-operator
-    product: objectscale
-spec:
-  {{- if .Values.logReceiver.persistence.storageClassName }}
-  storageClassName: {{ .Values.logReceiver.persistence.storageClassName }}
-  {{- end }}
-  accessModes:
-  - {{ .Values.logReceiver.persistence.accessMode | quote}}
-  resources:
-    requests:
-      storage: {{ .Values.logReceiver.persistence.size | quote}}
-{{- end }}
 {{- end }}

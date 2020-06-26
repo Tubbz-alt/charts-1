@@ -65,7 +65,7 @@ tests:
           path: spec.template.spec.containers[0].env
           content:
             name: LOG_RECEIVER_HOST
-            value: SYSLOG
+            value: objectscale-syslog.NAMESPACE.svc.cluster.local
       - contains:
           path: spec.template.spec.containers[0].env
           content:

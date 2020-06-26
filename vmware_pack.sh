@@ -33,7 +33,11 @@ $(awk '{printf "%4s%s\n", "", $0}' temp_package/decks.yaml)
     spec:
       serviceId: dellemc-objectscale
       label: "Dell EMC ObjectScale"
-      description: "Dell EMC ObjectScale is a highly available and scalable object storage platform"
+      description: |
+        Dell EMC ObjectScale is a dynamically scalable, secure, and multi-tenant object storage platform
+        for on-premises and cloud use cases.  It supports advanced storage functionality including
+        comprehensive S3 support, flexible erasure-coding, data-at-rest encryption, compression,
+        and scales capacity and performance linearly.
       versions: ["${objs_ver}"]
       enabled: false
       eula: |+
