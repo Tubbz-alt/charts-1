@@ -46,6 +46,53 @@ echomsg () {
 
 } #end echomsg
 
+## Apply the sticky-pod patch
+##
+
+apply_sticky_pod_settings() {
+
+    echomsg "Applying sticky-pod settings"
+    authYaml="/tmp/new-auth-svc.yaml"
+    cat <<'EOA' > $authYaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: kube-apiserver-authproxy-svc
+  namespace: kube-system
+spec:
+  ports:
+  - name: nginx
+    port: 443
+    protocol: TCP
+    targetPort: 443
+  - name: kube-apiserver
+    port: 6443
+    protocol: TCP
+    targetPort: 6443
+  selector:
+    component: kube-apiserver
+    fix: sticky-pod
+  type: LoadBalancer
+EOA
+
+    kubectl -n kube-system apply -f $authYaml
+    ## its ok to re-apply if its already there. it'll return unchanged.
+
+    ## Now get the first kube-apiserver and apply the stick-pod label:
+    apiserver=$(kubectl get pod -l component=kube-apiserver --no-headers -o name -n kube-system | head -1 | sed s%^pod/%%)
+
+    if [ -z "$apiserver" ]
+    then
+        echomsg "Error: unable to locate first kube-apiserver pod in kube-system namespace"
+        exit 1
+    fi
+
+    echomsg "Setting the label on pod: $apiserver"
+    kubectl -n kube-system label pod $apiserver fix=sticky-pod
+
+}
+
+
 ## add_vsphere7_clusterole_rules 
 ## Add rules needed to apply our plugin
 add_vsphere7_clusterrole_rules () {
@@ -107,6 +154,9 @@ then
     echomsg "It must be disabled and removed before a new one can be applied"
     exit 1
 fi
+
+## apply the sticky-pod patch
+apply_sticky_pod_settings
 
 ## Now check if the api groups have been added for VMware vSphere7 app platform:
 add_vsphere7_clusterrole_rules
