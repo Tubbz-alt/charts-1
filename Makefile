@@ -142,9 +142,6 @@ create-decks-manifest: create-temp-package
 
 create-deploy-script: create-temp-package
 	echo "kubectl apply -f ../yaml/objectscale-manager.yaml -f ../yaml/decks.yaml -f ../yaml/kahm.yaml" > ${TEMP_PACKAGE}/scripts/deploy-ns-${NAMESPACE}.sh
-	sed -n "/fio-pvc/,/^---/p" ${TEMP_PACKAGE}/yaml/objectscale-manager.yaml > ${TEMP_PACKAGE}/yaml/fio-pvc.yaml
-	echo "sleep 1" >> ${TEMP_PACKAGE}/scripts/deploy-ns-${NAMESPACE}.sh
-	echo "kubectl apply -f ../yaml/fio-pvc.yaml" >> ${TEMP_PACKAGE}/scripts/deploy-ns-${NAMESPACE}.sh
 	chmod 700 ${TEMP_PACKAGE}/scripts/deploy-ns-${NAMESPACE}.sh
 	
 
