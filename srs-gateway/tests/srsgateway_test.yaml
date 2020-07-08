@@ -36,7 +36,7 @@ tests:
         value: remote-access
     - equal:
         path: spec.remoteAccess.pullPolicy
-        value: Always
+        value: IfNotPresent
     - equal:
         path: spec.remoteAccess.servicePort
         value: 22
@@ -48,7 +48,7 @@ tests:
         value: srs-notifier
     - equal:
         path: spec.notifier.pullPolicy
-        value: Always
+        value: IfNotPresent
     - equal:
         path: spec.notifier.servicePort
         value: 50051
@@ -66,7 +66,7 @@ tests:
         value: config-upload
     - equal:
         path: spec.configUpload.pullPolicy
-        value: Always
+        value: IfNotPresent
     - equal:
         path: spec.configUpload.uploadPeriodHours
         value: 12
@@ -173,7 +173,7 @@ tests:
         value: srs-notifier
     - equal:
         path: spec.notifier.pullPolicy
-        value: Always
+        value: IfNotPresent
   - it: should create notifier deployment with explicit registry, repository, tag, and pullPolicy
     set:
       product: NANOOK
@@ -192,7 +192,7 @@ tests:
         value: remote-access
     - equal:
         path: spec.remoteAccess.pullPolicy
-        value: Always
+        value: IfNotPresent
     - equal:
         path: spec.notifier.registry
         value: my-registry

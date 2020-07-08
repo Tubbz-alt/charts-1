@@ -26,7 +26,7 @@
 # notifier pods that are created as SRS gateway CR secondary resources.
 registry: "emccorp"
 tag: 1.2.0
-pullPolicy: "Always"
+pullPolicy: IfNotPresent
 
 gateway:
   # To disable the REST API communication with SRSGateway.
