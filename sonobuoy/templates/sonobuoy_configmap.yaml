@@ -98,7 +98,7 @@ data:
         value: '15'
       command: ["/run_e2e.sh"]
       image: gcr.io/heptio-images/kube-conformance:latest
-      imagePullPolicy: Always
+      imagePullPolicy: IfNotPresent
       name: e2e
       volumeMounts:
       - mountPath: /tmp/results

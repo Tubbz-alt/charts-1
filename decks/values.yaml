@@ -21,7 +21,7 @@ global:
 
 # The default docker tag and pull policy for the DECKS
 tag: 1.2.0
-pullPolicy: Always
+pullPolicy: IfNotPresent
 
 # The number of replicas for the DECKS deployment
 replicaCount: 1
@@ -30,7 +30,7 @@ replicaCount: 1
 image:
   repository: decks
   # tag: stable
-  # pullPolicy: Always
+  # pullPolicy: IfNotPresent
 
 ## Allow callers to bypass creating app resource
 createdecksappResource: true
@@ -47,7 +47,7 @@ helmTestConfig:
   testImage:
     repository: decks-testapp
     # tag: stable
-    # pullPolicy: Always
+    # pullPolicy: IfNotPresent
   srsGateway:
     # The login setting configures the user/password credentials
     # for registering a product with the test SRS gateway
@@ -79,7 +79,7 @@ supportStore:
   image:
     repository: decks-support-store
     version: 1.0.0
-    pullPolicy: Always
+    pullPolicy: IfNotPresent
   persistentVolume:
     size: 200Gi
   containerPort: 7443

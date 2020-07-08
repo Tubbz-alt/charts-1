@@ -38,7 +38,7 @@ createApplicationResource: true
 
 # The default docker tag and pull policy for objectscale-manager services
 tag: 0.32.1
-pullPolicy: Always
+pullPolicy: IfNotPresent
 
 # The default number of replicas for the objectscale-manager deployment
 replicaCount: 1
@@ -47,7 +47,7 @@ replicaCount: 1
 image:
   repository: objectscale-operator
   # tag: stable
-  # pullPolicy: Always
+  # pullPolicy: IfNotPresent
 
 # A customer provided log server can be used for external log aggregation.
 # This receiver will be forwarded all ECS platform logs from any ECS instance
@@ -91,7 +91,7 @@ logReceiver:
   image:
     repository: rsyslog
     # tag: stable
-    # pullPolicy: Always
+    # pullPolicy: IfNotPresent
 
   persistence:
     enabled: true
@@ -127,7 +127,7 @@ influx:
     repository: influxdb-operator
     # registry: ecs
     # tag: v1
-    # pullPolicy: Always
+    # pullPolicy: IfNotPresent
   replicas: 1
 
 vSpherePlugin:
@@ -135,7 +135,7 @@ vSpherePlugin:
   image:
     repository: ecs-flex-vsphere-plugin
     # tag: stable
-    # pullPolicy: Always
+    # pullPolicy: IfNotPresent
   service:
     # Type of Kubernetes service to create: ClusterIP, NodePort, or LoadBalancer
     type: LoadBalancer
@@ -185,7 +185,7 @@ graphql:
   image:
     repository: ecs-flex-graphql
     # tag: stable
-    # pullPolicy: Always
+    # pullPolicy: IfNotPresent
   withPlayground: false
   port: 8080
   serviceName: objectscale-graphql
@@ -196,7 +196,7 @@ telemetry:
   image:
     repository: telemetry-upload
     # tag: stable
-    # pullPolicy: Always
+    # pullPolicy: IfNotPresent
   # this is as per cronjob schedule - every 12 hours, please follow the cronjob format to edit it
   schedule: "0 */12 * * *"
 

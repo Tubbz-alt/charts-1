@@ -14,7 +14,7 @@ global:
 
 # The default docker tag and pull policy for service-pod
 tag: 1.2.0
-pullPolicy: Always
+pullPolicy: IfNotPresent
 # product for which the service pod is required
 # product: objectscale
 
@@ -22,7 +22,7 @@ pullPolicy: Always
 image:
   repository: remote-access
   # tag: stable
-  # pullPolicy: Always
+  # pullPolicy: IfNotPresent
 
 sshCred:
   user: "root"

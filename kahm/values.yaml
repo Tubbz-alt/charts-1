@@ -20,7 +20,7 @@ global:
 
 # The default docker tag and pull policy for the KAHM
 tag: 1.2.0
-pullPolicy: Always
+pullPolicy: IfNotPresent
 
 # The number of replicas for the KAHM deployment
 replicaCount: 1
@@ -29,7 +29,7 @@ replicaCount: 1
 image:
   repository: kahm
   # tag: stable
-  # pullPolicy: Always
+  # pullPolicy: IfNotPresent
 
 ## Allow callers to bypass creating app resource
 createkahmappResource: true
@@ -41,7 +41,7 @@ createkahmappResource: true
 testImage:
   repository: kahm-testapp
   # tag: stable
-  # pullPolicy: Always
+  # pullPolicy: IfNotPresent
 
 # We usually recommend not to specify default resources and to leave this as a
 # conscious choice for the user. This also increases chances charts run on

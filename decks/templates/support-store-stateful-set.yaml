@@ -50,7 +50,7 @@ spec:
         {{- if .Values.supportStore }}
         imagePullPolicy: {{ default .Values.pullPolicy .Values.supportStore.image.pullPolicy }}
         {{- else }}
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         {{- end}}
         command: ["/bin/sh", "-c"]
         args: ["chmod +x /usr/local/bin/*.sh;

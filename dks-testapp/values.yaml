@@ -13,13 +13,13 @@ global:
 
 # The default docker tag and pull policy for the DKS test application
 tag: 1.2.0
-pullPolicy: Always
+pullPolicy: IfNotPresent
 
 # The image configured for DKS testapp
 image:
   repository: dks-testapp
   # tag: stable
-  # pullPolicy: Always
+  # pullPolicy: IfNotPresent
 
 # create a mock application with the event routing rules and the custom events it would generate
 application:

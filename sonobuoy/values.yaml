@@ -18,7 +18,7 @@ global:
 
 # The default docker tag and pull policy for sonobuoy
 tag: 0.16.5
-pullPolicy: Always
+pullPolicy: IfNotPresent
 
 replicaCount: 1
 

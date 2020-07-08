@@ -23,7 +23,7 @@ replicaCount: 1
 image:
   repository: deos-fio
   tag: 3.14
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
 
 resources: {}
 # We usually recommend not to specify default resources and to leave this as

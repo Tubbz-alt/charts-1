@@ -26,4 +26,4 @@ replicaCount: 1
 image:
   repository: zookeeper-operator
   tag: 0.2.7
-  pullPolicy: Always
+  pullPolicy: IfNotPresent
