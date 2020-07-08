@@ -13,7 +13,7 @@ tests:
           value: emccorp/ecs-flex-graphql:.*
       - equal:
           path: spec.template.spec.containers[0].imagePullPolicy
-          value: Always
+          value: IfNotPresent
   - it: should have name ending with graphql
     asserts:
       - matchRegex:

@@ -17,7 +17,7 @@ tests:
           pattern: emccorp/remote-access:.*
       - equal:
           path: spec.template.spec.containers[0].imagePullPolicy
-          value: Always
+          value: IfNotPresent
   - it: should have name
     set:
       product: my-product

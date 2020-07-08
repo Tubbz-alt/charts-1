@@ -46,7 +46,7 @@ tests:
         pattern: my-registry/rsyslog:.*
     - equal:
         path: spec.template.spec.containers[0].imagePullPolicy
-        value: Always
+        value: IfNotPresent
   - it: should allow configuration of syslog image
     set:
       global.registry: my-registry

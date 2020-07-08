@@ -8,14 +8,14 @@ tests:
           of: StatefulSet
   - it: should have a default image
     set:
-      image.pullPolicy: Always
+      image.pullPolicy: IfNotPresent
     asserts:
       - matchRegex:
           path: spec.template.spec.containers[0].image
           pattern: ^emccorp/decks-support-store:.*
       - equal:
           path: spec.template.spec.containers[0].imagePullPolicy
-          value: Always
+          value: IfNotPresent
   - it: should have name ending with decks
     asserts:
       - matchRegex:

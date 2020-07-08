@@ -13,7 +13,7 @@ tests:
         value: emccorp/rsyslog
     - equal:
         path: spec.syslogAgent.image.pullPolicy
-        value: Always
+        value: IfNotPresent
   - it: should customize the log agent
     set:
       global.registry: my-registry
@@ -165,7 +165,7 @@ tests:
         value: emccorp/deos-events
     - equal:
         path: spec.deosEvents.image.pullPolicy
-        value: Always
+        value: IfNotPresent
     - equal:
         path: spec.deosEvents.pullFreq
         value: 30

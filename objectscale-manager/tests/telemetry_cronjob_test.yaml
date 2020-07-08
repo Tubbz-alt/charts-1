@@ -15,7 +15,7 @@ tests:
     asserts:
     - equal:
         path: spec.jobTemplate.spec.template.spec.containers[0].imagePullPolicy
-        value: Always
+        value: IfNotPresent
   - it: should have name objectscale-telemetry
     asserts:
     - equal:
