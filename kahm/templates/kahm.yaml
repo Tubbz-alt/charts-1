@@ -83,7 +83,6 @@ spec:
         app: kahm 
         release: {{ .Release.Name }}
       name: db
-      namespace: {{ .Release.Namespace }}
     spec:
       accessModes:
       - ReadWriteOnce
