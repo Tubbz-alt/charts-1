@@ -84,7 +84,7 @@ notifier:
 eseStore:
   image:
     repository: decks-support-store
-    version: 2.0.0
+    #tag: stable
     pullPolicy: Always
   persistentVolume:
     size: 50Gi

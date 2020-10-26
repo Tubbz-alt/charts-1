@@ -125,25 +125,24 @@ spec:
           name: insecure
           protocol: TCP
         volumeMounts:
-          - mountPath: /opt/ese/var
-            name: supportassist-{{.Values.product}}-persistentdata
+          - name: supportassist-{{.Values.product}}-persistentdata
+            mountPath: /opt/ese/var
           - name: supportassist-{{.Values.product}}-default-properties
             mountPath: /opt/ese/etc/DefaultProperties.json
             subPath: DefaultProperties.json
           - name: supportassist-{{.Values.product}}-store-claim0
             mountPath: /opt/ese/data
+        securityContext:
+          runAsUser: 999
         env:
         - name: ESE_USER
           value: "eseservice"
         - name: REGISTRY_SECRET
           value: {{.Values.global.registrySecret}}
       - name: ese-store
-        image: {{ .Values.global.registry }}/{{.Values.eseStore.image.repository }}:{{ .Values.eseStore.image.version }}
+        image: {{ .Values.global.registry }}/{{.Values.eseStore.image.repository }}:{{default .Values.tag .Values.eseStore.image.tag }}
         imagePullPolicy: {{ default .Values.pullPolicy .Values.eseStore.image.pullPolicy }}
-        command: [ "/bin/sh", "-c" ]
-        args: [ "chmod +x /usr/local/bin/*.sh;
-                 sh /usr/local/bin/run-nginx.sh;
-                 nginx -g 'daemon off;'" ]
+        command: ["/usr/local/bin/run-nginx.sh"]
         securityContext:
           runAsUser: 0
         ports:
@@ -170,10 +169,6 @@ spec:
             secretKeyRef:
               name: supportassist-{{.Values.product}}-store-secret
               key: salt
-      securityContext:
-        runAsUser: 999
-        runAsGroup: 999
-        fsGroup: 999
       restartPolicy: Always
       volumes:
       - name: supportassist-{{.Values.product}}-persistentdata
