@@ -13,4 +13,5 @@ spec:
       port: {{ .Values.eseStore.service.port }}
       targetPort: {{ .Values.eseStore.service.targetPort }}
   selector:
+    app.kubernetes.io/component: supportassist-{{.Values.product}}-ese
     io.kompose.service: ese-store
