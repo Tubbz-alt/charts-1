@@ -32,7 +32,7 @@ data:
         "usingBuiltinConfig": false,
         "remoteConfig": {},
         "gatewayEndpoints": [],
-        "productFrontendUri": "http://supportassist-{{.Values.product}}.{{.Release.Namespace}}.svc.cluster.local:8087",
+        "productFrontendUri": "http://supportassist-{{.Values.product}}-ese-callback.{{.Release.Namespace}}.svc.cluster.local:9447",
         # Could also be HTTPS: "productFrontendUri": "https://supportassist-{{.Values.product}}.{{.Release.Namespace}}.svc.cluster.local:8447",
         "productFrontendPrefix": "{{.Values.product}}",
         "productFrontendType": "webrest",

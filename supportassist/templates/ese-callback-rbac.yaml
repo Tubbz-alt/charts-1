@@ -12,7 +12,7 @@ imagePullSecrets:
   - name: {{ .Values.global.registrySecret }}
 {{- end }}
 ---
-kind: ClusterRole
+kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: supportassist-{{required "product must be specified" .Values.product}}-ese-callback
@@ -32,11 +32,10 @@ rules:
   - extensions
   resources:
   - secrets
-  - events
   verbs:
   - "*"
 ---
-kind: ClusterRoleBinding
+kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1beta1
 metadata:
   name: supportassist-{{required "product must be specified" .Values.product}}-ese-callback
@@ -50,5 +49,5 @@ subjects:
   namespace: {{ .Release.Namespace }}
 roleRef:
   name: supportassist-{{required "product must be specified" .Values.product}}-ese-callback
-  kind: ClusterRole
+  kind: Role
   apiGroup: rbac.authorization.k8s.io
