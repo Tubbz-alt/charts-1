@@ -194,6 +194,7 @@ create-manager-manifest-ci: create-temp-package
 
 monitoring-test:
 	make -C ${MONITORING_DIR} test
+	git checkout -- monitoring 
 
 monitoring-dep:
 	make -C ${MONITORING_DIR} dep

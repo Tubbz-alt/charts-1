@@ -2,9 +2,10 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
+  name: supportassist-{{.Values.product}}-store-claim0
+  namespace: {{.Release.Namespace}}
   labels:
     io.kompose.service: ese-store-claim
-  name: supportassist-{{.Values.product}}-store-claim0
 spec:
   {{- if .Values.global.storageClassName }}
   storageClassName: {{.Values.global.storageClassName}}
