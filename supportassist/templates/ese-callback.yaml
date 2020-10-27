@@ -10,9 +10,9 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-  - name: cb
+  - name: ese-callback
     port: {{ .Values.esecallback.servicePort }}
-    targetPort: cb
+    targetPort: ese-callback
     protocol: TCP
   selector:
     app.kubernetes.io/component: supportassist-{{.Values.product}}-ese-callback
@@ -51,7 +51,7 @@ spec:
         imagePullPolicy: {{default .Values.pullPolicy .Values.esecallback.image.pullPolicy}}
         ports:
         - containerPort: {{.Values.esecallback.servicePort}}
-          name: cb
+          name: ese-callback
           protocol: TCP
         command: ["/usr/local/bin/ese-callback"]
         env:
