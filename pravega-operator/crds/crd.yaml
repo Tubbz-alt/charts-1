@@ -38,10 +38,10 @@ spec:
     conversionReviewVersions: ["v1beta1", "v1alpha1"]
     strategy: Webhook
     webhookClientConfig:
-      caBundle: {{ .Values.webhookCert.crt }}
+      caBundle: ""
       service:
         name: pravega-webhook-svc
-        namespace: {{ .Release.Namespace }}
+        namespace: "default"
         path: /convert
   version: v1beta1
   versions:
@@ -312,11 +312,7 @@ spec:
                   format: int32
                   type: integer
     - name: v1alpha1
-      {{- if .Release.IsUpgrade }}
-      served: true
-      {{- else }}
       served: false
-      {{- end }}
       storage: false
       schema:
         openAPIV3Schema:
@@ -808,4 +804,3 @@ spec:
                   type: integer
   subresources:
     status: {}
-  {{- end }}
