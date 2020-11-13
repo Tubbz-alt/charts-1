@@ -43,6 +43,8 @@ spec:
             storage: {{ required "atlas.persistence.size is required" .Values.atlas.persistence.size }}
 
   chunkManager:
+    labels:
+      app.kubernetes.io/namespace: {{ .Release.Namespace }}
 {{- if .Values.chunkManager.replicas }}
     replicas: {{ .Values.chunkManager.replicas }}
 {{- end }}
@@ -62,6 +64,8 @@ spec:
   blob:
 {{- if .Values.blob.replicas }}
     replicas: {{ .Values.blob.replicas }}
+    labels:
+      app.kubernetes.io/namespace: {{ .Release.Namespace }}
 {{- end }}
     image:
       repository: {{ .Values.global.registry }}/{{ .Values.blob.image.repository }}
@@ -77,6 +81,8 @@ spec:
 {{- end }}
 
   objectsvc:
+    labels:
+      app.kubernetes.io/namespace: { { .Release.Namespace } }
 {{- if .Values.objectsvc.replicas }}
     replicas: {{ .Values.objectsvc.replicas }}
 {{- end }}
@@ -94,6 +100,8 @@ spec:
 {{- end }}
 
   ons:
+    labels:
+      app.kubernetes.io/namespace: { { .Release.Namespace } }
 {{- if .Values.ons.replicas }}
     replicas: {{ .Values.ons.replicas }}
 {{- end }}
@@ -111,6 +119,8 @@ spec:
 {{- end }}
 
   rep:
+    labels:
+      app.kubernetes.io/namespace: { { .Release.Namespace } }
 {{- if .Values.rep.replicas }}
     replicas: {{ .Values.rep.replicas }}
 {{- end }}
@@ -252,6 +262,8 @@ spec:
           storage: {{ .Values.storageServer.persistence.size }}
 
   storageServerManager:
+    labels:
+      app.kubernetes.io/namespace: { { .Release.Namespace } }
 {{- if .Values.storageServerManager.replicas }}
     replicas: {{ .Values.storageServerManager.replicas }}
 {{- end }}
@@ -270,6 +282,8 @@ spec:
 {{- end }}
 
   recordManager:
+    labels:
+      app.kubernetes.io/namespace: { { .Release.Namespace } }
 {{- if .Values.recordManager.replicas }}
     replicas: {{ .Values.recordManager.replicas }}
 {{- end }}
@@ -288,6 +302,8 @@ spec:
 {{- end }}
 
   storageManagement:
+    labels:
+      app.kubernetes.io/namespace: { { .Release.Namespace } }
 {{- if .Values.storageManagement.replicas }}
     replicas: {{ .Values.storageManagement.replicas }}
 {{- end }}
@@ -324,6 +340,8 @@ spec:
 {{- end }}
 
   event:
+    labels:
+      app.kubernetes.io/namespace: { { .Release.Namespace } }
 {{- if .Values.event.replicas }}
     replicas: {{ .Values.event.replicas }}
   {{- end }}
@@ -368,6 +386,8 @@ spec:
 {{- end }}
 
   resource:
+    labels:
+      app.kubernetes.io/namespace: { { .Release.Namespace } }
 {{- if .Values.resource.replicas }}
     replicas: {{ .Values.resource.replicas }}
 {{- end }}
@@ -387,6 +407,8 @@ spec:
 
 
   controlPlane:
+    labels:
+      app.kubernetes.io/namespace: { { .Release.Namespace } }
 {{- if .Values.controlPlane.replicas }}
     replicas: {{ .Values.controlPlane.replicas }}
 {{- end }}
@@ -405,6 +427,8 @@ spec:
 {{- end }}
 
   diagnostic:
+    labels:
+      app.kubernetes.io/namespace: { { .Release.Namespace } }
 {{- if .Values.diagnostic.replicas }}
     replicas: {{ .Values.diagnostic.replicas }}
 {{- end }}
@@ -427,6 +451,8 @@ spec:
 {{- end }}
 
   geoService:
+    labels:
+      app.kubernetes.io/namespace: { { .Release.Namespace } }
     {{- if .Values.geoService.replicas }}
     replicas: {{ .Values.geoService.replicas }}
     {{- end }}
@@ -444,6 +470,8 @@ spec:
   {{- end }}
 
   geoReceiver:
+    labels:
+      app.kubernetes.io/namespace: { { .Release.Namespace } }
 {{- if .Values.geoReceiver.replicas }}
     replicas: {{ .Values.geoReceiver.replicas }}
 {{- end }}
@@ -466,6 +494,8 @@ spec:
 {{- end }}
 
   spaceReclaimer:
+    labels:
+      app.kubernetes.io/namespace: { { .Release.Namespace } }
 {{- if .Values.spaceReclaimer.replicas }}
     replicas: {{ .Values.spaceReclaimer.replicas }}
 {{- end }}
@@ -484,6 +514,8 @@ spec:
 {{- end }}
 
   control:
+    labels:
+      app.kubernetes.io/namespace: { { .Release.Namespace } }
 {{- if .Values.control.replicas }}
     replicas: {{ .Values.control.replicas }}
 {{- end }}
@@ -502,6 +534,8 @@ spec:
 {{- end }}
 
   s3:
+    labels:
+      app.kubernetes.io/namespace: { { .Release.Namespace } }
     replicas: {{ default .Values.s3.replicas }}
 
     image:
