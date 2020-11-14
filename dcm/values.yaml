@@ -1,0 +1,28 @@
+---
+tag: 0.54.0
+global:
+  registry: emccorp
+atlas:
+  affinity: false
+  image:
+    pullPolicy: IfNotPresent
+    repository: atlas
+    tag: v1.1.1
+  persistence:
+    size: 1Gi
+  replicaCount: 3
+dcm:
+  image:
+    pullPolicy: IfNotPresent
+    repository: dcm
+    #tag: stable
+  replicaCount: 1
+  service:
+    ports:
+      - name: secure
+        port: 9027
+        targetPort: 9027
+      - name: insecure
+        port: 9026
+        targetPort: 9026
+    type: ClusterIP

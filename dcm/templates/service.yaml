@@ -1,0 +1,23 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  #change
+  name: {{ include "dcm.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "dcm.labels" . | nindent 4 }}
+spec:
+  type: {{ .Values.dcm.service.type }}
+  ports:
+    #handle port values
+    - port: {{ .Values.dcm.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+    - port: {{ .Values.dcm.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    {{- include "dcm.selectorLabels" . | nindent 4 }}
