@@ -82,7 +82,7 @@ spec:
 
   objectsvc:
     labels:
-      app.kubernetes.io/namespace: { { .Release.Namespace } }
+      app.kubernetes.io/namespace: {{ .Release.Namespace }}
 {{- if .Values.objectsvc.replicas }}
     replicas: {{ .Values.objectsvc.replicas }}
 {{- end }}
@@ -101,7 +101,7 @@ spec:
 
   ons:
     labels:
-      app.kubernetes.io/namespace: { { .Release.Namespace } }
+      app.kubernetes.io/namespace: {{ .Release.Namespace }}
 {{- if .Values.ons.replicas }}
     replicas: {{ .Values.ons.replicas }}
 {{- end }}
@@ -120,7 +120,7 @@ spec:
 
   rep:
     labels:
-      app.kubernetes.io/namespace: { { .Release.Namespace } }
+      app.kubernetes.io/namespace: {{ .Release.Namespace }}
 {{- if .Values.rep.replicas }}
     replicas: {{ .Values.rep.replicas }}
 {{- end }}
@@ -263,7 +263,7 @@ spec:
 
   storageServerManager:
     labels:
-      app.kubernetes.io/namespace: { { .Release.Namespace } }
+      app.kubernetes.io/namespace: {{ .Release.Namespace }}
 {{- if .Values.storageServerManager.replicas }}
     replicas: {{ .Values.storageServerManager.replicas }}
 {{- end }}
@@ -283,7 +283,7 @@ spec:
 
   recordManager:
     labels:
-      app.kubernetes.io/namespace: { { .Release.Namespace } }
+      app.kubernetes.io/namespace: {{ .Release.Namespace }}
 {{- if .Values.recordManager.replicas }}
     replicas: {{ .Values.recordManager.replicas }}
 {{- end }}
@@ -303,7 +303,7 @@ spec:
 
   storageManagement:
     labels:
-      app.kubernetes.io/namespace: { { .Release.Namespace } }
+      app.kubernetes.io/namespace: {{ .Release.Namespace }}
 {{- if .Values.storageManagement.replicas }}
     replicas: {{ .Values.storageManagement.replicas }}
 {{- end }}
@@ -341,7 +341,7 @@ spec:
 
   event:
     labels:
-      app.kubernetes.io/namespace: { { .Release.Namespace } }
+      app.kubernetes.io/namespace: {{ .Release.Namespace }}
 {{- if .Values.event.replicas }}
     replicas: {{ .Values.event.replicas }}
   {{- end }}
@@ -387,7 +387,7 @@ spec:
 
   resource:
     labels:
-      app.kubernetes.io/namespace: { { .Release.Namespace } }
+      app.kubernetes.io/namespace: {{ .Release.Namespace }}
 {{- if .Values.resource.replicas }}
     replicas: {{ .Values.resource.replicas }}
 {{- end }}
@@ -408,7 +408,7 @@ spec:
 
   controlPlane:
     labels:
-      app.kubernetes.io/namespace: { { .Release.Namespace } }
+      app.kubernetes.io/namespace: {{ .Release.Namespace }}
 {{- if .Values.controlPlane.replicas }}
     replicas: {{ .Values.controlPlane.replicas }}
 {{- end }}
@@ -428,7 +428,7 @@ spec:
 
   diagnostic:
     labels:
-      app.kubernetes.io/namespace: { { .Release.Namespace } }
+      app.kubernetes.io/namespace: {{ .Release.Namespace }}
 {{- if .Values.diagnostic.replicas }}
     replicas: {{ .Values.diagnostic.replicas }}
 {{- end }}
@@ -452,7 +452,7 @@ spec:
 
   geoService:
     labels:
-      app.kubernetes.io/namespace: { { .Release.Namespace } }
+      app.kubernetes.io/namespace: {{ .Release.Namespace }}
     {{- if .Values.geoService.replicas }}
     replicas: {{ .Values.geoService.replicas }}
     {{- end }}
@@ -471,7 +471,7 @@ spec:
 
   geoReceiver:
     labels:
-      app.kubernetes.io/namespace: { { .Release.Namespace } }
+      app.kubernetes.io/namespace: {{ .Release.Namespace }}
 {{- if .Values.geoReceiver.replicas }}
     replicas: {{ .Values.geoReceiver.replicas }}
 {{- end }}
@@ -495,7 +495,7 @@ spec:
 
   spaceReclaimer:
     labels:
-      app.kubernetes.io/namespace: { { .Release.Namespace } }
+      app.kubernetes.io/namespace: {{ .Release.Namespace }}
 {{- if .Values.spaceReclaimer.replicas }}
     replicas: {{ .Values.spaceReclaimer.replicas }}
 {{- end }}
@@ -515,7 +515,7 @@ spec:
 
   control:
     labels:
-      app.kubernetes.io/namespace: { { .Release.Namespace } }
+      app.kubernetes.io/namespace: {{ .Release.Namespace }}
 {{- if .Values.control.replicas }}
     replicas: {{ .Values.control.replicas }}
 {{- end }}
@@ -535,7 +535,7 @@ spec:
 
   s3:
     labels:
-      app.kubernetes.io/namespace: { { .Release.Namespace } }
+      app.kubernetes.io/namespace: {{ .Release.Namespace }}
     replicas: {{ default .Values.s3.replicas }}
 
     image:
