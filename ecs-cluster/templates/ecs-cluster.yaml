@@ -45,6 +45,7 @@ spec:
   chunkManager:
     labels:
       app.kubernetes.io/namespace: {{ .Release.Namespace }}
+      objectscale.dellemc.com/logging-inject: "true"
 {{- if .Values.chunkManager.replicas }}
     replicas: {{ .Values.chunkManager.replicas }}
 {{- end }}
@@ -66,6 +67,7 @@ spec:
     replicas: {{ .Values.blob.replicas }}
     labels:
       app.kubernetes.io/namespace: {{ .Release.Namespace }}
+      objectscale.dellemc.com/logging-inject: "true"
 {{- end }}
     image:
       repository: {{ .Values.global.registry }}/{{ .Values.blob.image.repository }}
@@ -83,6 +85,7 @@ spec:
   objectsvc:
     labels:
       app.kubernetes.io/namespace: {{ .Release.Namespace }}
+      objectscale.dellemc.com/logging-inject: "true"
 {{- if .Values.objectsvc.replicas }}
     replicas: {{ .Values.objectsvc.replicas }}
 {{- end }}
@@ -102,6 +105,7 @@ spec:
   ons:
     labels:
       app.kubernetes.io/namespace: {{ .Release.Namespace }}
+      objectscale.dellemc.com/logging-inject: "true"
 {{- if .Values.ons.replicas }}
     replicas: {{ .Values.ons.replicas }}
 {{- end }}
@@ -121,6 +125,7 @@ spec:
   rep:
     labels:
       app.kubernetes.io/namespace: {{ .Release.Namespace }}
+      objectscale.dellemc.com/logging-inject: "true"
 {{- if .Values.rep.replicas }}
     replicas: {{ .Values.rep.replicas }}
 {{- end }}
@@ -264,6 +269,7 @@ spec:
   storageServerManager:
     labels:
       app.kubernetes.io/namespace: {{ .Release.Namespace }}
+      objectscale.dellemc.com/logging-inject: "true"
 {{- if .Values.storageServerManager.replicas }}
     replicas: {{ .Values.storageServerManager.replicas }}
 {{- end }}
@@ -284,6 +290,7 @@ spec:
   recordManager:
     labels:
       app.kubernetes.io/namespace: {{ .Release.Namespace }}
+      objectscale.dellemc.com/logging-inject: "true"
 {{- if .Values.recordManager.replicas }}
     replicas: {{ .Values.recordManager.replicas }}
 {{- end }}
@@ -304,6 +311,7 @@ spec:
   storageManagement:
     labels:
       app.kubernetes.io/namespace: {{ .Release.Namespace }}
+      objectscale.dellemc.com/logging-inject: "true"
 {{- if .Values.storageManagement.replicas }}
     replicas: {{ .Values.storageManagement.replicas }}
 {{- end }}
@@ -342,6 +350,7 @@ spec:
   event:
     labels:
       app.kubernetes.io/namespace: {{ .Release.Namespace }}
+      objectscale.dellemc.com/logging-inject: "true"
 {{- if .Values.event.replicas }}
     replicas: {{ .Values.event.replicas }}
   {{- end }}
@@ -388,6 +397,7 @@ spec:
   resource:
     labels:
       app.kubernetes.io/namespace: {{ .Release.Namespace }}
+      objectscale.dellemc.com/logging-inject: "true"
 {{- if .Values.resource.replicas }}
     replicas: {{ .Values.resource.replicas }}
 {{- end }}
@@ -409,6 +419,7 @@ spec:
   controlPlane:
     labels:
       app.kubernetes.io/namespace: {{ .Release.Namespace }}
+      objectscale.dellemc.com/logging-inject: "true"
 {{- if .Values.controlPlane.replicas }}
     replicas: {{ .Values.controlPlane.replicas }}
 {{- end }}
@@ -429,6 +440,7 @@ spec:
   diagnostic:
     labels:
       app.kubernetes.io/namespace: {{ .Release.Namespace }}
+      objectscale.dellemc.com/logging-inject: "true"
 {{- if .Values.diagnostic.replicas }}
     replicas: {{ .Values.diagnostic.replicas }}
 {{- end }}
@@ -453,6 +465,7 @@ spec:
   geoService:
     labels:
       app.kubernetes.io/namespace: {{ .Release.Namespace }}
+      objectscale.dellemc.com/logging-inject: "true"
     {{- if .Values.geoService.replicas }}
     replicas: {{ .Values.geoService.replicas }}
     {{- end }}
@@ -472,6 +485,7 @@ spec:
   geoReceiver:
     labels:
       app.kubernetes.io/namespace: {{ .Release.Namespace }}
+      objectscale.dellemc.com/logging-inject: "true"
 {{- if .Values.geoReceiver.replicas }}
     replicas: {{ .Values.geoReceiver.replicas }}
 {{- end }}
@@ -496,6 +510,7 @@ spec:
   spaceReclaimer:
     labels:
       app.kubernetes.io/namespace: {{ .Release.Namespace }}
+      objectscale.dellemc.com/logging-inject: "true"
 {{- if .Values.spaceReclaimer.replicas }}
     replicas: {{ .Values.spaceReclaimer.replicas }}
 {{- end }}
@@ -516,6 +531,7 @@ spec:
   control:
     labels:
       app.kubernetes.io/namespace: {{ .Release.Namespace }}
+      objectscale.dellemc.com/logging-inject: "true"
 {{- if .Values.control.replicas }}
     replicas: {{ .Values.control.replicas }}
 {{- end }}
@@ -536,6 +552,7 @@ spec:
   s3:
     labels:
       app.kubernetes.io/namespace: {{ .Release.Namespace }}
+      objectscale.dellemc.com/logging-inject: "true"
     replicas: {{ default .Values.s3.replicas }}
 
     image:
