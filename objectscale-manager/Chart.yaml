@@ -38,3 +38,7 @@ dependencies:
     version: 0.1.2 # no_auto_change
     repository: file://../bookkeeper-operator
     condition: bookkeeper.enabled
+  - name: dcm
+    version: 0.54.0
+    repository: file://../dcm
+    condition: dcm.enabled

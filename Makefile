@@ -5,7 +5,7 @@ YQ_VERSION   := 2.4.1
 YAMLLINT_VERSION := 1.20.0
 CHARTS := ecs-cluster objectscale-manager mongoose zookeeper-operator atlas-operator decks kahm dks-testapp fio-test sonobuoy dellemc-license service-pod objectscale-graphql helm-controller objectscale-vsphere iam pravega-operator bookkeeper-operator supportassist decks-support-store
 DECKSCHARTS := decks kahm supportassist service-pod dellemc-license decks-support-store
-FLEXCHARTS := ecs-cluster objectscale-manager objectscale-vsphere objectscale-graphql helm-controller iam
+FLEXCHARTS := ecs-cluster objectscale-manager objectscale-vsphere objectscale-graphql helm-controller iam dcm
 MONITORING_DIR := monitoring
 
 # release version
