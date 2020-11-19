@@ -61,6 +61,7 @@ spec:
 {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
 {{- end }}
+{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   blob:
 {{- if .Values.blob.replicas }}
@@ -81,6 +82,7 @@ spec:
 {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
 {{- end }}
+{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   objectsvc:
     labels:
@@ -101,6 +103,7 @@ spec:
 {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
 {{- end }}
+{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   ons:
     labels:
@@ -121,6 +124,7 @@ spec:
 {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
 {{- end }}
+{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   rep:
     labels:
@@ -141,6 +145,7 @@ spec:
 {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
 {{- end }}
+{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   zookeeper:
 {{- if .Values.zookeeper.replicas }}
@@ -286,6 +291,7 @@ spec:
 {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
 {{- end }}
+{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   recordManager:
     labels:
@@ -307,6 +313,7 @@ spec:
 {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
 {{- end }}
+{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   storageManagement:
     labels:
@@ -328,6 +335,7 @@ spec:
 {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
 {{- end }}
+{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   metering:
 {{- if .Values.metering.replicas }}
@@ -346,6 +354,7 @@ spec:
 {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
 {{- end }}
+{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   event:
     labels:
@@ -369,6 +378,7 @@ spec:
   {{- end }}
     pod:
       env:
+{{ include "datasvc-lib.common-env" . | indent 8 }}
         - name: "EVENTSVC_APP_NAME"
           value: "{{ .Release.Name }}"
         - name: "NAMESPACE"
@@ -414,6 +424,7 @@ spec:
 {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
 {{- end }}
+{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
 
   controlPlane:
@@ -436,6 +447,7 @@ spec:
 {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
 {{- end }}
+{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   diagnostic:
     labels:
@@ -461,6 +473,7 @@ spec:
     service:
       {{ toYaml .Values.diagnostic.service | nindent 6 | trim }}
 {{- end }}
+{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   geoService:
     labels:
@@ -481,6 +494,7 @@ spec:
       {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
   {{- end }}
+{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   geoReceiver:
     labels:
@@ -506,6 +520,7 @@ spec:
     service:
       {{ toYaml .Values.geoReceiver.service | nindent 6 | trim }}
 {{- end }}
+{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   spaceReclaimer:
     labels:
@@ -527,6 +542,7 @@ spec:
 {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
 {{- end }}
+{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   control:
     labels:
@@ -548,6 +564,7 @@ spec:
 {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
 {{- end }}
+{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   s3:
     labels:
@@ -568,7 +585,7 @@ spec:
     tls:
       {{ toYaml .Values.s3.tls | nindent 6 | trim }}
 {{- end }}
-
+{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   managementGateway:
 {{- if .Values.managementGateway.replicas }}
