@@ -11,11 +11,7 @@ spec:
   type: {{ .Values.dcm.service.type }}
   ports:
     #handle port values
-    - port: {{ .Values.dcm.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: http
-    - port: {{ .Values.dcm.service.port }}
+    - port: {{ .Values.dcm.service.port}}
       targetPort: http
       protocol: TCP
       name: http

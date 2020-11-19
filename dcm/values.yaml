@@ -17,12 +17,8 @@ dcm:
     repository: dcm
     #tag: stable
   replicaCount: 1
+  #take out the service if we are not exposing
   service:
-    ports:
-      - name: secure
-        port: 9027
-        targetPort: 9027
-      - name: insecure
-        port: 9026
-        targetPort: 9026
+    port: 80
+    targetPort: 9026
     type: ClusterIP
