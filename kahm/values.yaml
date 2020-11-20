@@ -49,12 +49,12 @@ testImage:
 # specify resources, uncomment the following lines, adjust them as necessary,
 # and remove the curly braces after 'resources:'.
 resources:
-# limits:
-#  cpu: 100m
-#  memory: 2Gi
+  #  limits:
+  #    cpu: 100m
+  #    memory: 2Gi
   requests:
-#  cpu: 100m
-   memory: 1Gi
+    # cpu: 100m
+    memory: 0Gi
 
 nodeSelector: {}
 
