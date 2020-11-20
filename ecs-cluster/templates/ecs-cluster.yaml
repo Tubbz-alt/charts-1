@@ -43,9 +43,6 @@ spec:
             storage: {{ required "atlas.persistence.size is required" .Values.atlas.persistence.size }}
 
   chunkManager:
-    labels:
-      app.kubernetes.io/namespace: {{ .Release.Namespace }}
-      objectscale.dellemc.com/logging-inject: "true"
 {{- if .Values.chunkManager.replicas }}
     replicas: {{ .Values.chunkManager.replicas }}
 {{- end }}
@@ -61,14 +58,10 @@ spec:
 {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
 {{- end }}
-{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   blob:
 {{- if .Values.blob.replicas }}
     replicas: {{ .Values.blob.replicas }}
-    labels:
-      app.kubernetes.io/namespace: {{ .Release.Namespace }}
-      objectscale.dellemc.com/logging-inject: "true"
 {{- end }}
     image:
       repository: {{ .Values.global.registry }}/{{ .Values.blob.image.repository }}
@@ -82,12 +75,8 @@ spec:
 {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
 {{- end }}
-{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   objectsvc:
-    labels:
-      app.kubernetes.io/namespace: {{ .Release.Namespace }}
-      objectscale.dellemc.com/logging-inject: "true"
 {{- if .Values.objectsvc.replicas }}
     replicas: {{ .Values.objectsvc.replicas }}
 {{- end }}
@@ -103,12 +92,8 @@ spec:
 {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
 {{- end }}
-{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   ons:
-    labels:
-      app.kubernetes.io/namespace: {{ .Release.Namespace }}
-      objectscale.dellemc.com/logging-inject: "true"
 {{- if .Values.ons.replicas }}
     replicas: {{ .Values.ons.replicas }}
 {{- end }}
@@ -124,12 +109,8 @@ spec:
 {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
 {{- end }}
-{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   rep:
-    labels:
-      app.kubernetes.io/namespace: {{ .Release.Namespace }}
-      objectscale.dellemc.com/logging-inject: "true"
 {{- if .Values.rep.replicas }}
     replicas: {{ .Values.rep.replicas }}
 {{- end }}
@@ -145,7 +126,6 @@ spec:
 {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
 {{- end }}
-{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   zookeeper:
 {{- if .Values.zookeeper.replicas }}
@@ -272,9 +252,6 @@ spec:
           storage: {{ .Values.storageServer.persistence.size }}
 
   storageServerManager:
-    labels:
-      app.kubernetes.io/namespace: {{ .Release.Namespace }}
-      objectscale.dellemc.com/logging-inject: "true"
 {{- if .Values.storageServerManager.replicas }}
     replicas: {{ .Values.storageServerManager.replicas }}
 {{- end }}
@@ -291,12 +268,8 @@ spec:
 {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
 {{- end }}
-{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   recordManager:
-    labels:
-      app.kubernetes.io/namespace: {{ .Release.Namespace }}
-      objectscale.dellemc.com/logging-inject: "true"
 {{- if .Values.recordManager.replicas }}
     replicas: {{ .Values.recordManager.replicas }}
 {{- end }}
@@ -313,12 +286,8 @@ spec:
 {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
 {{- end }}
-{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   storageManagement:
-    labels:
-      app.kubernetes.io/namespace: {{ .Release.Namespace }}
-      objectscale.dellemc.com/logging-inject: "true"
 {{- if .Values.storageManagement.replicas }}
     replicas: {{ .Values.storageManagement.replicas }}
 {{- end }}
@@ -335,7 +304,6 @@ spec:
 {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
 {{- end }}
-{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   metering:
 {{- if .Values.metering.replicas }}
@@ -354,12 +322,8 @@ spec:
 {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
 {{- end }}
-{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   event:
-    labels:
-      app.kubernetes.io/namespace: {{ .Release.Namespace }}
-      objectscale.dellemc.com/logging-inject: "true"
 {{- if .Values.event.replicas }}
     replicas: {{ .Values.event.replicas }}
   {{- end }}
@@ -378,7 +342,6 @@ spec:
   {{- end }}
     pod:
       env:
-{{ include "datasvc-lib.common-env" . | indent 8 }}
         - name: "EVENTSVC_APP_NAME"
           value: "{{ .Release.Name }}"
         - name: "NAMESPACE"
@@ -405,9 +368,6 @@ spec:
 {{- end }}
 
   resource:
-    labels:
-      app.kubernetes.io/namespace: {{ .Release.Namespace }}
-      objectscale.dellemc.com/logging-inject: "true"
 {{- if .Values.resource.replicas }}
     replicas: {{ .Values.resource.replicas }}
 {{- end }}
@@ -424,13 +384,9 @@ spec:
 {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
 {{- end }}
-{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
 
   controlPlane:
-    labels:
-      app.kubernetes.io/namespace: {{ .Release.Namespace }}
-      objectscale.dellemc.com/logging-inject: "true"
 {{- if .Values.controlPlane.replicas }}
     replicas: {{ .Values.controlPlane.replicas }}
 {{- end }}
@@ -447,12 +403,8 @@ spec:
 {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
 {{- end }}
-{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   diagnostic:
-    labels:
-      app.kubernetes.io/namespace: {{ .Release.Namespace }}
-      objectscale.dellemc.com/logging-inject: "true"
 {{- if .Values.diagnostic.replicas }}
     replicas: {{ .Values.diagnostic.replicas }}
 {{- end }}
@@ -473,12 +425,8 @@ spec:
     service:
       {{ toYaml .Values.diagnostic.service | nindent 6 | trim }}
 {{- end }}
-{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   geoService:
-    labels:
-      app.kubernetes.io/namespace: {{ .Release.Namespace }}
-      objectscale.dellemc.com/logging-inject: "true"
     {{- if .Values.geoService.replicas }}
     replicas: {{ .Values.geoService.replicas }}
     {{- end }}
@@ -494,12 +442,8 @@ spec:
       {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
   {{- end }}
-{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   geoReceiver:
-    labels:
-      app.kubernetes.io/namespace: {{ .Release.Namespace }}
-      objectscale.dellemc.com/logging-inject: "true"
 {{- if .Values.geoReceiver.replicas }}
     replicas: {{ .Values.geoReceiver.replicas }}
 {{- end }}
@@ -520,12 +464,8 @@ spec:
     service:
       {{ toYaml .Values.geoReceiver.service | nindent 6 | trim }}
 {{- end }}
-{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   spaceReclaimer:
-    labels:
-      app.kubernetes.io/namespace: {{ .Release.Namespace }}
-      objectscale.dellemc.com/logging-inject: "true"
 {{- if .Values.spaceReclaimer.replicas }}
     replicas: {{ .Values.spaceReclaimer.replicas }}
 {{- end }}
@@ -542,12 +482,8 @@ spec:
 {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
 {{- end }}
-{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   control:
-    labels:
-      app.kubernetes.io/namespace: {{ .Release.Namespace }}
-      objectscale.dellemc.com/logging-inject: "true"
 {{- if .Values.control.replicas }}
     replicas: {{ .Values.control.replicas }}
 {{- end }}
@@ -564,12 +500,8 @@ spec:
 {{- else }}
       pullPolicy: {{ .Values.pullPolicy }}
 {{- end }}
-{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
 
   s3:
-    labels:
-      app.kubernetes.io/namespace: {{ .Release.Namespace }}
-      objectscale.dellemc.com/logging-inject: "true"
     replicas: {{ default .Values.s3.replicas }}
 
     image:
@@ -585,7 +517,7 @@ spec:
     tls:
       {{ toYaml .Values.s3.tls | nindent 6 | trim }}
 {{- end }}
-{{ include "datasvc-lib.common-pod-spec" . | indent 4 }}
+
 
   managementGateway:
 {{- if .Values.managementGateway.replicas }}
