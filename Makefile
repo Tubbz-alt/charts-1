@@ -41,6 +41,12 @@ HELM_INSTALLER_ARGS  = # --set objectscale-graphql.helm-controller.tag=${YOUR_VE
 HELM_DECKS_ARGS      = # --set image.tag=${YOUR_VERSION_HERE}
 HELM_KAHM_ARGS       = # --set image.tag=${YOUR_VERSION_HERE}
 HELM_DECKS_SUPPORT_STORE_ARGS      = # --set decks-support-store.image.tag=${YOUR_VERSION_HERE}
+SED_INPLACE         := -i
+
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Darwin)
+	SED_INPLACE += .orig
+endif
 
 clean: clean-package
 
@@ -81,12 +87,12 @@ decksver:
 		yq w -i $$CHART/Chart.yaml appVersion ${DECKSVER} ; \
 		yq w -i $$CHART/Chart.yaml version ${DECKSVER} ; \
 		echo -e "---\n`cat $$CHART/Chart.yaml`" > $$CHART/Chart.yaml ; \
-		sed -i -e "0,/^tag.*/s//tag: ${DECKSVER}/"  $$CHART/values.yaml; \
+		sed ${SED_INPLACE} -e "0,/^tag.*/s//tag: ${DECKSVER}/"  $$CHART/values.yaml; \
 	done ;
 
 	for CHART in ${FLEXCHARTS} ${DECKSCHARTS}; do  \
 		echo "Setting decs dep version ${DECKSVER} in $$CHART" ;\
-		sed -i -e "/no_auto_change__decks_auto_change/s/version:.*/version: ${DECKSVER} # no_auto_change__decks_auto_change/g"  $$CHART/Chart.yaml; \
+		sed ${SED_INPLACE} -e "/no_auto_change__decks_auto_change/s/version:.*/version: ${DECKSVER} # no_auto_change__decks_auto_change/g"  $$CHART/Chart.yaml; \
 	done ;
 
 flexver:
@@ -100,9 +106,9 @@ flexver:
 	for CHART in ${FLEXCHARTS}; do  \
 		echo "Setting version $$FLEXVER in $$CHART" ;\
 		yq w -i $$CHART/Chart.yaml appVersion ${FLEXVER} ; \
-		sed -i -e "/no_auto_change/!s/version:.*/version: ${FLEXVER}/g"  $$CHART/Chart.yaml; \
+		sed ${SED_INPLACE} -e "/no_auto_change/!s/version:.*/version: ${FLEXVER}/g"  $$CHART/Chart.yaml; \
 		echo -e "---\n`cat $$CHART/Chart.yaml`" > $$CHART/Chart.yaml ; \
-		sed -i -e "0,/^tag.*/s//tag: ${FLEXVER}/"  $$CHART/values.yaml; \
+		sed ${SED_INPLACE} -e "0,/^tag.*/s//tag: ${FLEXVER}/"  $$CHART/values.yaml; \
 	done ;
 
 build-all: build
@@ -155,7 +161,7 @@ combine-crds:
 	cp -R statefuldaemonset-operator/crds ${TEMP_PACKAGE}
 	cat ${TEMP_PACKAGE}/crds/*.yaml > ${TEMP_PACKAGE}/yaml/objectscale-crd.yaml
 	## Remove # from crd to prevent app-platform from crashing in 7.0P1
-	sed -i -e "/^#.*/d" ${TEMP_PACKAGE}/yaml/objectscale-crd.yaml
+	sed ${SED_INPLACE} "/^#.*/d" ${TEMP_PACKAGE}/yaml/objectscale-crd.yaml
 	rm -rf ${TEMP_PACKAGE}/crds
 
 create-vmware-package:
@@ -185,9 +191,9 @@ create-manager-app: create-temp-package
 	--set iam.enabled=false ${HELM_MANAGER_ARGS} ${HELM_MONITORING_ARGS} \
 	--set federation.enabled=false ${HELM_MANAGER_ARGS} ${HELM_MONITORING_ARGS} \
 	-f values.yaml > ../${TEMP_PACKAGE}/yaml/objectscale-manager-app.yaml;
-	sed -i 's/createApplicationResource\\":true/createApplicationResource\\":false/g' ${TEMP_PACKAGE}/yaml/objectscale-manager-app.yaml && \
-	sed -i 's/\\"monitoring\\":{\\"enabled\\":false}/\\"monitoring\\":{\\"enabled\\":true}/g' ${TEMP_PACKAGE}/yaml/objectscale-manager-app.yaml && \
-	sed -i 's/app.kubernetes.io\/managed-by: Helm/app.kubernetes.io\/managed-by: nautilus/g' ${TEMP_PACKAGE}/yaml/objectscale-manager-app.yaml
+	sed ${SED_INPLACE} 's/createApplicationResource\\":true/createApplicationResource\\":false/g' ${TEMP_PACKAGE}/yaml/objectscale-manager-app.yaml && \
+	sed ${SED_INPLACE} 's/\\"monitoring\\":{\\"enabled\\":false}/\\"monitoring\\":{\\"enabled\\":true}/g' ${TEMP_PACKAGE}/yaml/objectscale-manager-app.yaml && \
+	sed ${SED_INPLACE} 's/app.kubernetes.io\/managed-by: Helm/app.kubernetes.io\/managed-by: nautilus/g' ${TEMP_PACKAGE}/yaml/objectscale-manager-app.yaml
 	cat ${TEMP_PACKAGE}/yaml/objectscale-manager-app.yaml >> ${TEMP_PACKAGE}/yaml/${MANAGER_MANIFEST} && rm ${TEMP_PACKAGE}/yaml/objectscale-manager-app.yaml
 
 create-vsphere-templates: create-temp-package
@@ -209,8 +215,8 @@ create-decks-app: create-temp-package
 	--set decks-support-store.persistentVolume.storageClassName=${STORAGECLASSNAME} \
         ${HELM_DECKS_ARGS} ${HELM_DECKS_SUPPORT_STORE_ARGS} \
 	-f values.yaml > ../${TEMP_PACKAGE}/yaml/decks-app.yaml;
-	sed -i 's/createdecksappResource\\":true/createdecksappResource\\":false/g' ${TEMP_PACKAGE}/yaml/decks-app.yaml && \
-	sed -i 's/app.kubernetes.io\/managed-by: Helm/app.kubernetes.io\/managed-by: nautilus/g' ${TEMP_PACKAGE}/yaml/decks-app.yaml
+	sed ${SED_INPLACE} 's/createdecksappResource\\":true/createdecksappResource\\":false/g' ${TEMP_PACKAGE}/yaml/decks-app.yaml && \
+	sed ${SED_INPLACE} 's/app.kubernetes.io\/managed-by: Helm/app.kubernetes.io\/managed-by: nautilus/g' ${TEMP_PACKAGE}/yaml/decks-app.yaml
 	cat ${TEMP_PACKAGE}/yaml/decks-app.yaml >> ${TEMP_PACKAGE}/yaml/${DECKS_MANIFEST} && rm ${TEMP_PACKAGE}/yaml/decks-app.yaml
 
 create-kahm-app: create-temp-package
