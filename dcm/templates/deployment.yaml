@@ -22,6 +22,10 @@ spec:
       containers:
         - name: {{ .Chart.Name }}
           env:
+          - name: SPRING_PROFILES_ACTIVE
+            value: "atlas,flex,dns"
+          - name: ATLAS_SERVICE_HOSTNAME
+            value: "{{ .Release.Name }}-dcm-atlas-client"
           - name: MY_POD_NAME
             valueFrom:
              fieldRef:

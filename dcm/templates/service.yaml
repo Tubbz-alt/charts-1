@@ -12,7 +12,7 @@ spec:
   ports:
     #handle port values
     - port: {{ .Values.dcm.service.port}}
-      targetPort: http
+      targetPort: {{ .Values.dcm.service.targetPort }}
       protocol: TCP
       name: http
   selector:
