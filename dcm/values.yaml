@@ -1,8 +1,9 @@
 ---
-tag: 0.54.0
+tag: 0.55.0
 global:
   registry: emccorp
 atlas:
+  registry: asdrepo.isus.emc.com:8099
   affinity: false
   image:
     pullPolicy: IfNotPresent
@@ -14,11 +15,12 @@ atlas:
 dcm:
   image:
     pullPolicy: IfNotPresent
+    #repository: asdrepo.isus.emc.com:8200/dcm
+    #tag: latest
     repository: dcm
     #tag: stable
   replicaCount: 1
-  #take out the service if we are not exposing
   service:
-    port: 80
+    port: 8080
     targetPort: 9026
     type: ClusterIP
