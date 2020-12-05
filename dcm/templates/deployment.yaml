@@ -38,7 +38,7 @@ spec:
             valueFrom:
              fieldRef:
               fieldPath: status.podIP
-          image: "{{ .Values.dcm.image.repository }}:{{ .Values.dcm.image.tag | default .Chart.AppVersion }}"
+          image: "{{ default  .Values.global.registry .Values.dcm.image.registry }}/{{ .Values.dcm.image.repository }}:{{ .Values.dcm.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.dcm.image.pullPolicy }}
           ports:
             - name: http

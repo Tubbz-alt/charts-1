@@ -15,8 +15,8 @@ atlas:
 dcm:
   image:
     pullPolicy: IfNotPresent
-    #repository: asdrepo.isus.emc.com:8200/dcm
-    #tag: latest
+    registry: asdrepo.isus.emc.com:8200
+    tag: latest
     repository: dcm
     #tag: stable
   replicaCount: 1
